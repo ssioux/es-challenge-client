@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+
+import NavBar from "./components/NavBar";
+import Error from "./pages/Error";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+import TourneyDetails from "./pages/TourneyDetails";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
+
+        {/* Error Pages */}
+
+        <Route path="/error" element={<Error />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
