@@ -7,9 +7,9 @@ import { AuthContext } from "../context/auth.context";
 
 function Login() {
 
-  const { authenticaUser } = useContext(AuthContext)   
+  const { authenticateUser } = useContext(AuthContext)   
 
-  // configuramos el uso de navigate
+  
   const navigate = useNavigate()
 
   const [email, setEmail] = useState("");
@@ -21,42 +21,30 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    // ... login logic here
 
-    // 1. recopilar las credenciales del usuario
-    const userCredentials = {
+
+    // 1. To take credential user info.
+    const userInfo = {
       email: email,
       password: password
     }
 
     try {
-      // 2. contactar con el backend para validarlo
-      const response = await loginService(userCredentials)
-      
-      // 3. recibir el Token
-      // console.log(response.data.authToken)
+      // 2. Contact BE To validate it
+      const response = await loginService(userInfo)
+      console.log(response.data.authToken)
   
-      // 4. hacer algo con el Token?
-      
-      // metodo de localStorage para guardar info => localStorage.setItem()
+      // 3. Token received so we save it into localStorage
       localStorage.setItem("authToken", response.data.authToken)
-      // arg1. el nombre de lo que vamos a guardar
-      // arg2. el valor de lo qe vamos a guardar
 
-      // en este punto nosotros tenemos que guardar informacion de que el usuario se ha logeado
-      // esta info estará en un estado global (context)
-      authenticaUser() // invocar la funcion de context que valida el Token
-
-      // ! redireccionar al usuario
+      authenticateUser() // invokoe to validate user
       navigate("/profile")
 
 
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage)
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error")
       }
     }
@@ -86,7 +74,7 @@ function Login() {
 
         <button type="submit">Login</button>
 
-        {errorMessage !== "" && <p>{errorMessage}</p>}
+        {errorMessage !== "" && <p style={{color: "red"}}>{errorMessage}</p>}
 
       </form>
       
