@@ -6,22 +6,23 @@ const AuthContext = createContext()
 
 function AuthWrapper(props) {
 
+  // .todos los estados y funciones globales
   const [ isLoggedIn, setIsLoggedIn ] = useState(false)
   const [ user, setUser ] = useState(null)
   const [ isFetching, setIsFetching ] = useState(true)
 
   useEffect(() => {
     authenticaUser()
-  }, []) // Component Did Mount 
+  }, []) // Component Did Mount => el component que envuelve a App.
 
   const authenticaUser = async () => {
-    // Run to validate Token and update states
-    setIsFetching(true) 
+    // ejecutar para validar el token del usuario y actualizar los estados
+    setIsFetching(true) // cambiar esto a true mientras se vuelve a validar el token
     try {
       
       const response = await verifyService()
       console.log(response)
-      // Token is validated
+      // a partir de este punto, el Token está validado en FE
       setIsLoggedIn(true)
       setUser(response.data)
       setIsFetching(false)
