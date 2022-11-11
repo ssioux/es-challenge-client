@@ -3,6 +3,7 @@ import "./App.css";
 import IsPrivate from "./components/IsPrivate";
 
 import NavBar from "./components/NavBar";
+import InfoEdit from "./components/profile/InfoEdit";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -24,6 +25,8 @@ function App() {
           path="/profile"
           element={<IsPrivate><Profile /></IsPrivate>}/>
         <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
+        <Route path="/profile/:userId/edit" element={<InfoEdit/>} />
+
 
         {/* Error Pages */}
 

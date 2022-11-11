@@ -1,9 +1,13 @@
+import Info from "../components/profile/Info"
 
 
 function Profile() {
   return (
     <div>
-        <h2>Profile</h2>
+       <div>
+        <h2>User Profile</h2>
+       <Info />
+       </div>
     </div>
   )
 }
