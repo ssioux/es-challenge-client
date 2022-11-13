@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import IsPrivate from "./components/IsPrivate";
 
+
+
 import NavBar from "./components/NavBar";
 import InfoEdit from "./components/profile/InfoEdit";
 import Error from "./pages/Error";
@@ -11,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import TourneyDetails from "./pages/TourneyDetails";
+
 
 function App() {
   return (

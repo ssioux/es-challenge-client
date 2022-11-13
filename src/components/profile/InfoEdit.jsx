@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { detailsUserService, updateUserService } from '../../services/profile.services'
 
+import Button from 'react-bootstrap/Button';
+
 function InfoEdit() {
    const navigate = useNavigate()
    const {userId} = useParams()
@@ -70,7 +72,7 @@ function InfoEdit() {
         <label htmlFor="picture">Add picture</label>
         <input type="file" name="picture" checked={pictureInput} onChange={pictureChange}/>
         <br />
-        <button onClick={handleUpdate}>Edit</button>
+        <Button onClick={handleUpdate}>Edit</Button>
       </form>
 
     </div>

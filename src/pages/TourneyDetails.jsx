@@ -2,7 +2,7 @@
 
 function TourneyDetails() {
   return (
-    <div>
+    <div class="tourney-list">
         <h3>TourneyDetails</h3>
     </div>
   )
