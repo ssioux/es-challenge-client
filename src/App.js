@@ -5,6 +5,7 @@ import IsPrivate from "./components/IsPrivate";
 
 
 import NavBar from "./components/NavBar";
+import CreateTourneyForm from "./components/profile/CreateTourneyForm";
 import InfoEdit from "./components/profile/InfoEdit";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
@@ -13,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import TourneyDetails from "./pages/TourneyDetails";
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
           path="/profile"
           element={<IsPrivate><Profile /></IsPrivate>}/>
         <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
+        <Route path="/tourney/create" element={<CreateTourneyForm />} />
         <Route path="/profile/:userId/edit" element={<InfoEdit/>} />
 
 

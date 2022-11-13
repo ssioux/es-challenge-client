@@ -2,27 +2,27 @@ import service from "./config.services";
 
 // http://localhost:5005/api baseUrl
 
-const listTourneys = () => {
+const listTourneysService = () => {
     return service.get("/tourney/list")
 }
-const createTourney = () => {
-    return service.post("/tourney/create")
+const createTourneyService = (newTourney) => {
+    return service.post("/tourney/create", newTourney)
 }
-const detailsTourney = (tourneyId) => {
+const detailsTourneyService = (tourneyId) => {
      return service.get(`/tourney/${tourneyId}/details`)
 }
-const updateTourney = (tourneyId, tourneyUpdate) => {
+const updateTourneyService = (tourneyId, tourneyUpdate) => {
     return service.patch(`/tourney/${tourneyId}/edit`)
 }
-const deleteTourney = (tourneyId) => {
+const deleteTourneyService = (tourneyId) => {
     return service.delete(`/tourney/${tourneyId}/delete`)
 }
 
 
 export{
-    listTourneys,
-    createTourney,
-    updateTourney,
-    deleteTourney,
-    detailsTourney
+    listTourneysService,
+    createTourneyService,
+    updateTourneyService,
+    deleteTourneyService,
+    detailsTourneyService
 }

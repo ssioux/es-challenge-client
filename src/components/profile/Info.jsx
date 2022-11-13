@@ -8,6 +8,7 @@ import { AuthContext } from "../../context/auth.context.js";
 import InfoEdit from "./InfoEdit";
 
 
+
 function Info() {
   
   const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ console.log("user",user )
         <Link to={`/profile/${_id}/edit`} >Edit User</Link>
 
 
-        <Link>Create Tourney</Link>  {/* admin */}
+        <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
 
     </div>
   )

@@ -2,28 +2,28 @@ import service from "./config.services";
 
 // http://localhost:5005/api baseUrl
 
-const listGames = () => {
+const listGamesService = () => {
     return service.get("/game/list")
 }
-const createGame = () => {
+const createGameService = () => {
     return service.post("/game/create")
 }
-const detailsGame = (gameId) => {
+const detailsGameService = (gameId) => {
      return service.get(`/game/${gameId}/details`)
 }
-const updateGame = (gameId, gameUpdate) => {
+const updateGameService = (gameId, gameUpdate) => {
     return service.patch(`/game/${gameId}/edit`)
 }
-const deleteGame = (gameId) => {
+const deleteGameService = (gameId) => {
     return service.delete(`/game/${gameId}/delete`)
 }
 
 
 export{
-    listGames,
-    createGame,
-    detailsGame,
-    updateGame,
-    deleteGame
+    listGamesService,
+    createGameService,
+    detailsGameService,
+    updateGameService,
+    deleteGameService
 
 }
