@@ -78,16 +78,23 @@ function CreateTourneyForm(props) {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label htmlFor="Game">Choose your Game</Form.Label>
-          <Form.Select   id="disabledSelect">
+         
              
-            
+{/*             
                   {listGames.map((eachGame) => {
                    return (
-                    <option onChange={handleGameChange} key={eachGame._id} value={gameInput}>{eachGame.name }</option>
+                    <option onChange={handleGameChange} key={eachGame._id} value={ gameInput}>{eachGame.name }</option>
                      )
-                     })}
+                     })} */}
+                       
+                       <Form.Control  as="select" value={gameInput} onChange={handleGameChange}>
+                       {listGames.map(opt => (
+                       <option  value={opt._id}>{opt.name}</option>
+                       ))}
+                      </Form.Control>
+                   
                
-          </Form.Select>
+        
         </Form.Group>
        
         <Button type="submit" onClick={handleSubmit}>Create Tourney</Button>
