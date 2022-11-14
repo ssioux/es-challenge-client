@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button"
 import CreateTeamForm from "./CreateTeamForm";
 import  Collapse  from "react-bootstrap/Collapse";
 import { findTeamCreatorService } from "../../services/team.services";
+import TeamList from "./TeamList";
 
 
 
@@ -93,6 +94,12 @@ const getData = async() => {
           {/* <Link to="/team/create" >Create Team</Link> */}
           <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
           <Link to="/game/create" >Create Game</Link>  {/* admin */}
+        </div>
+
+
+        <div>
+
+        <TeamList/>
         </div>
            
 

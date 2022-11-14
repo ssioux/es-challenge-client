@@ -21,11 +21,16 @@ const findTeamCreatorService = () => {
     return service.get("/team/find-creator")
 }
 
+const addMemberTeamService = (teamId) => {
+    return service.patch(`/team/${teamId}/add-member`)
+}
+
 export{
     listTeamsService,
     createTeamService,
     detailsTeamService,
     updateTeamService,
     deleteTeamService,
-    findTeamCreatorService
+    findTeamCreatorService,
+    addMemberTeamService
 }

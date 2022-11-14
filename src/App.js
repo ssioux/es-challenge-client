@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
+import TeamDetails from "./pages/TeamDetails";
 import TourneyDetails from "./pages/TourneyDetails";
 
 
@@ -31,6 +32,7 @@ function App() {
         <Route
           path="/profile"
           element={<IsPrivate><Profile /></IsPrivate>}/>
+          <Route path="/team/:teamId/details" element={<TeamDetails />} />
         <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
         <Route path="/tourney/create" element={<CreateTourneyForm />} />
         <Route path="/game/create" element={<CreateGameForm />} />
