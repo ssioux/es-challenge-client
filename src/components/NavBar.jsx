@@ -92,11 +92,13 @@ function NavBar() {
     try {
       await singupService(newUser);
       navigate("/login");
+      setShowSignup(false)
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        setErrorMessage(error.response.data.errorMessage);
+        setErrorMessageSignup(error.response.data.errorMessage);
+      }else{
+        navigate("/error")
       }
-      navigate("/error");
     }
   };
 
@@ -143,7 +145,7 @@ function NavBar() {
                     />
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
-                      type="email"
+                      type="text"
                       placeholder="name@example.com"
                       autoFocus
                       value={emailSignup}
@@ -232,5 +234,5 @@ function NavBar() {
   );
 }
 
-// render(<App />);
+
 export default NavBar;

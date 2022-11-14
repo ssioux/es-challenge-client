@@ -2,27 +2,27 @@ import service from "./config.services";
 
 // http://localhost:5005/api baseUrl
 
-const listTeams = () => {
+const listTeamsService = () => {
     return service.get("/team/list")
 }
-const createTeam = () => {
-    return service.post("/team/create")
+const createTeamService = (teamToCreate) => {
+    return service.post("/team/create",teamToCreate)
 }
-const detailsTeam = (teamId) => {
+const detailsTeamService = (teamId) => {
      return service.get(`/team/${teamId}/details`)
 }
-const updateTeam = (teamId, teamUpdate) => {
+const updateTeamService = (teamId, teamUpdate) => {
     return service.patch(`/team/${teamId}/edit`)
 }
-const deleteTeam = (teamId) => {
+const deleteTeamService = (teamId) => {
     return service.delete(`/team/${teamId}/delete`)
 }
 
 
 export{
-    listTeams,
-    createTeam,
-    detailsTeam,
-    updateTeam,
-    deleteTeam
+    listTeamsService,
+    createTeamService,
+    detailsTeamService,
+    updateTeamService,
+    deleteTeamService
 }
