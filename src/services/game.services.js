@@ -5,8 +5,8 @@ import service from "./config.services";
 const listGamesService = () => {
     return service.get("/game/list")
 }
-const createGameService = () => {
-    return service.post("/game/create")
+const createGameService = (gameToAdd) => {
+    return service.post("/game/create", gameToAdd)
 }
 const detailsGameService = (gameId) => {
      return service.get(`/game/${gameId}/details`)

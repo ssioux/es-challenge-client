@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import {listTourneysService} from "../../services/tourney.services.js"
-import CreateTourneyForm from "../profile/CreateTourneyForm.jsx"
+// import CreateTourneyForm from "../profile/CreateTourneyForm.jsx"
 
 function TourneyList() {
   const navigate = useNavigate()
@@ -28,13 +28,15 @@ function TourneyList() {
       
     }
   }
+
+  
    if(isFetching === true) {
     return <h3>Loading . . .</h3>
    }
     
   return (
     <div>
-          <CreateTourneyForm updateList={getData}/>
+          {/* <CreateTourneyForm updateList={getData}/> PREGUNTA*/}
 
         <h3>TourneyList</h3>
         {list.map((eachTourney) => {

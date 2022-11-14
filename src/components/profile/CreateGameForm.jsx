@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import { useNavigate } from "react-router-dom"
 import {useState, useContext, useEffect} from "react"
-import { getDefaultNormalizer } from '@testing-library/react'
+
 import { createGameService } from '../../services/game.services'
 
 
@@ -13,7 +13,7 @@ function CreateGameForm() {
 
   const [nameInput, setNameInput] = useState("")
   const [descriptionInput, setDescriptionInput] = useState("")
-  const [pictureInput, setPictureInput] = useState("")
+  const [pictureInput, setPictureInput] = useState()
 
   const handleNameChange = (e) => setNameInput(e.target.value)
   const handDescriptionChange = (e) => setDescriptionInput(e.target.value)
@@ -24,7 +24,7 @@ function CreateGameForm() {
     e.preventDefault()
     const gameToAdd = {
       name: nameInput,
-      descritption: descriptionInput,
+      description: descriptionInput,
       picture:pictureInput,
       
     }
@@ -61,7 +61,7 @@ function CreateGameForm() {
         </Form.Group>
         <Form.Group className="mb-3">
         <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control value ={descriptionInput} onChange={handlePictureChange} type="file" />
+          <Form.Control value ={pictureInput} onChange={handlePictureChange} type="file" />
         </Form.Group>
           
                 
