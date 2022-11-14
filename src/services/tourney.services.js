@@ -17,6 +17,9 @@ const updateTourneyService = (tourneyId, tourneyUpdate) => {
 const deleteTourneyService = (tourneyId) => {
     return service.delete(`/tourney/${tourneyId}/delete`)
 }
+const addTeamToTourneyService = (tourneyId) => {
+    return service.patch(`/tourney/${tourneyId}/add-team`)
+}
 
 
 export{
@@ -24,5 +27,6 @@ export{
     createTourneyService,
     updateTourneyService,
     deleteTourneyService,
-    detailsTourneyService
+    detailsTourneyService,
+    addTeamToTourneyService
 }

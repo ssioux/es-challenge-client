@@ -1,8 +1,41 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { addTeamToTourneyService, detailsTourneyService } from "../services/tourney.services";
+import { useEffect, useState } from "react";
+
 
 function TourneyDetails() {
+  const navigate = useNavigate()
   const { tourneyId } = useParams();
+  const [details, setDetails] = useState()
+  console.log("details", details)
+
+  useEffect(() => {
+    getData()
+  },[])
+  
+  const getData = async () => {
+    try {
+      const tourneyDetails = await detailsTourneyService(tourneyId)
+      console.log(tourneyDetails)
+      setDetails(tourneyDetails.data)
+      
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+
+  const handleAddTeamToTourney = async (e) => {
+    e.preventDefault()
+    try {
+      await addTeamToTourneyService(tourneyId)
+      // navigate(`/tourney/${tourneyId}/details`)
+      getData()
+    } catch (error) {
+      navigate("/error")
+      
+    }
+  }
 
 
   return (
@@ -166,10 +199,18 @@ function TourneyDetails() {
           </a>
         </div>
       </section>
+      <div>
+        <h3>Team List</h3>
+        {details.teams.map((eachTeam) => {
+          return(
+            <p key={eachTeam._id}>{eachTeam.name}</p>
+          )
+        })}
+      </div>
 
       <Button>Start</Button>
       <Button>Edit</Button>
-      <Button>signup Team</Button>
+      <Button onClick={handleAddTeamToTourney}>signup Team</Button>
     </div>
   );
 }
