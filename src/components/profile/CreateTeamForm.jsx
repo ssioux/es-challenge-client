@@ -1,11 +1,11 @@
 import React from 'react'
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
-import { useNavigate } from "react-router-dom"
+import { useNavigate , useParams} from "react-router-dom"
 import {useState, useContext, useEffect} from "react"
 
 
-import { createTeamService } from '../../services/team.services'
+import { createTeamService, findTeamCreatorService } from '../../services/team.services'
 
 function CreateTeamForm() {
   const navigate = useNavigate()
@@ -33,6 +33,7 @@ function CreateTeamForm() {
     }
     
     try {
+     
   
       await createTeamService(teamToCreate)
       navigate("/profile")
@@ -49,6 +50,7 @@ function CreateTeamForm() {
     <div style={{display:"flex",
       justifyContent:"center",
      alignItems:"center", flexDirection:"column"}} >
+        
         <h1>Create new Team</h1>
         <hr />
            <Form style={{display:"flex"}}>

@@ -17,12 +17,15 @@ const updateTeamService = (teamId, teamUpdate) => {
 const deleteTeamService = (teamId) => {
     return service.delete(`/team/${teamId}/delete`)
 }
-
+const findTeamCreatorService = () => {
+    return service.get("/team/find-creator")
+}
 
 export{
     listTeamsService,
     createTeamService,
     detailsTeamService,
     updateTeamService,
-    deleteTeamService
+    deleteTeamService,
+    findTeamCreatorService
 }
