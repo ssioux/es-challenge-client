@@ -18,14 +18,9 @@ function CreateTourneyForm(props) {
   const [listGames , setListGames] = useState([])
 
   const handleNameChange = (e) => setNameInput(e.target.value)
-  const handleGameChange = (e) => {
-    console.log("event", e.target.value)
-    setGameInput(e.target.value)
-  }
-  
-  
+  const handleGameChange = (e) => setGameInput(e.target.value)
    
-    useEffect(() =>{
+     useEffect(() =>{
      getData()
     },[])
 
@@ -78,22 +73,17 @@ function CreateTourneyForm(props) {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label htmlFor="Game">Choose your Game</Form.Label>
-         
-             
-{/*             
-                  {listGames.map((eachGame) => {
-                   return (
-                    <option onChange={handleGameChange} key={eachGame._id} value={ gameInput}>{eachGame.name }</option>
-                     )
-                     })} */}
-                       
-                       <Form.Control  as="select" value={gameInput} onChange={handleGameChange}>
+                      {/* <Form.Control  as="select"  onChange={handleGameChange}>
                        {listGames.map(opt => (
-                       <option  value={opt._id}>{opt.name}</option>
+                       <option key={opt._id} value={opt._id}>{opt.name}</option>
                        ))}
                       </Form.Control>
-                   
-               
+                    */}
+                    <Form.Select onChange={handleGameChange}>
+                    {listGames.map(opt => (
+                       <option key={opt._id} value={opt._id}>{opt.name}</option>
+                       ))}
+        </Form.Select>
         
         </Form.Group>
        

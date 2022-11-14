@@ -30,6 +30,8 @@ console.log("user",user )
 
 
         <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
+        <Link to="/game/create" >Create Game</Link>  {/* admin */}
+
 
     </div>
   )
