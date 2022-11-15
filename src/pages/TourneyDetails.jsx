@@ -11,10 +11,20 @@ function TourneyDetails() {
   const { tourneyId } = useParams();
   const [details, setDetails] = useState()
   // SAVE DISORDER LIST TO START THE TOURNAMENT
-  const [disorderList, setDisorderList] = useState()
+  // const [disorderList, setDisorderList] = useState()
   // console.log("disorderList[0]",disorderList[0].name)
   const [isFetching, setIsFetching] = useState(true)
   console.log("details", details)
+
+  const [quarterA1, setQuarterA1] = useState("Empty")
+  const [quarterA2, setQuarterA2] = useState("Empty")
+  const [quarterB1, setQuarterB1] = useState("Empty")
+  const [quarterB2, setQuarterB2] = useState("Empty")
+
+  const [quarterC1, setQuarterC1] = useState("Empty")
+  const [quarterC2, setQuarterC2] = useState("Empty")
+  const [quarterD1, setQuarterD1] = useState("Empty")
+  const [quarterD2, setQuarterD2] = useState("Empty")
 
   useEffect(() => {
     getData()
@@ -52,9 +62,18 @@ function TourneyDetails() {
   const handleStartSort = async (e) => {
     e.preventDefault()
     try {
-      const response = await sortTeamsToTourneyService(tourneyId)
-      console.log(response.data)
-      setDisorderList(response.data)
+      await sortTeamsToTourneyService(tourneyId)
+      // console.log(response.data)
+      // setDisorderList(response.data)
+
+//       setQuarterA1(details.quarterA[0].name)
+// setQuarterA2(details.quarterA[1].name)
+// setQuarterB1(details.quarterB[0].name)
+// setQuarterB2(details.quarterB[1].name)
+// setQuarterC1(details.quarterC[0].name)
+// setQuarterC2(details.quarterC[1].name)
+// setQuarterD1(details.quarterD[0].name)
+// setQuarterD2(details.quarterD[1].name)
       
     } catch (error) {
       navigate("/error")
@@ -95,19 +114,19 @@ function TourneyDetails() {
                 <span class="date">March 16</span>
               </div>
               <ul class="matchup">
-                <li class="team team-top">
-                  {disorderList[0].name}<span class="score">76</span>
+                <li className="team team-top">
+                  {quarterA1}<span class="score">76</span>
                 </li>
                 <li class="team team-bottom">
-                {disorderList[1].name}<span class="score">82</span>
+                {quarterA2}<span class="score">82</span>
                 </li>
               </ul>
               <ul class="matchup">
                 <li class="team team-top">
-                {disorderList[2].name}<span class="score">64</span>
+                {quarterB1}<span class="score">64</span>
                 </li>
                 <li class="team team-bottom">
-                {disorderList[3].name}<span class="score">56</span>
+                {quarterB2}<span class="score">56</span>
                 </li>
               </ul>
               
@@ -197,18 +216,18 @@ function TourneyDetails() {
               </div>
               <ul class="matchup">
                 <li class="team team-top">
-                {disorderList[4].name}<span class="score">45</span>
+                {quarterC1}<span class="score">45</span>
                 </li>
                 <li class="team team-bottom">
-                {disorderList[5].name}<span class="score">54</span>
+                {quarterC2}<span class="score">54</span>
                 </li>
               </ul>
               <ul class="matchup">
                 <li class="team team-top">
-                {disorderList[6].name}<span class="score">68</span>
+                {quarterD1}<span class="score">68</span>
                 </li>
                 <li class="team team-bottom">
-                {disorderList[7].name}<span class="score">66</span>
+                {quarterD2}<span class="score">66</span>
                 </li>
               </ul>
               

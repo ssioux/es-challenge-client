@@ -21,7 +21,7 @@ const addTeamToTourneyService = (tourneyId) => {
     return service.patch(`/tourney/${tourneyId}/add-team`)
 }
 const sortTeamsToTourneyService = (tourneyId) => {
-    return service.get(`/tourney/${tourneyId}/sort-teams`)
+    return service.patch(`/tourney/${tourneyId}/sort-teams`)
 }
 
 
