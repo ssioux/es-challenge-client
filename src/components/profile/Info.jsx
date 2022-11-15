@@ -15,11 +15,14 @@ import TeamList from "./TeamList";
 
 
 function Info () {
+  const navigate = useNavigate()
   const [formIsShowing, setFormIsShowing] = useState(false)
+  const [isFetching, setIsFetching] = useState(true)
 
   // State to show or destroy Collapse
   const [viewCreateTeam, setViewCreateTeam] = useState(true)
   const [ownTeam, setOwnTeam] = useState()
+  
 
   const { user } = useContext(AuthContext);
   const{username, email, _id, picture} = user.user
@@ -30,23 +33,34 @@ useEffect(()=> {
 getData()
 
 },[])
+
 const getData = async() => {
   try {
-    const findTeamCreator = await findTeamCreatorService()
-    console.log(findTeamCreator)
+    const response = await findTeamCreatorService()
+   
+   const findTeamCreator = response.data
+     console.log("RESPONSE",findTeamCreator)
     if(findTeamCreator === null){
-      setViewCreateTeam(true)
+            setViewCreateTeam(true)
+            setOwnTeam(null)
     }else{
-      setViewCreateTeam(false)
-      setOwnTeam(findTeamCreator.data)
+     
+        setViewCreateTeam(false)
+       setOwnTeam(findTeamCreator)
     }
-      
+       setIsFetching(false)
   } catch (error) {
-    console.log(error)
+    navigate("/error")
     
   }
 
   
+}
+
+if(isFetching === true) {
+  return (
+    <h3>...Loading</h3> 
+  )
 }
   // SI EL CREADOR COINCIDE CON EL CREADOR DE ALGÚN EQUIPO
    // SI COINCIDE, MENSAJE DE ERROR
@@ -68,6 +82,7 @@ const getData = async() => {
           <img src={picture} alt="imageProfile" width={100} />
           <h4>email: {email}</h4>
         </div>
+
         {viewCreateTeam === true ? (
         <div>
            <Button variant="outline-info" onClick={toggleForm}>Create Team</Button>
@@ -79,16 +94,17 @@ const getData = async() => {
            </div>
            </Collapse>
         </div> 
-        ): ( 
+
+        ) : ( 
+
           <div>
             <p>Your team: {ownTeam.name}</p>
             <p>Members: {ownTeam.members.map((eachMem) => {
               return <p key={eachMem._id}>{eachMem.username}</p>
             })}</p>
           </div>
-          )
-        
-          }
+          )}
+
         <div style={{display:"flex", flexDirection:"column"}}>
           <Link to={`/profile/${_id}/edit`} >Edit User</Link>
           {/* <Link to="/team/create" >Create Team</Link> */}
