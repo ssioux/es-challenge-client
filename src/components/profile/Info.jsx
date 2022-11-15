@@ -39,7 +39,6 @@ const getData = async() => {
     const response = await findTeamCreatorService()
    
    const findTeamCreator = response.data
-     console.log("RESPONSE",findTeamCreator)
     if(findTeamCreator === null){
             setViewCreateTeam(true)
             setOwnTeam(null)

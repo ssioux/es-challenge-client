@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { addTeamToTourneyService, detailsTourneyService } from "../services/tourney.services";
+import { addTeamToTourneyService, detailsTourneyService, sortTeamsToTourneyService } from "../services/tourney.services";
 import { useEffect, useState } from "react";
 
 
@@ -18,6 +18,7 @@ function TourneyDetails() {
 
   },[])
   
+  
   const getData = async () => {
     try {
       const tourneyDetails = await detailsTourneyService(tourneyId)
@@ -30,6 +31,9 @@ function TourneyDetails() {
     }
   }
 
+  
+  
+
   const handleAddTeamToTourney = async (e) => {
     e.preventDefault()
     try {
@@ -40,6 +44,19 @@ function TourneyDetails() {
       navigate("/error")
       
     }
+  }
+
+  const handleStartSort = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await sortTeamsToTourneyService(tourneyId)
+      console.log(response.data)
+
+    } catch (error) {
+      navigate("/error")
+    }
+
+
   }
 
   if (isFetching === true) {
@@ -218,8 +235,9 @@ function TourneyDetails() {
         })}
       </div>
 
-      <Button>Start</Button>
+      <Button onClick={handleStartSort}>Start</Button>
       <Button>Edit</Button>
+    
       <Button onClick={handleAddTeamToTourney}>signup Team</Button>
     </div>
     )
