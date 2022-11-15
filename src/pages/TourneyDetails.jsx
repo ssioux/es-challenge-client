@@ -12,7 +12,7 @@ function TourneyDetails() {
   const [details, setDetails] = useState()
   // SAVE DISORDER LIST TO START THE TOURNAMENT
   const [disorderList, setDisorderList] = useState()
-  console.log("disorderList[0]",disorderList[0].name)
+  // console.log("disorderList[0]",disorderList[0].name)
   const [isFetching, setIsFetching] = useState(true)
   console.log("details", details)
 
