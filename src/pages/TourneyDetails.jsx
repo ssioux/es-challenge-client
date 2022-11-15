@@ -10,6 +10,9 @@ function TourneyDetails() {
   const navigate = useNavigate()
   const { tourneyId } = useParams();
   const [details, setDetails] = useState()
+  // SAVE DISORDER LIST TO START THE TOURNAMENT
+  const [disorderList, setDisorderList] = useState()
+  console.log("disorderList[0]",disorderList[0].name)
   const [isFetching, setIsFetching] = useState(true)
   console.log("details", details)
 
@@ -51,7 +54,8 @@ function TourneyDetails() {
     try {
       const response = await sortTeamsToTourneyService(tourneyId)
       console.log(response.data)
-
+      setDisorderList(response.data)
+      
     } catch (error) {
       navigate("/error")
     }
@@ -92,18 +96,18 @@ function TourneyDetails() {
               </div>
               <ul class="matchup">
                 <li class="team team-top">
-                  Duke<span class="score">76</span>
+                  {disorderList[0].name}<span class="score">76</span>
                 </li>
                 <li class="team team-bottom">
-                  Virginia<span class="score">82</span>
+                {disorderList[1].name}<span class="score">82</span>
                 </li>
               </ul>
               <ul class="matchup">
                 <li class="team team-top">
-                  Wake Forest<span class="score">64</span>
+                {disorderList[2].name}<span class="score">64</span>
                 </li>
                 <li class="team team-bottom">
-                  Clemson<span class="score">56</span>
+                {disorderList[3].name}<span class="score">56</span>
                 </li>
               </ul>
               
@@ -193,18 +197,18 @@ function TourneyDetails() {
               </div>
               <ul class="matchup">
                 <li class="team team-top">
-                  Minnesota<span class="score">45</span>
+                {disorderList[4].name}<span class="score">45</span>
                 </li>
                 <li class="team team-bottom">
-                  Northwestern<span class="score">54</span>
+                {disorderList[5].name}<span class="score">54</span>
                 </li>
               </ul>
               <ul class="matchup">
                 <li class="team team-top">
-                  Michigan<span class="score">68</span>
+                {disorderList[6].name}<span class="score">68</span>
                 </li>
                 <li class="team team-bottom">
-                  Iowa<span class="score">66</span>
+                {disorderList[7].name}<span class="score">66</span>
                 </li>
               </ul>
               
