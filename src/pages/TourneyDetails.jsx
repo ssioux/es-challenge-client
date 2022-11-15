@@ -4,21 +4,26 @@ import { addTeamToTourneyService, detailsTourneyService } from "../services/tour
 import { useEffect, useState } from "react";
 
 
+
 function TourneyDetails() {
+
   const navigate = useNavigate()
   const { tourneyId } = useParams();
   const [details, setDetails] = useState()
+  const [isFetching, setIsFetching] = useState(true)
   console.log("details", details)
 
   useEffect(() => {
     getData()
+
   },[])
   
   const getData = async () => {
     try {
       const tourneyDetails = await detailsTourneyService(tourneyId)
-      console.log(tourneyDetails)
+      console.log("tourneyD",tourneyDetails)
       setDetails(tourneyDetails.data)
+      setIsFetching(false)
       
     } catch (error) {
       navigate("/error")
@@ -37,9 +42,14 @@ function TourneyDetails() {
     }
   }
 
+  if (isFetching === true) {
+    return (
+      <h2>...Loading</h2>
+    )
+  }
 
   return (
-    <div className="tourney-list">
+<div className="tourney-list">
       <h3>TourneyDetails</h3>
 
       <header class="hero">
@@ -212,7 +222,9 @@ function TourneyDetails() {
       <Button>Edit</Button>
       <Button onClick={handleAddTeamToTourney}>signup Team</Button>
     </div>
-  );
-}
+    )
+  }
+
+
 
 export default TourneyDetails;
