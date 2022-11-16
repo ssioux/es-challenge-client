@@ -65,6 +65,7 @@ if(isFetching === true) {
    // SI COINCIDE, MENSAJE DE ERROR
      // SI NO COINCIDE CREAR EQUIPO
 
+
    const toggleForm = () => {
     if(formIsShowing === true) {
       setFormIsShowing(false)
