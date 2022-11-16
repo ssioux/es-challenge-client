@@ -113,6 +113,7 @@ function NavBar() {
           <Link onClick={handleLogout}>Logout</Link>
         </div>
       ) : (
+        
         <div>
           <Link to="/">Home</Link>
 
