@@ -17,16 +17,37 @@ function TourneyDetails() {
   // const [isFetching2, setIsFetching2] = useState(false)
   console.log("details", details)
 
+  // ! QUARTER STATES
+  // * Quarter A
   const [quarterA1, setQuarterA1] = useState("Empty")
-  const [quarterA2, setQuarterA2] = useState("Empty")
-  const [quarterB1, setQuarterB1] = useState("Empty")
-  const [quarterB2, setQuarterB2] = useState("Empty")
+  const [scoreA1, setScoreA1] = useState(0)
 
+  const [quarterA2, setQuarterA2] = useState("Empty")
+  const [scoreA2, setScoreA2] = useState(0)
+
+  // * Quarter B
+  const [quarterB1, setQuarterB1] = useState("Empty")
+  const [scoreB1, setScoreB1] = useState(0)
+
+  const [quarterB2, setQuarterB2] = useState("Empty")
+  const [scoreB2, setScoreB2] = useState(0)
+  // * Quarter C
   const [quarterC1, setQuarterC1] = useState("Empty")
+  const [scoreC1, setScoreC1] = useState(0)
+
   const [quarterC2, setQuarterC2] = useState("Empty")
+  const [scoreC2, setScoreC2] = useState(0)
+
+  // * Quarter D
   const [quarterD1, setQuarterD1] = useState("Empty")
+  const [scoreD1, setScoreD1] = useState(0)
+
   const [quarterD2, setQuarterD2] = useState("Empty")
- 
+  const [scoreD2, setScoreD2] = useState(0)
+
+
+
+
 
 
   useEffect(() => {
@@ -51,13 +72,17 @@ function TourneyDetails() {
        if (tourneyDetails.quarterA.length === 2) {
         setQuarterA1(tourneyDetails.quarterA[0].name)
         setQuarterA2(tourneyDetails.quarterA[1].name)
-        // setQuarterB1(tourneyDetails.quarterB[0].name)
-        // setQuarterB2(tourneyDetails.quarterB[1].name)
-        // setQuarterC1(tourneyDetails.quarterC[0].name)
-        // setQuarterC2(tourneyDetails.quarterC[1].name)
-        // setQuarterD1(tourneyDetails.quarterD[0].name)
-        // setQuarterD2(tourneyDetails.quarterD[1].name)
-       }
+      //  } else if (tourneyDetails.quarterB.length === 2) {
+        setQuarterB1(tourneyDetails.quarterB[0].name)
+        setQuarterB2(tourneyDetails.quarterB[1].name)
+      //  } else if (tourneyDetails.quarterC.length === 2) {
+        setQuarterC1(tourneyDetails.quarterC[0].name)
+        setQuarterC2(tourneyDetails.quarterC[1].name)
+      // } else if (tourneyDetails.quarterD.length === 2) {
+        setQuarterD1(tourneyDetails.quarterD[0].name)
+        setQuarterD2(tourneyDetails.quarterD[1].name)
+      }
+
       setIsFetching(false)
     } catch (error) {
       navigate("/error")
@@ -72,7 +97,7 @@ function TourneyDetails() {
     try {
       await addTeamToTourneyService(tourneyId)
       // navigate(`/tourney/${tourneyId}/details`)
-        
+      navigate(`/list/${tourneyId}/details`)
     } catch (error) {
       navigate("/error")
       
@@ -130,7 +155,10 @@ function TourneyDetails() {
       )
     }
     
-     
+     const handleEditLink = (e) => {
+      
+      navigate(`/list/${tourneyId}/details/edit`)
+     }
     
 
   return (
@@ -161,18 +189,18 @@ function TourneyDetails() {
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterA1}<span className="score">76</span>
+                {quarterA1}<span className="score">{scoreA1}</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterA2}<span className="score">82</span>
+                {quarterA2}<span className="score">{scoreA2}</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterB1}<span className="score">64</span>
+                {quarterB1}<span className="score">{scoreB1}</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterB2}<span className="score">56</span>
+                {quarterB2}<span className="score">{scoreB2}</span>
                 </li>
               </ul>
               
@@ -217,13 +245,6 @@ function TourneyDetails() {
             </div>
             <div className="final">
               <i className="fa fa-trophy"></i>
-
-              {/* // champion */}
-              <div className="round-details">
-                campeon <br />
-                <span className="date">March 30 - Apr. 1</span>
-              </div>
-              
               <ul className="matchup championship">
                 <li className="team team-top">
                   &nbsp;<span className="vote-count">&nbsp;</span> 
@@ -262,18 +283,18 @@ function TourneyDetails() {
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterC1}<span className="score">45</span>
+                {quarterC1}<span className="score">{scoreC1}</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterC2}<span className="score">54</span>
+                {quarterC2}<span className="score">{scoreC2}</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterD1}<span className="score">68</span>
+                {quarterD1}<span className="score">{scoreD1}</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterD2}<span className="score">66</span>
+                {quarterD2}<span className="score">{scoreD2}</span>
                 </li>
               </ul>
               
@@ -308,6 +329,7 @@ function TourneyDetails() {
       <Button>Edit</Button>
     
       <Button onClick={handleAddTeamToTourney}>signup Team</Button>
+      <Button onClick={handleEditLink}>Edit Tourney</Button>
     </div>
     )
   }

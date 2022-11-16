@@ -9,6 +9,7 @@ import CreateGameForm from "./components/profile/CreateGameForm";
 import CreateTeamForm from "./components/profile/CreateTeamForm";
 import CreateTourneyForm from "./components/profile/CreateTourneyForm";
 import InfoEdit from "./components/profile/InfoEdit";
+import EditFormTourney from "./components/TourneyDetails/EditFormTourney";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -34,6 +35,8 @@ function App() {
           element={<IsPrivate><Profile /></IsPrivate>}/>
           <Route path="/team/:teamId/details" element={<TeamDetails />} />
         <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
+        <Route path="/list/:tourneyId/details/edit" element={<EditFormTourney />} />
+        
         <Route path="/tourney/create" element={<CreateTourneyForm />} />
         <Route path="/game/create" element={<CreateGameForm />} />
         <Route path="/team/create" element={<CreateTeamForm />} />

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { Button } from 'react-bootstrap'
-import { Form ,useParams, useNavigate} from 'react-router-dom'
+import  Button  from 'react-bootstrap/Button'
+import  Form  from 'react-bootstrap/Form'
+import { useParams, useNavigate} from 'react-router-dom'
+import { updateFinalService, updateQuartersService, updateSemiFinalsService } from '../../services/tourney.services'
 
 
 
@@ -77,56 +79,56 @@ if(isFetching === true) {
 }
 
   return (
-    <div>
+    <div className="tourney-list">
            <h1>Edit Tourney</h1>
         <hr />
            <Form style={{display:"flex"}}>
       <fieldset >
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q1">Q1</Form.Label>
+          <Form.Label htmlFor="Q1">QA1</Form.Label>
           <Form.Control value={resultQ1Input} onChange={handleResultQ1} id="disabledTextInput" placeholder="Q1" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q2">Q2</Form.Label>
+          <Form.Label htmlFor="Q2">QA2</Form.Label>
           <Form.Control value={resultQ2Input} onChange={handleResultQ2} id="disabledTextInput" placeholder="Q2" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q3">Q3</Form.Label>
+          <Form.Label htmlFor="Q3">QB1</Form.Label>
           <Form.Control value={resultQ3Input} onChange={handleResultQ3} id="disabledTextInput" placeholder="Q3" />
         </Form.Group><Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q4">Q4</Form.Label>
+          <Form.Label htmlFor="Q4">QB2</Form.Label>
           <Form.Control value={resultQ4Input} onChange={handleResultQ4} id="disabledTextInput" placeholder="Q4" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q5">Q5</Form.Label>
+          <Form.Label htmlFor="Q5">QC1</Form.Label>
           <Form.Control value={resultQ5Input} onChange={handleResultQ5} id="disabledTextInput" placeholder="Q5" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q6">Q6</Form.Label>
+          <Form.Label htmlFor="Q6">QC2</Form.Label>
           <Form.Control value={resultQ6Input} onChange={handleResultQ6} id="disabledTextInput" placeholder="Q6" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q7">Q7</Form.Label>
+          <Form.Label htmlFor="Q7">QD1</Form.Label>
           <Form.Control value={resultQ7Input} onChange={handleResultQ7} id="disabledTextInput" placeholder="Q7" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Q8">Q8</Form.Label>
+          <Form.Label htmlFor="Q8">QD2</Form.Label>
           <Form.Control value={resultQ8Input} onChange={handleResultQ8} id="disabledTextInput" placeholder="Q8" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="S1">S1</Form.Label>
+          <Form.Label htmlFor="S1">SA1</Form.Label>
           <Form.Control value={resultS1Input} onChange={handleResultS1} id="disabledTextInput" placeholder="S1" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="S2">S2</Form.Label>
+          <Form.Label htmlFor="S2">SA2</Form.Label>
           <Form.Control value={resultS2Input} onChange={handleResultS2} id="disabledTextInput" placeholder="S2" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="S3">S3</Form.Label>
+          <Form.Label htmlFor="S3">SB1</Form.Label>
           <Form.Control value={resultS3Input} onChange={handleResultS3} id="disabledTextInput" placeholder="S3" />
         </Form.Group>
         <Form.Group className="mb-3" >
-          <Form.Label htmlFor="S4">S4</Form.Label>
+          <Form.Label htmlFor="S4">SB2</Form.Label>
           <Form.Control value={resultS4Input} onChange={handleResultS4} id="disabledTextInput" placeholder="S4" />
         </Form.Group>
         <Form.Group className="mb-3" >
@@ -142,9 +144,9 @@ if(isFetching === true) {
                 
         
        
-        <Button type="submit" onClick={handleUpdtateQuarters}>Create your Team</Button>
-        <Button type="submit" onClick={handleUpdtateSemiFinals}>Create your Team</Button>
-        <Button type="submit" onClick={handleUpdateFinal}>Create your Team</Button>
+        <Button type="submit" onClick={handleUpdtateQuarters}>Update Quarter Score</Button>
+        <Button type="submit" onClick={handleUpdtateSemiFinals}>Update Semifinal Score</Button>
+        <Button type="submit" onClick={handleUpdateFinal}>Update Final Score</Button>
       </fieldset>
     </Form>
     </div>
