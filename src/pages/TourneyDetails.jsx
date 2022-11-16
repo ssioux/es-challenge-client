@@ -17,15 +17,15 @@ function TourneyDetails() {
   // const [isFetching2, setIsFetching2] = useState(false)
   console.log("details", details)
 
-  const [quarterA1, setQuarterA1] = useState()
-  const [quarterA2, setQuarterA2] = useState()
-  const [quarterB1, setQuarterB1] = useState()
-  const [quarterB2, setQuarterB2] = useState()
+  const [quarterA1, setQuarterA1] = useState("Empty")
+  const [quarterA2, setQuarterA2] = useState("Empty")
+  const [quarterB1, setQuarterB1] = useState("Empty")
+  const [quarterB2, setQuarterB2] = useState("Empty")
 
-  const [quarterC1, setQuarterC1] = useState()
-  const [quarterC2, setQuarterC2] = useState()
-  const [quarterD1, setQuarterD1] = useState()
-  const [quarterD2, setQuarterD2] = useState()
+  const [quarterC1, setQuarterC1] = useState("Empty")
+  const [quarterC2, setQuarterC2] = useState("Empty")
+  const [quarterD1, setQuarterD1] = useState("Empty")
+  const [quarterD2, setQuarterD2] = useState("Empty")
  
 
 
@@ -70,34 +70,43 @@ function TourneyDetails() {
     e.preventDefault()
     try {
        
-        await sortTeamsToTourneyService(tourneyId)
+        const response = await sortTeamsToTourneyService(tourneyId)
         console.log("entrando en estart")
         
-        
-        console.log("details despues de entrar", details)
-        await detailsTourneyService(tourneyId)
-      setQuarterA1(details.quarterA[0].name)
-      setQuarterA2(details.quarterA[1].name)
-      setQuarterB1(details.quarterB[0].name)
-      setQuarterB2(details.quarterB[1].name)
-      setQuarterC1(details.quarterC[0].name)
-      setQuarterC2(details.quarterC[1].name)
-      setQuarterD1(details.quarterD[0].name)
-      setQuarterD2(details.quarterD[1].name)
-      // setTimeout(()=>{
+        // getData()
+        console.log("RESPONSE", response.data[0].name)
+
+
+
+
+    
+       setQuarterA1(response.data[0].name)
+       setQuarterA2(response.data[1].name)
+       setQuarterB1(response.data[2].name)
+       setQuarterB2(response.data[3].name)
+       setQuarterC1(response.data[4].name)
+       setQuarterC2(response.data[5].name)
+       setQuarterD1(response.data[6].name)
+       setQuarterD2(response.data[7].name)
+
+       
+      //  setTimeout(()=>{
        
       // },2000)
       // console.log(response.data)
       // setDisorderList(response.data)
       
-      
+      navigate(`/list/${tourneyId}/details`)
     } catch (error) {
       navigate("/error")
     }
+    
   }
   
   
+  console.log(details)
   
+
   
   
   if (isFetching === true) {
@@ -110,7 +119,8 @@ function TourneyDetails() {
     
 
   return (
-<div className="tourney-list">
+
+    <div className="tourney-list">
       <h3>TourneyDetails</h3>
 
       <header className="hero">
@@ -136,18 +146,18 @@ function TourneyDetails() {
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                  {quarterA1}<span className="score">76</span>
+                {details.quarterA[0] === undefined ? quarterA1 : details.quarterA[0].name}<span className="score">76</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterA2}<span className="score">82</span>
+                {details.quarterA[1] === undefined ? quarterA2 : details.quarterA[1].name}<span className="score">82</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterB1}<span className="score">64</span>
+                {details.quarterB[0] === undefined ? quarterB1 : details.quarterB[0].name}<span className="score">64</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterB2}<span className="score">56</span>
+                {details.quarterB[1] === undefined ? quarterB2 : details.quarterB[1].name}<span className="score">56</span>
                 </li>
               </ul>
               
@@ -237,18 +247,18 @@ function TourneyDetails() {
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterC1}<span className="score">45</span>
+                {details.quarterC[0] === undefined ? quarterC1 : details.quarterC[0].name}<span className="score">45</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterC2}<span className="score">54</span>
+                {details.quarterC[1] === undefined ? quarterC2 : details.quarterC[1].name}<span className="score">54</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {quarterD1}<span className="score">68</span>
+                {details.quarterD[0] === undefined ? quarterD1 : details.quarterD[0].name}<span className="score">68</span>
                 </li>
                 <li className="team team-bottom">
-                {quarterD2}<span className="score">66</span>
+                {details.quarterD[1] === undefined ? quarterD2 : details.quarterD[1].name}<span className="score">66</span>
                 </li>
               </ul>
               
@@ -257,7 +267,7 @@ function TourneyDetails() {
         </div>
         {/* END ROUND ONE */}
       </section>
-      <section className="share">
+      {/* <section className="share">
         <div className="share-wrap">
           <a className="share-icon" href="https://twitter.com/_joebeason">
             <i className="fa fa-twitter"></i>
@@ -269,14 +279,14 @@ function TourneyDetails() {
             <i className="fa fa-envelope"></i>
           </a>
         </div>
-      </section>
+      </section> */}
       <div>
         <h3>Team List</h3>
-        {/* {details.teams.map((eachTeam) => {
+        {details.teams.map((eachTeam) => {
           return(
             <p key={eachTeam._id}>{eachTeam.name}</p>
           )
-        })} */}
+        })}
       </div>
 
       <Button onClick={handleStartSort}>Start</Button>
