@@ -20,6 +20,7 @@ function TourneyList() {
       console.log("responseList",response)
       
       setList(response.data)
+      
       setIsFetching(false)
     
 
@@ -49,16 +50,16 @@ function TourneyList() {
             <p>{eachTourney.game.name}</p>
             <p>by: {eachTourney.creator.username}</p>
             <p>Teams: {eachTourney.teams.length}/8</p>
-
-      
             </div>
+
+          )
+        })}
+    </div> 
+      
             
             
             
           
-          )
-        })}
-    </div> 
   )
 }
 

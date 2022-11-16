@@ -12,7 +12,7 @@ const detailsTourneyService = (tourneyId) => {
      return service.get(`/tourney/${tourneyId}/details`)
 }
 const updateTourneyService = (tourneyId, tourneyUpdate) => {
-    return service.patch(`/tourney/${tourneyId}/edit`)
+    return service.patch(`/tourney/${tourneyId}/edit`,tourneyUpdate)
 }
 const deleteTourneyService = (tourneyId) => {
     return service.delete(`/tourney/${tourneyId}/delete`)
@@ -23,15 +23,10 @@ const addTeamToTourneyService = (tourneyId) => {
 const sortTeamsToTourneyService = (tourneyId) => {
     return service.patch(`/tourney/${tourneyId}/sort-teams`)
 }
-const updateQuartersService = (tourneyId) => {
-    return service.patch(`/tourney/${tourneyId}/update-quarters`)
-}
-const updateSemiFinalsService= (tourneyId) => {
-    return service.patch(`/tourney/${tourneyId}/update-semi`)
-}
-const updateFinalService= (tourneyId) => {
-    return service.patch(`/tourney/${tourneyId}/update-final`)
-}
+// const updateQuartersService = (tourneyId) => {
+//     return service.patch(`/tourney/${tourneyId}/update-quarters`)
+// }
+
 
 export{
     listTourneysService,
@@ -41,7 +36,6 @@ export{
     detailsTourneyService,
     addTeamToTourneyService,
     sortTeamsToTourneyService,
-    updateQuartersService,
-    updateSemiFinalsService,
-    updateFinalService
+    // updateQuartersService,
+   
 }
