@@ -31,21 +31,34 @@ function TourneyDetails() {
 
   useEffect(() => {
     getData()
-
+    
   },[])
 
  
   
   const getData = async () => {
     try {
-      const tourneyDetails = await detailsTourneyService(tourneyId)
-      console.log("tourneyD",tourneyDetails.data)
+      const response = await detailsTourneyService(tourneyId)
+    
    
-      setIsFetching(false)
-      setDetails(tourneyDetails.data)
-     
+
+      const tourneyDetails = response.data
       
- 
+      setDetails(tourneyDetails)
+      // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
+      // NO HARIA FALTA ESTADOS PARA CADA UNO
+     
+       if (tourneyDetails.quarterA.length === 2) {
+        setQuarterA1(tourneyDetails.quarterA[0].name)
+        setQuarterA2(tourneyDetails.quarterA[1].name)
+        // setQuarterB1(tourneyDetails.quarterB[0].name)
+        // setQuarterB2(tourneyDetails.quarterB[1].name)
+        // setQuarterC1(tourneyDetails.quarterC[0].name)
+        // setQuarterC2(tourneyDetails.quarterC[1].name)
+        // setQuarterD1(tourneyDetails.quarterD[0].name)
+        // setQuarterD2(tourneyDetails.quarterD[1].name)
+       }
+      setIsFetching(false)
     } catch (error) {
       navigate("/error")
     }
@@ -79,7 +92,9 @@ function TourneyDetails() {
 
 
 
-    
+        // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
+        // KATA => TIENE UNA ESTRUCTURA DE DATA CON VARIOS ARRAYS
+        // ACTUALIZAR CADA ARRAY CON LOS VALORES ABAJO
        setQuarterA1(response.data[0].name)
        setQuarterA2(response.data[1].name)
        setQuarterB1(response.data[2].name)
@@ -146,18 +161,18 @@ function TourneyDetails() {
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                {details.quarterA[0] === undefined ? quarterA1 : details.quarterA[0].name}<span className="score">76</span>
+                {quarterA1}<span className="score">76</span>
                 </li>
                 <li className="team team-bottom">
-                {details.quarterA[1] === undefined ? quarterA2 : details.quarterA[1].name}<span className="score">82</span>
+                {quarterA2}<span className="score">82</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {details.quarterB[0] === undefined ? quarterB1 : details.quarterB[0].name}<span className="score">64</span>
+                {quarterB1}<span className="score">64</span>
                 </li>
                 <li className="team team-bottom">
-                {details.quarterB[1] === undefined ? quarterB2 : details.quarterB[1].name}<span className="score">56</span>
+                {quarterB2}<span className="score">56</span>
                 </li>
               </ul>
               
@@ -243,22 +258,22 @@ function TourneyDetails() {
             <div className="round round-one current">
               <div className="round-details">
                 Round 1<br />
-                <span className="date">March 16</span>
+              <span className="date">March 16</span>
               </div>
               <ul className="matchup">
                 <li className="team team-top">
-                {details.quarterC[0] === undefined ? quarterC1 : details.quarterC[0].name}<span className="score">45</span>
+                {quarterC1}<span className="score">45</span>
                 </li>
                 <li className="team team-bottom">
-                {details.quarterC[1] === undefined ? quarterC2 : details.quarterC[1].name}<span className="score">54</span>
+                {quarterC2}<span className="score">54</span>
                 </li>
               </ul>
               <ul className="matchup">
                 <li className="team team-top">
-                {details.quarterD[0] === undefined ? quarterD1 : details.quarterD[0].name}<span className="score">68</span>
+                {quarterD1}<span className="score">68</span>
                 </li>
                 <li className="team team-bottom">
-                {details.quarterD[1] === undefined ? quarterD2 : details.quarterD[1].name}<span className="score">66</span>
+                {quarterD2}<span className="score">66</span>
                 </li>
               </ul>
               
