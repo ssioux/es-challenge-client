@@ -79,7 +79,7 @@ function TourneyDetails() {
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
-
+      console.log("tourneydetails" ,tourneyDetails)
       setDetails(tourneyDetails);
       // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
       // NO HARIA FALTA ESTADOS PARA CADA UNO
@@ -159,7 +159,7 @@ function TourneyDetails() {
     
     try {
       await addTeamToTourneyService(tourneyId);
-     
+     console.log("despues de agregar equipo")
       getData()
    
     } catch (error) {
@@ -210,8 +210,9 @@ function TourneyDetails() {
     navigate(`/list/${tourneyId}/details/edit`);
   };
 
+
   return (
-    <div className="tourney-list">
+    <div className="tourney-list" >
       <h3>TourneyDetails</h3>
 
       <header className="hero">
@@ -382,6 +383,7 @@ function TourneyDetails() {
           }
           return <p key={eachTeam._id}>{eachTeam.name}</p>;
         })}
+        <img src={details.game.picture} alt="pict" />
       </div>
 
         {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}

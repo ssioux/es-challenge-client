@@ -14,12 +14,19 @@ function CreateGameForm() {
 
   const [nameInput, setNameInput] = useState("")
   const [descriptionInput, setDescriptionInput] = useState("")
-  const [pictureInput, setPictureInput] = useState()
+ 
+
+  const [isLoadingPicture, setIsLoadingPicture] = useState(false)
+  const [pictureURL, setPictureUrl] = useState("")
 
   const handleNameChange = (e) => setNameInput(e.target.value)
   const handDescriptionChange = (e) => setDescriptionInput(e.target.value)
+ 
+ 
   const handlePictureChange = async (e) => {
-    setPictureInput(e.target.value)
+    setIsLoadingPicture(true)
+
+    // setPictureInput(e.target.value)
     console.log(e.target.files[0])
     
     const sendObj = new FormData()
@@ -28,7 +35,8 @@ function CreateGameForm() {
     try {
       const response = await uploadPictureService(sendObj)
       console.log(response.data.picture)
-      
+      setPictureUrl(response.data.picture)
+      setIsLoadingPicture(false)
     } catch (error) {
       navigate("/error")
       
@@ -41,7 +49,7 @@ function CreateGameForm() {
     const gameToAdd = {
       name: nameInput,
       description: descriptionInput,
-      picture:pictureInput,
+      picture:pictureURL,
       
     }
     
@@ -78,13 +86,15 @@ function CreateGameForm() {
         </Form.Group>
         <Form.Group className="mb-3">
         <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control value ={pictureInput} onChange={handlePictureChange} type="file" name="picture" />
+          <Form.Control onChange={handlePictureChange} type="file" name="picture" />
         </Form.Group>
           
                 
         
-       
-        <Button type="submit" onClick={handleSubmit}>Create Tourney</Button>
+        {isLoadingPicture === true && <p>...loading picture</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
+        
+        <Button type="submit" onClick={handleSubmit}>Create Game</Button>
       </fieldset>
     </Form>
                   

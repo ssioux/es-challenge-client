@@ -5,13 +5,17 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { detailsUserService, updateUserService } from '../../services/profile.services'
 
 import Button from 'react-bootstrap/Button';
+import { uploadPictureService } from '../../services/upload.services';
 
 function InfoEdit() {
    const navigate = useNavigate()
    const {userId} = useParams()
+   console.log("potau",userId)
    const [usernameInput, setUserNameInput] = useState("")
    const [emailInput, setEmailInput] = useState("")
-   const [pictureInput, setPictureInput] = useState("")
+
+   const [isLoadingPicture, setIsLoadingPicture] = useState(false)
+   const [pictureURL, setPictureUrl] = useState("")
 
    useEffect(() => {
     getData()
@@ -23,7 +27,7 @@ function InfoEdit() {
 
       setUserNameInput(response.data.username)
       setEmailInput(response.data.email)
-      setPictureInput(response.data.picture)
+     
       
     } catch (error) {
       navigate("/error")
@@ -33,19 +37,36 @@ function InfoEdit() {
  
   const usernameChange = (event) => setUserNameInput(event.target.value)
   const emailChange = (event) => setEmailInput(event.target.value)
-  const pictureChange = (event) => setPictureInput(event.target.value)
+  
+  const pictureChange = async (e) => {
+    setIsLoadingPicture(true)
 
+    const sendObj = new FormData()
+    sendObj.append("picture",e.target.files[0])
+    
+    try {
+      const response = await uploadPictureService(sendObj)
+  
+      setPictureUrl(response.data.picture)
+      setIsLoadingPicture(false)
+    } catch (error) {
+      navigate("/error")
+      
+    }
+
+
+  }
   const handleUpdate = async (event) => {
     event.preventDefault()
 
     const userUpdate = {
       username:usernameInput,
       email: emailInput,
-      picture: pictureInput
+      picture: pictureURL
     }
      
     try {
-      await updateUserService(userId,userUpdate)
+      await updateUserService(userId, userUpdate)
   
        navigate("/profile")
       
@@ -55,6 +76,9 @@ function InfoEdit() {
 
   }
     
+
+  
+
   return (
     <div>
       <div>
@@ -70,8 +94,10 @@ function InfoEdit() {
         <input type="email" name="email" value={emailInput} onChange={emailChange}/>
         <br />
         <label htmlFor="picture">Add picture</label>
-        <input type="file" name="picture" checked={pictureInput} onChange={pictureChange}/>
+        <input type="file" name="picture" onChange={pictureChange}/>
         <br />
+        {isLoadingPicture === true && <p>...loading picture</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
         <Button onClick={handleUpdate}>Edit</Button>
       </form>
 
