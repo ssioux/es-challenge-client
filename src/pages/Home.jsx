@@ -1,20 +1,31 @@
-import TourneyFinishedList from "../components/home/TourneyFinishedList";
+// * IMPORTS
+// Components
 import TourneyList from "../components/home/TourneyList";
-import TeamList from "../components/profile/TeamList";
+import Profile from "../components/profile/Profile";
 
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth.context.js";
-// import MyVerticallyCenteredModal from "../pages/MyVerticallyCenteredModal"
-// import Button from 'react-bootstrap/Button';
+// Bootstrap
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+
+// React
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/auth.context.js";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../services/auth.services";
-import { singupService } from "../services/auth.services";
+
+// services
+import { loginService, singupService  } from "../services/auth.services";
 import { uploadPictureService } from "../services/upload.services.js";
-import Profile from "../components/profile/Profile";
+
+
+
+
+
+
+
+
+
+
 
 function Home() {
   // Modal Show Loogin States
@@ -274,9 +285,6 @@ function Home() {
 
         <br />
 
-        <div>
-          <TeamList />
-        </div>
     </div>
   );
 }
