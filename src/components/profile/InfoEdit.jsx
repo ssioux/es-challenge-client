@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { detailsUserService, updateUserService } from '../../services/profile.services'
-
+import Form from "react-bootstrap/Form"
 import Button from 'react-bootstrap/Button';
 import { uploadPictureService } from '../../services/upload.services';
 
@@ -83,8 +83,31 @@ function InfoEdit() {
       <div>
       
       <h3>Formulario Editar</h3>
+      <Form style={{display:"block",width:"30%", margin:"auto"}}>
+      <fieldset >
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="username">Username</Form.Label>
+          <Form.Control value ={usernameInput} onChange={usernameChange} id="disabledTextInput" placeholder="username" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Control value ={emailInput} onChange={emailChange} id="disabledTextInput" placeholder="email@email.com" />
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label htmlFor="picture">Picture</Form.Label>
+          <Form.Control onChange={pictureChange} type="file" name="picture" />
+        </Form.Group>
+          
+                
+        
+        {isLoadingPicture === true && <p>...loading picture</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict"/> : <p>Choose image</p>}
+        
+        <Button type="submit" onClick={handleUpdate}>Create Game</Button>
+      </fieldset>
+    </Form>
 
-      <form>
+      {/* <form>
 
         <label htmlFor="username">Username: </label>
         <input type="text" name="username" value={usernameInput} onChange={usernameChange}/>
@@ -98,7 +121,7 @@ function InfoEdit() {
         {isLoadingPicture === true && <p>...loading picture</p>}
 {pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
         <Button onClick={handleUpdate}>Edit</Button>
-      </form>
+      </form> */}
 
     </div>
 

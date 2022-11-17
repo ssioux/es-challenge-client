@@ -13,12 +13,14 @@ function CreateTourneyForm(props) {
   const navigate = useNavigate()
   const [nameInput, setNameInput] = useState("")
   const [gameInput, setGameInput] = useState()
+  const [descriptionInput, setDescriptionInput] = useState()
   
 
   const [listGames , setListGames] = useState([])
 
   const handleNameChange = (e) => setNameInput(e.target.value)
   const handleGameChange = (e) => setGameInput(e.target.value)
+  const handleDescriptionChange = (e) => setDescriptionInput(e.target.value)
    
      useEffect(() =>{
      getData()
@@ -45,6 +47,7 @@ function CreateTourneyForm(props) {
     const newTourney = {
       name: nameInput,
       game: gameInput,
+      description:descriptionInput
     }
      try {
        // contact to server to create the Tourney and give us the response
@@ -70,6 +73,10 @@ function CreateTourneyForm(props) {
         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Name">Name</Form.Label>
           <Form.Control value ={nameInput} onChange={handleNameChange} id="disabledTextInput" placeholder="Name of Tourney" />
+        </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="description">Description</Form.Label>
+          <Form.Control value ={descriptionInput} onChange={handleDescriptionChange} id="disabledTextInput" placeholder="Event dates" />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label htmlFor="Game">Choose your Game</Form.Label>
