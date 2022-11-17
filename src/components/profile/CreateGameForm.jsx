@@ -92,7 +92,7 @@ function CreateGameForm() {
                 
         
         {isLoadingPicture === true && <p>...loading picture</p>}
-{pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict"/> : <p>Choose image</p>}
         
         <Button type="submit" onClick={handleSubmit}>Create Game</Button>
       </fieldset>

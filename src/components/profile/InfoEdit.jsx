@@ -10,7 +10,6 @@ import { uploadPictureService } from '../../services/upload.services';
 function InfoEdit() {
    const navigate = useNavigate()
    const {userId} = useParams()
-   console.log("potau",userId)
    const [usernameInput, setUserNameInput] = useState("")
    const [emailInput, setEmailInput] = useState("")
 
@@ -38,11 +37,11 @@ function InfoEdit() {
   const usernameChange = (event) => setUserNameInput(event.target.value)
   const emailChange = (event) => setEmailInput(event.target.value)
   
-  const pictureChange = async (e) => {
+  const pictureChange = async (event) => {
     setIsLoadingPicture(true)
 
     const sendObj = new FormData()
-    sendObj.append("picture",e.target.files[0])
+    sendObj.append("picture",event.target.files[0])
     
     try {
       const response = await uploadPictureService(sendObj)

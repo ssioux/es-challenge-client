@@ -5,8 +5,8 @@ import TeamList from "../components/profile/TeamList"
 
 function Home() {
   return (
-    <div>
-        <h1>Home</h1>
+    <div style={{display:"flex",margin:"auto", width:"80%", justifyContent:"space-between"}}>
+        
         
         
         
@@ -23,7 +23,7 @@ function Home() {
         </div>
         
         
-        
+        <br />
         
         
         

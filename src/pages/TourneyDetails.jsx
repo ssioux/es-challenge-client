@@ -6,6 +6,8 @@ import {
   sortTeamsToTourneyService,
 } from "../services/tourney.services";
 import { useEffect, useState } from "react";
+import Card from 'react-bootstrap/Card';
+
 
 function TourneyDetails() {
   const navigate = useNavigate();
@@ -374,28 +376,64 @@ function TourneyDetails() {
           </a>
         </div>
       </section> */}
-      <div>
-        <h3>Team List</h3>
+      <div style={{display:"flex"}}>
         
-        {details.teams.map((eachTeam) => {
-         if(details.teams.length === 0){
-          return null
-          }
-          return <p key={eachTeam._id}>{eachTeam.name}</p>;
-        })}
-        <img src={details.game.picture} alt="pict" />
+          <div>
+            <img src={details.game.picture} alt="pict" height="160rem" />
+          </div>
+
+          <div>
+
+              <Card style={{ height: "10rem" ,width: '1800px', margin:"auto" }}>
+                <div style={{display:"flex", flexDirection:"column"}}>
+                 
+                 <div>
+                     <h3>Team List</h3>
+                 </div>
+                 <div style={{display:"flex", flexWrap:"wrap" , width:"1800px"}}>
+
+                    {details.teams.map((eachTeam) => {
+                    if(details.teams.length === 0){
+                      return null
+                         }
+                      return (
+                        
+                   <Card.Body width="1500px">
+                         <Card.Text key={eachTeam._id}>{eachTeam.name}</Card.Text>
+                   </Card.Body>
+                         )
+                       })}
+                 </div>
+             
+               </div>
+            </Card>
+          </div>
       </div>
-
         {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}
-        
-      
-
-      <Button onClick={handleAddTeamToTourney}>signup Team</Button>
-      <Button onClick={handleEditLink}>Edit Tourney</Button>
-      
-
+        <Button onClick={handleAddTeamToTourney}>signup Team</Button>
+        <Button onClick={handleEditLink}>Edit Tourney</Button>
     </div>
   );
 }
 
 export default TourneyDetails;
+                
+          
+          
+
+
+          
+     
+
+
+
+        
+
+
+
+
+        
+      
+
+      
+
