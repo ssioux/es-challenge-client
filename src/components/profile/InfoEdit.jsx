@@ -119,7 +119,7 @@ function InfoEdit() {
         <input type="file" name="picture" onChange={pictureChange}/>
         <br />
         {isLoadingPicture === true && <p>...loading picture</p>}
-{pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
+        {pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
         <Button onClick={handleUpdate}>Edit</Button>
       </form> */}
 
