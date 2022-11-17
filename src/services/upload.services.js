@@ -1,5 +1,8 @@
-// import service from "./config.services"
+import service from "./config.services"
 
-// const uploadImage = (imageFile) => {
-//  service.post()
-// }
+const uploadPictureService = (pictureFile) => {
+ return service.post("/upload",pictureFile)
+}
+export {
+    uploadPictureService
+}

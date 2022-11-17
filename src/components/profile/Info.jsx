@@ -89,7 +89,7 @@ if(isFetching === true) {
            <Collapse in={formIsShowing}>
            <div>
         
-             <CreateTeamForm/>
+             <CreateTeamForm updateTeamCreated={getData}/>
           
            </div>
            </Collapse>

@@ -67,6 +67,8 @@ function Signup() {
           onChange={handlePasswordChange}
         />
         <hr />
+        <label htmlFor="image">Image</label>
+        <input type="file" name="image" />
         {/* <label>Confirm Password: </label>
       <input type="password" name="confirmPassword" value={confirmPasswordInput} onChange={handleConfirmPasswordChange}/>
       <hr /> */}

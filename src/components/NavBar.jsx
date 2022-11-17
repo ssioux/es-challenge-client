@@ -9,11 +9,14 @@ import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import { loginService } from "../services/auth.services";
 import { singupService } from "../services/auth.services";
+import { uploadPictureService } from "../services/upload.services.js";
 
 function NavBar() {
 
   // Modal Show Loogin States
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
+  const [pictureUrl, setPictureUrl] = useState("")
+  const [isLoadingPicture, setIsLoadingPicture] = useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -101,6 +104,26 @@ function NavBar() {
       }
     }
   };
+   const handleUploadImage = async (event) => {
+    setIsLoadingPicture(true)
+    console.log(event.target.files[0])
+    
+    const sendObj = new FormData()
+    sendObj.append("picture",event.target.files[0])
+    setIsLoadingPicture(false)
+    try {
+      const response = await uploadPictureService(sendObj)
+      console.log(response.data.picture)
+      setPictureUrl(response.data.picture)
+      
+      
+    } catch (error) {
+      navigate("/error")
+      
+    }
+
+   }
+
 
   //! hasta aqui
 
@@ -160,8 +183,17 @@ function NavBar() {
                       value={passwordSignup}
                       onChange={handlePasswordSignupChange}
                     />
+                      <Form.Label htmlFor="picture">Image</Form.Label>
+                      <Form.Control
+                      name="picture"
+                      type="file"
+                      placeholder="choose image"
+                      onChange={handleUploadImage}
+                     />
                   </Form.Group>
                 </Form>
+                {isLoadingPicture === true && <p>...loading picture</p>}
+                {pictureUrl !== "" ? <img src={pictureUrl} alt="pict" width={200}/> : <p>Choose image</p>}
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseSignup}>

@@ -6,28 +6,35 @@ import {useState, useContext, useEffect} from "react"
 
 
 import { createTeamService, findTeamCreatorService } from '../../services/team.services'
+import { uploadPictureService } from '../../services/upload.services.js'
 
-function CreateTeamForm() {
+function CreateTeamForm(props) {
   const navigate = useNavigate()
+  console.log("props",props)
   
 
   const [nameInput, setNameInput] = useState("")
   const [nameTagInput, setNameTagInput] = useState("")
-  const [pictureInput, setPictureInput] = useState()
+  // const [pictureInput, setPictureInput] = useState()
   const [joinPasswordInput, setJoinPasswordInput] = useState("")
+  const [pictureURL, setPictureUrl] = useState("")
+  const [isLoadingPicture, setIsLoadingPicture] = useState(false)
+
+  const [isFetching, setIsFetching] = useState(true)
+
 
   const handleNameChange = (e) => setNameInput(e.target.value)
   const handNameTagChange = (e) => setNameTagInput(e.target.value)
-  const handlePictureChange = (e) => setPictureInput(e.target.value)
   const handleJoinPasswordChange = (e) => setJoinPasswordInput(e.target.value)
 
+  
   
   const handleSubmit = async (e) => {
     e.preventDefault()
     const teamToCreate = {
       name: nameInput,
       nameTag: nameTagInput,
-      picture: pictureInput,
+      picture: pictureURL,
       joinPassword: joinPasswordInput
       
     }
@@ -36,13 +43,40 @@ function CreateTeamForm() {
      
   
       await createTeamService(teamToCreate)
-      navigate("/profile")
-  
+
+      setIsFetching(false)
+      // navigate("/profile")
+      props.updateTeamCreated()
+      
       
     } catch (error) {
       navigate("/error")
       
     }
+  }
+  const handlePictureChange = async (e) => {
+    setIsLoadingPicture(true)
+    console.log("target file",e.target.files[0])
+
+    // setPictureInput(e.target.value)
+    
+    const sendObj = new FormData()
+    sendObj.append("picture",e.target.files[0])
+
+    try {
+      const response = await uploadPictureService(sendObj)
+      console.log("response picture",response.data.picture)
+      setPictureUrl(response.data.picture)
+      setIsLoadingPicture(false)
+
+    } catch (error) {
+      console.log(error)
+      
+    }
+  }
+   
+  if(isFetching === true){
+    <h3>...Loading</h3>
   }
 
 
@@ -65,13 +99,15 @@ function CreateTeamForm() {
         </Form.Group>
         <Form.Group className="mb-3">
         <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control value ={pictureInput} onChange={handlePictureChange} type="file" />
+          <Form.Control  onChange={handlePictureChange} type="file" name="picture"/>
         </Form.Group>
         <Form.Group className="mb-3">
         <Form.Label htmlFor="joinPassword">JoinPassword: </Form.Label>
           <Form.Control value ={joinPasswordInput} onChange={handleJoinPasswordChange} type="text" placeholder="Password for user to join" />
         </Form.Group>
-          
+        {isLoadingPicture === true && <p>...loading picture</p>}
+
+        {pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
                 
         
        

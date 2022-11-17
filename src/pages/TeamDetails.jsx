@@ -11,6 +11,7 @@ function TeamDetails() {
 
   const [teamDetails, setTeamDetails] = useState()
   const [isFetching, setIsFetching] = useState(true)
+  
 
   useEffect(() => {
     
@@ -36,10 +37,16 @@ if (isFetching === true) {
 }
 
   const handleJoinTeam = async(e) => {
+    setIsFetching(true)
     e.preventDefault()
     try {
      await addMemberTeamService(teamId)
-      navigate(`/team/${teamId}/details`)
+    //  const details = await detailsTeamService(teamId)
+      getData()
+    //  setTeamDetails(details.data)
+    
+
+      // navigate(`/team/${teamId}/details`)
     } catch (error) {
       navigate("/error")
     }

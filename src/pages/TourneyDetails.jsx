@@ -16,7 +16,7 @@ function TourneyDetails() {
   // console.log("disorderList[0]",disorderList[0].name)
   const [isFetching, setIsFetching] = useState(true);
   // const [isFetching2, setIsFetching2] = useState(false)
-  console.log("details", details);
+  // console.log("details", details);
 
   // ! QUARTER STATES
   // * Quarter A
@@ -101,16 +101,32 @@ function TourneyDetails() {
       }
 
       // semifinals
-      setSemiA1(tourneyDetails.semiA[0].name);
-      setSemiA2(tourneyDetails.semiA[1].name);
+      if(tourneyDetails.semiA.length === 2){
 
-      setSemiB1(tourneyDetails.semiB[0].name);
-      setSemiB2(tourneyDetails.semiB[1].name);
-      // final
-      setFinal1(tourneyDetails.final[0].name);
-      setFinal2(tourneyDetails.final[1].name);
+        setSemiA1(tourneyDetails.semiA[0].name);
+        setSemiA2(tourneyDetails.semiA[1].name);
+      }
+    
+      if(tourneyDetails.semiB.length === 2){
+
+        setSemiB1(tourneyDetails.semiB[0].name);
+        setSemiB2(tourneyDetails.semiB[1].name);
+      }
+      if(tourneyDetails.final.length === 2){
+
+        setFinal1(tourneyDetails.final[0].name);
+        setFinal2(tourneyDetails.final[1].name);
+      }
+      if(tourneyDetails.winner !== undefined){
+
+        setWinner(tourneyDetails.winner.name);
+      }
       // winner
-      setWinner(tourneyDetails.winner.name);
+      
+
+      
+
+      // final
 
       // * setScoreUpdate
       // quarters
@@ -134,16 +150,18 @@ function TourneyDetails() {
 
       setIsFetching(false);
     } catch (error) {
-      navigate("/error");
+      console.log(error);
     }
   };
 
   const handleAddTeamToTourney = async (e) => {
     e.preventDefault();
+    
     try {
       await addTeamToTourneyService(tourneyId);
-      // navigate(`/tourney/${tourneyId}/details`)
-      navigate(`/list/${tourneyId}/details`);
+     
+      getData()
+   
     } catch (error) {
       navigate("/error");
     }
@@ -155,7 +173,7 @@ function TourneyDetails() {
       const response = await sortTeamsToTourneyService(tourneyId);
       console.log("entrando en estart");
 
-      // getData()
+      
       console.log("RESPONSE", response.data[0].name);
 
       // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
@@ -357,16 +375,20 @@ function TourneyDetails() {
       </section> */}
       <div>
         <h3>Team List</h3>
+        
         {details.teams.map((eachTeam) => {
+         if(details.teams.length === 0){
+          return null
+          }
           return <p key={eachTeam._id}>{eachTeam.name}</p>;
         })}
       </div>
 
       <Button onClick={handleStartSort}>Start</Button>
-      <Button>Edit</Button>
-
       <Button onClick={handleAddTeamToTourney}>signup Team</Button>
       <Button onClick={handleEditLink}>Edit Tourney</Button>
+      
+
     </div>
   );
 }

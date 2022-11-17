@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import {useState, useContext, useEffect} from "react"
 
 import { createGameService } from '../../services/game.services'
+import { uploadPictureService } from '../../services/upload.services'
 
 
 function CreateGameForm() {
@@ -17,7 +18,22 @@ function CreateGameForm() {
 
   const handleNameChange = (e) => setNameInput(e.target.value)
   const handDescriptionChange = (e) => setDescriptionInput(e.target.value)
-  const handlePictureChange = (e) => setPictureInput(e.target.value)
+  const handlePictureChange = async (e) => {
+    setPictureInput(e.target.value)
+    console.log(e.target.files[0])
+    
+    const sendObj = new FormData()
+    sendObj.append("picture",e.target.files[0])
+
+    try {
+      const response = await uploadPictureService(sendObj)
+      console.log(response.data.picture)
+      
+    } catch (error) {
+      navigate("/error")
+      
+    }
+  }
 
   
   const handleSubmit = async (e) => {
@@ -43,6 +59,7 @@ function CreateGameForm() {
 
 
 
+
   return (
     <div style={{display:"flex",
       justifyContent:"center",
@@ -61,7 +78,7 @@ function CreateGameForm() {
         </Form.Group>
         <Form.Group className="mb-3">
         <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control value ={pictureInput} onChange={handlePictureChange} type="file" />
+          <Form.Control value ={pictureInput} onChange={handlePictureChange} type="file" name="picture" />
         </Form.Group>
           
                 

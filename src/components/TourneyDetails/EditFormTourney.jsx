@@ -124,8 +124,8 @@ const handleUpdtateQuarters = async(e) => {
   try {
     await updateTourneyService(tourneyId, updateQuarter)
     console.log("llamando al servicio")
-    navigate("/")
     setIsFetching(false)
+    navigate(`/list/${tourneyId}/details`)
   } catch (error) {
     navigate("/error")
   }
@@ -139,81 +139,81 @@ if(isFetching === true) {
 
   return (
 
-    <div>
+    <div  style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
            <h1>Edit Tourney</h1>
         <hr />
-           <Form style={{display:"flex"}}>
-      <fieldset >
-      <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Name">Name</Form.Label>
-          <Form.Control value={nameInput} onChange={handleNameInput} id="disabledTextInput"/>
-        </Form.Group>
-        {/* <Form.Group className="mb-3">
-          <Form.Label  htmlFor="Game">Choose your Game</Form.Label>
-                    
-                    <Form.Select  onChange={handleGameInput}>
-                    {listGames.map(opt => (
-                       <option key={opt._id} value={opt._id}>{opt.name}</option>
-                       ))}
-        </Form.Select>
+           <Form>
+      {/* <fieldset > */}
         
-        </Form.Group> */}
-        <Form.Group className="mb-3" >
+          <Form.Group className="mb-3" style={{width:"500px", margin:"auto"}}>
+            <Form.Label htmlFor="Name">Name</Form.Label>
+            <Form.Control value={nameInput} onChange={handleNameInput} id="disabledTextInput"/>
+          </Form.Group>
+      <div  style={{display:"flex",justifyContent:"center", gap:"40px"}}>
+        <div>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q1">Q1</Form.Label>
           <Form.Control value={resultQ1Input} onChange={handleResultQ1} id="disabledTextInput"  />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q2">Q2</Form.Label>
           <Form.Control value={resultQ2Input} onChange={handleResultQ2} id="disabledTextInput"  />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q3">Q3</Form.Label>
           <Form.Control value={resultQ3Input} onChange={handleResultQ3} id="disabledTextInput" />
-        </Form.Group><Form.Group className="mb-3" >
+         </Form.Group><Form.Group className="mb-3" >
           <Form.Label htmlFor="Q4">Q4</Form.Label>
           <Form.Control value={resultQ4Input} onChange={handleResultQ4} id="disabledTextInput" placeholder="Q4" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q5">Q5</Form.Label>
           <Form.Control value={resultQ5Input} onChange={handleResultQ5} id="disabledTextInput" placeholder="Q5" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q6">Q6</Form.Label>
           <Form.Control value={resultQ6Input} onChange={handleResultQ6} id="disabledTextInput" placeholder="Q6" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q7">Q7</Form.Label>
           <Form.Control value={resultQ7Input} onChange={handleResultQ7} id="disabledTextInput" placeholder="Q7" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="Q8">Q8</Form.Label>
           <Form.Control value={resultQ8Input} onChange={handleResultQ8} id="disabledTextInput" placeholder="Q8" />
         </Form.Group>
-        <Form.Group className="mb-3" >
+        </div>
+        <br />
+        <div>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="S1">S1</Form.Label>
           <Form.Control value={resultS1Input} onChange={handleResultS1} id="disabledTextInput" placeholder="S1" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="S2">S2</Form.Label>
           <Form.Control value={resultS2Input} onChange={handleResultS2} id="disabledTextInput" placeholder="S2" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="S3">S3</Form.Label>
           <Form.Control value={resultS3Input} onChange={handleResultS3} id="disabledTextInput" placeholder="S3" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="S4">S4</Form.Label>
           <Form.Control value={resultS4Input} onChange={handleResultS4} id="disabledTextInput" placeholder="S4" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+        </div>
+        <br />
+        <div>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="F1">F1</Form.Label>
           <Form.Control value={resultF1Input} onChange={handleResultF1} id="disabledTextInput" placeholder="F1" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
+         </Form.Group>
+         <Form.Group className="mb-3" >
           <Form.Label htmlFor="F2">F2</Form.Label>
           <Form.Control value={resultF2Input} onChange={handleResultF2} id="disabledTextInput" placeholder="F2" />
-        </Form.Group>
-       
+         </Form.Group>
+        </div>
+      </div>
           
                 
         
@@ -221,9 +221,9 @@ if(isFetching === true) {
         <Button type="submit" onClick={handleUpdtateQuarters}>Edit Tourney</Button>
         {/* <Button type="submit" onClick={handleUpdtateSemiFinals}>Create your Team</Button>
         <Button type="submit" onClick={handleUpdateFinal}>Create your Team</Button> */}
-      </fieldset>
-    </Form>
-    </div>
+      {/* </fieldset> */}
+     </Form>
+  </div>
   )
 }
 
