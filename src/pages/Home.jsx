@@ -1,5 +1,6 @@
 import TourneyFinishedList from "../components/home/TourneyFinishedList"
 import TourneyList from "../components/home/TourneyList"
+import TeamList from "../components/profile/TeamList"
 
 
 function Home() {
@@ -7,10 +8,31 @@ function Home() {
     <div>
         <h1>Home</h1>
         
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        <div>
         <TourneyList />
-        <TourneyFinishedList />
+        {/* <TourneyFinishedList /> */}
+        </div>
+        
+        
+        
+        
+        
+        
+        <div>
+        <TeamList/>
+        </div>
 
     </div>
+
   )
 }
 
