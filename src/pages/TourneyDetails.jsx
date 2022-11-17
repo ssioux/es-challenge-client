@@ -173,7 +173,7 @@ function TourneyDetails() {
       const response = await sortTeamsToTourneyService(tourneyId);
       console.log("entrando en estart");
 
-      
+      getData()
       console.log("RESPONSE", response.data[0].name);
 
       // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
@@ -384,7 +384,10 @@ function TourneyDetails() {
         })}
       </div>
 
-      <Button onClick={handleStartSort}>Start</Button>
+        {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}
+        
+      
+
       <Button onClick={handleAddTeamToTourney}>signup Team</Button>
       <Button onClick={handleEditLink}>Edit Tourney</Button>
       
