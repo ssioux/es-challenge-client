@@ -133,6 +133,7 @@ function TourneyDetails() {
       }
       // winner
       
+      
 
       
 
@@ -226,7 +227,7 @@ function TourneyDetails() {
           </p>
           <h1 id="headline">Tournament</h1>
           <p className="year">
-            <i className="fa fa-star"></i> TEMPORADA{" "}
+            <i className="fa fa-star"></i> {details.name}
             <i className="fa fa-star"></i>
           </p>
           {/* <p>{details.name}</p> */}

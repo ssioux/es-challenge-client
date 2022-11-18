@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# es-challenge-server
+esChallenge is an app created to all people wich want to make a tourney. To do that its very easy, you only have to signup, create your team, your game and your tourney. Contact us to accord the dates of the tourney.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To enjoy the webSite here: https://es-challenge.netlify.app/
 
-## Available Scripts
+User stories
+404: As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
 
-In the project directory, you can run:
+Signup: As an anon I can sign up in the platform so that I can create team, game and tourney, add to some team with the correct password and view another teams members etc.
+Login. 
 
-### `npm start`
+Create, edit and delete Team
+Create, edit and delete Game
+Create, edit and delete Tourney
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+list Teams
+list Tourneys
+list Games
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Backlog
+User profile
 
-### `npm test`
+- CLIENT ROUTES
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  "/" 
+"/signup"  {<Signup />}
+ 
+"/login"   {<Login />} 
 
-### `npm run build`
+"/profile" {<IsPrivate><Profile /></IsPrivate>}/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+"/team/:teamId/details" {<TourneyDetails />}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+"/list/:tourneyId/details/edit  {<EditFormTourney />}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+"/teams" {<TeamList />}
 
-### `npm run eject`
+"/tourney/create" {<CreateTourneyForm />}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+"/game/create" {<CreateGameForm />}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+"/team/create" {<CreateTeamForm />}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+"/profile/:userId/edit" <InfoEdit/>}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+"/list/:tourneyId/details {<TeamDetails />}
 
-## Learn More
+"/error" {<Error />}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+"*" {<TeamDetails />}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+- PAGES
+Error
+Home
+Login
+Not found
+Profile
+Signup
+TeamDetails
+TourneyDetails
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-COMPONENTS
+CreateGameForm
+CreateTeamForm
+CreateTourneyForm
+Info
+InfoEdit
+Profile
+TeamList
+TeamsUserIncluded
+TourneysUserRegistered
+EditFormTourney
+Footer
+IsPrivate
+NavBar
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- SERVICES
+    - auth.services
+    - config.services
+    - game.services
+    - profile.services
+    - team.services
+    - tourney.services
+    - upload.services
+    
