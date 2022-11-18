@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { loginService } from "../services/auth.services";
 import { useNavigate } from "react-router-dom";
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 
 
 
@@ -50,7 +52,26 @@ function Login() {
     <div>
       <h1>Log In</h1>
 
-      <form onSubmit={handleLogin}>
+<Form style={{display:"block" , width:"25%",color:"white", margin:"auto"}}>
+      <fieldset >
+      
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="username">Em@il:</Form.Label>
+          <Form.Control value ={email} onChange={handleEmailChange} id="disabledTextInput" placeholder="Em@il:" />
+        </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control value ={password} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
+        </Form.Group>
+        
+        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
+    
+        <Button type="submit" onClick={handleLogin} variant="outline-secondary" id="button-addon3">Login</Button>
+      </fieldset>
+    </Form>
+
+
+      {/* <form onSubmit={handleLogin}>
         <label>Email:</label>
         <input
           type="email"
@@ -70,7 +91,7 @@ function Login() {
         <button type="submit">Login</button>
 
         {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </form>
+      </form> */}
     </div>
   );
 }

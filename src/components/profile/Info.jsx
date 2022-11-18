@@ -12,6 +12,8 @@ import  Collapse  from "react-bootstrap/Collapse";
 import { findTeamCreatorService } from "../../services/team.services";
 import TeamList from "./TeamList";
 import TeamsUserIncluded from "./TeamsUserIncluded";
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
@@ -78,47 +80,115 @@ if(isFetching === true) {
 
   return (
     <div style={{display:"flex", flexDirection:"column"}}>
-        <div>
-          <h3>Hello {username}</h3>
-          <img src={picture} alt="imageProfile" width={100} />
-          <h4>email: {email}</h4>
-        </div>
-
-        {viewCreateTeam === true ? (
-        <div>
-           <Button variant="outline-info" onClick={toggleForm}>Create Team</Button>
-           <Collapse in={formIsShowing}>
-           <div>
-        
-             <CreateTeamForm updateTeamCreated={getData}/>
-          
-           </div>
-           </Collapse>
-        </div> 
-
-        ) : ( 
 
           <div>
-            <p>Your team: {ownTeam.name}</p>
-            <p>Members: {ownTeam.members.map((eachMem) => {
-              return <p key={eachMem._id}>{eachMem.username}</p>
-            })}</p>
-          </div>
-          )}
+             <h3>Hello {username}</h3>
+              <Card style={{ width: '24rem', margin:"auto" , opacity:"0.7" }}>
+               <Card.Img variant="top" src={picture} alt="imageProfile" width={100}  />
+               <Card.Body>
+               <Card.Title>{username}</Card.Title>
+        
+               </Card.Body>
+               <ListGroup className="list-group-flush">
+               <ListGroup.Item>{email}</ListGroup.Item>
+              
+               </ListGroup>
+               <Card.Body>
+               <Link to={`/profile/${_id}/edit`}>Edit User</Link>
+               </Card.Body>
+               <Card.Body>
+               <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
+               </Card.Body>
+               <Card.Body>
+              {viewCreateTeam === true ? (
+               <div>
+                 <Button variant="outline-info" onClick={toggleForm}>Create Team</Button>
+                 <Collapse in={formIsShowing}>
+                 <div>
+        
+                  <CreateTeamForm updateTeamCreated={getData}/>
+          
+                 </div>
+                 </Collapse>
+               </div> 
 
-        <div style={{display:"flex", flexDirection:"column"}}>
-          <Link to={`/profile/${_id}/edit`} >Edit User</Link>
-          {/* <Link to="/team/create" >Create Team</Link> */}
-          <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
-          <Link to="/game/create" >Create Game</Link>  {/* admin */}
-        </div> 
-        <div>
-          <TeamsUserIncluded />
-          </div>    
+              ) : ( 
+
+              <div>
+               <p>Members: {ownTeam.members.map((eachMem) => {
+              return (
+                <div>
+
+                <p key={eachMem._id}>{eachMem.username}</p>
+                        <p>Your Team: {ownTeam.name}</p>
+                </div>
+              )
+              })}</p>
+              </div>
+               )}
+
+               {/* <Link to="/game/create" >Create Game</Link>  */}
+               </Card.Body>
+               <Card.Body>
+
+
+               </Card.Body>
+
+
+               <div>
+                <TeamsUserIncluded />
+               </div>    
+
+
+              </Card>
+          </div>
+         <div>
+       </div>
+
     </div>
   )
 }
+
+
+
+
+
+
+
+
+             
+
+
+
         
+            
+
+        
+//         <div>
+// <p>Your team: {ownTeam.name}</p>
+//           <h3>Hello {username}</h3>
+//           <img src={picture} alt="imageProfile" width={100} />
+//           <h4>email: {email}</h4>
+//         </div>
+    
+
+
+
+        // <div style={{display:"flex", flexDirection:"column"}}>
+        
+        //   {/* <Link to="/team/create" >Create Team</Link> */}
+        // </div> 
+
+
+
+
+
+
+
+
+
+
+    
 
 
 

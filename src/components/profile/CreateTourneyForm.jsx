@@ -95,7 +95,7 @@ function CreateTourneyForm(props) {
         </Form.Group>
        
     
-        <Button type="submit" onClick={handleSubmit}>Create Tourney</Button>
+        <Button type="submit" onClick={handleSubmit} variant="outline-secondary" id="button-addon3">Create Tourney</Button>
       </fieldset>
     </Form>
                   

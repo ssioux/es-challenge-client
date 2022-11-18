@@ -1,7 +1,8 @@
 import { singupService } from "../services/auth.services";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
 function Signup() {
   const navigate = useNavigate();
 
@@ -33,7 +34,7 @@ function Signup() {
         if (error.response && error.response.status === 400) {
           setErrorMessage(error.response.data.errorMessage)
         }
-        navigate("/error")
+       
       }
 
 
@@ -42,39 +43,34 @@ function Signup() {
   return (
     <div>
       <h2>signup</h2>
-      <form onSubmit={handleSignup}>
-        <label>UserName: </label>
-        <input
-          type="text"
-          name="username"
-          value={usernameInput}
-          onChange={handleUsernameChange}
-        />
-        <hr />
-        <label>Em@il: </label>
-        <input
-          type="email"
-          name="email"
-          value={emailInput}
-          onChange={handleEmailChange}
-        />
-        <hr />
-        <label>Password: </label>
-        <input
-          type="password"
-          name="password"
-          value={passwordInput}
-          onChange={handlePasswordChange}
-        />
-        <hr />
-        <label htmlFor="image">Image</label>
-        <input type="file" name="image" />
-        {/* <label>Confirm Password: </label>
-      <input type="password" name="confirmPassword" value={confirmPasswordInput} onChange={handleConfirmPasswordChange}/>
-      <hr /> */}
-        <button>Submit</button>
-        {errorMessage !== "" && <p style={{color: "red"}}>{errorMessage}</p>}
-      </form>
+ 
+<Form style={{display:"block" , width:"25%",color:"white", margin:"auto"}}>
+      <fieldset >
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="username">username</Form.Label>
+          <Form.Control value ={usernameInput} onChange={handleUsernameChange} id="disabledTextInput" placeholder="username" />
+        </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="username">Em@il:</Form.Label>
+          <Form.Control value ={emailInput} onChange={handleEmailChange} id="disabledTextInput" placeholder="Em@il:" />
+        </Form.Group>
+        <Form.Group className="mb-3" >
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control value ={passwordInput} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
+        </Form.Group>
+        
+        
+    
+        <Button type="submit" onClick={handleSignup} variant="outline-secondary" id="button-addon3">Signup</Button>
+      </fieldset>
+    </Form>
+
+
+
+
+
+
+
     </div>
   );
 }

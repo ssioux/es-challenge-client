@@ -103,7 +103,7 @@ function InfoEdit() {
         {isLoadingPicture === true && <p>...loading picture</p>}
 {pictureURL !== "" ? <img src={pictureURL} alt="pict"/> : <p>Choose image</p>}
         
-        <Button type="submit" onClick={handleUpdate}>Create Game</Button>
+        <Button type="submit" onClick={handleUpdate} variant="outline-secondary" id="button-addon3">Edit User</Button>
       </fieldset>
     </Form>
 

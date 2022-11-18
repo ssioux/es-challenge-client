@@ -28,6 +28,7 @@ function TeamList() {
       const allTeams = await listTeamsService();
       console.log("ASSDDDDDDDD",allTeams)
       setTeamList(allTeams.data);
+      setTeamListSearch(allTeams.data)
       
        setIsFetching(false);
     } catch (error) {
