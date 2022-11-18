@@ -31,7 +31,7 @@ function Signup() {
         await singupService(newUser)
         navigate("/login")
       } catch (error) {
-        if (error.response && error.response.status === 400) {
+        if ((error.response && error.response.status === 406) || (error.response && error.response.status === 400)) {
           setErrorMessage(error.response.data.errorMessage)
         }
        
@@ -59,12 +59,11 @@ function Signup() {
           <Form.Control value ={passwordInput} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
         </Form.Group>
         
-        
+        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
     
         <Button type="submit" onClick={handleSignup} variant="outline-secondary" id="button-addon3">Signup</Button>
       </fieldset>
     </Form>
-
 
 
 

@@ -115,12 +115,12 @@ if(isFetching === true) {
               ) : ( 
 
               <div>
+                        <p>Your Team: {ownTeam.name}</p>
                <p>Members: {ownTeam.members.map((eachMem) => {
               return (
-                <div>
+                <div key={eachMem._id}>
 
-                <p key={eachMem._id}>{eachMem.username}</p>
-                        <p>Your Team: {ownTeam.name}</p>
+                <p >{eachMem.username}</p>
                 </div>
               )
               })}</p>
