@@ -2,35 +2,7 @@
 // Components
 import TourneyList from "../components/home/TourneyList";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 function Home() {
-  
-  
-  
-
-
-
-
-
-
-
-
-  
- 
-
-
   return (
     // <div
     //   style={{
@@ -39,20 +11,11 @@ function Home() {
     //     width: "80%",
     //     justifyContent: "space-between",
     //   }}
-    
-     
-        
-        
 
-      
-        <div>
-          <TourneyList />
-        </div>
-
-      
-  )
-    
-  
+    <div>
+      <TourneyList />
+    </div>
+  );
 }
 
 export default Home;

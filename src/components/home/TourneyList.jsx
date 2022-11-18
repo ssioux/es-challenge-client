@@ -27,7 +27,7 @@ function TourneyList() {
     try {
       const response = await listTourneysService() 
       
-      console.log("responseList",response)
+      
       
       setList(response.data)
       
@@ -46,22 +46,24 @@ function TourneyList() {
    }
     
   return (
-    <div width="40%" margin="auto" >
-          {/* <CreateTourneyForm updateList={getData}/> PREGUNTA*/}
+
+
+    <div width="20%" >
+          
 
         <h3>TourneyList</h3>
         {list.map((eachTourney) => {
-          console.log("peppoooooo",eachTourney)
+          
       return(
 
 
 
 
          
-         <Card style={{ height: "12rem" ,width: '40rem', margin:"auto"}}>
+         <Card style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
          <div style={{display:"flex"}}>
           <div width="20rem">
-             <Card.Img  src={eachTourney.game.picture} maxWidth="200px" />
+             <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
           </div>
           <div>
              <Card.Body style={{width:"400px"}}>

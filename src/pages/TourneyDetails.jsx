@@ -21,15 +21,12 @@ function TourneyDetails() {
   const navigate = useNavigate();
   const { tourneyId } = useParams();
   const [details, setDetails] = useState();
-  // SAVE DISORDER LIST TO START THE TOURNAMENT
-  // const [disorderList, setDisorderList] = useState()
-  // console.log("disorderList[0]",disorderList[0].name)
+
   const [isFetching, setIsFetching] = useState(true);
 
  
 
-  // const [isFetching2, setIsFetching2] = useState(false)
-  // console.log("details", details);
+
 
   // ! QUARTER STATES
   // * Quarter A
@@ -92,7 +89,7 @@ function TourneyDetails() {
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
-      console.log("tourneydetails" ,tourneyDetails)
+   
       setDetails(tourneyDetails);
       // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
       // NO HARIA FALTA ESTADOS PARA CADA UNO
@@ -163,7 +160,7 @@ function TourneyDetails() {
 
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
+      navigate("/error")
     }
   };
 
@@ -172,7 +169,7 @@ function TourneyDetails() {
     
     try {
       await addTeamToTourneyService(tourneyId);
-     console.log("despues de agregar equipo")
+    
       getData()
    
     } catch (error) {
@@ -184,10 +181,10 @@ function TourneyDetails() {
     e.preventDefault();
     try {
       const response = await sortTeamsToTourneyService(tourneyId);
-      console.log("entrando en estart");
+     
 
       getData()
-      console.log("RESPONSE", response.data[0].name);
+    
 
       // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
       // KATA => TIENE UNA ESTRUCTURA DE DATA CON VARIOS ARRAYS
@@ -201,19 +198,13 @@ function TourneyDetails() {
       setQuarterD1(response.data[6].name);
       setQuarterD2(response.data[7].name);
 
-      //  setTimeout(()=>{
 
-      // },2000)
-      // console.log(response.data)
-      // setDisorderList(response.data)
 
       navigate(`/list/${tourneyId}/details`);
     } catch (error) {
       navigate("/error");
     }
   };
-
-  console.log("TOURNEYdETAILS", details);
 
   if (isFetching === true) {
     return <h2>...Loading</h2>;
@@ -421,11 +412,11 @@ function TourneyDetails() {
           </div> 
       </div> */}
       
-        {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}
+        {details.quarterA.length === 0 && <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>}
 
-        {isLoggedIn === true ? (<Button disabled={false} onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
+        {isLoggedIn === true ? (<Button disabled={false} variant="outline-secondary" id="button-addon3" onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
         
-        {user.user.role === "admin" && <Button onClick={handleEditLink}>Edit Tourney</Button>}
+        {user.user.role === "admin" && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
         
         
     </div>

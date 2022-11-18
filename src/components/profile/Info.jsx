@@ -29,7 +29,7 @@ function Info () {
 
   const { user } = useContext(AuthContext);
   const{username, email, _id, picture} = user.user
-console.log("user",user )
+
 
 // GET BUSCAR EQUIPO
 useEffect(()=> {

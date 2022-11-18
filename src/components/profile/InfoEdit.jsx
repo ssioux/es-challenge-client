@@ -22,7 +22,7 @@ function InfoEdit() {
    const getData = async () => {
     try {
       const response = await detailsUserService(userId)
-      console.log( "response",response)
+    
 
       setUserNameInput(response.data.username)
       setEmailInput(response.data.email)

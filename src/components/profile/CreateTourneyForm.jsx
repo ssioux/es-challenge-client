@@ -32,10 +32,9 @@ function CreateTourneyForm(props) {
      try {
     const responseGames = await listGamesService()
     setListGames(responseGames.data)
-     console.log("responseGames",responseGames.data)
-     console.log("nameGame",responseGames.data)
+   
   } catch (error) {
-    console.log(error)
+    navigate("/error")
   } 
   }
    
@@ -58,7 +57,7 @@ function CreateTourneyForm(props) {
         navigate("/")
       
      } catch (error) {
-      console.log(error)
+      navigate("/error")
       
      }
 
