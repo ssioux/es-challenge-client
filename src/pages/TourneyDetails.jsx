@@ -6,7 +6,7 @@ import {
   sortTeamsToTourneyService,
 } from "../services/tourney.services";
 import { useEffect, useState } from "react";
-import Card from 'react-bootstrap/Card';
+
 
 
 function TourneyDetails() {
@@ -220,14 +220,14 @@ function TourneyDetails() {
       <header className="hero">
         <div className="hero-wrap">
           <p className="intro" id="intro">
-            Game Name
+            {/* {details.game} */}
           </p>
           <h1 id="headline">Tournament</h1>
           <p className="year">
             <i className="fa fa-star"></i> TEMPORADA{" "}
             <i className="fa fa-star"></i>
           </p>
-          <p>NOMBRE DEL TORNEO</p>
+          {/* <p>{details.name}</p> */}
         </div>
       </header>
 
@@ -237,7 +237,7 @@ function TourneyDetails() {
             <div className="round round-one current">
               <div className="round-details">
                 Round 1<br />
-                <span className="date">March 16</span>
+                <span className="date">Day 1</span>
               </div>
               <ul className="matchup">
                 <li className="team team-top">
@@ -265,7 +265,7 @@ function TourneyDetails() {
             <div className="round round-two">
               <div className="round-details">
                 Round 2<br />
-                <span className="date">March 18</span>
+                <span className="date">Day 2</span>
               </div>
               <ul className="matchup">
                 <li className="team team-top">
@@ -285,7 +285,7 @@ function TourneyDetails() {
             <div className="semis-l">
               <div className="round-details">
                 Final <br />
-                <span className="date">March 26-28</span>
+                <span className="date">Day 3</span>
               </div>
               <ul className="matchup championship">
                 <li className="team team-top">
@@ -317,7 +317,7 @@ function TourneyDetails() {
             <div className="round round-two">
               <div className="round-details">
                 Round 2<br />
-                <span className="date">March 18</span>
+                <span className="date">Day 2</span>
               </div>
               <ul className="matchup">
                 <li className="team team-top">
@@ -336,7 +336,7 @@ function TourneyDetails() {
             <div className="round round-one current">
               <div className="round-details">
                 Round 1<br />
-                <span className="date">March 16</span>
+                <span className="date">Day 2</span>
               </div>
               <ul className="matchup">
                 <li className="team team-top">
@@ -376,13 +376,13 @@ function TourneyDetails() {
           </a>
         </div>
       </section> */}
-      <div style={{display:"flex"}}>
+        {/* <div style={{display:"flex"}}>
         
           <div>
             <img src={details.game.picture} alt="pict" height="160rem" />
-          </div>
+          </div> 
 
-          <div>
+          <div> 
 
               <Card style={{ height: "10rem" ,width: '1800px', margin:"auto" }}>
                 <div style={{display:"flex", flexDirection:"column"}}>
@@ -407,8 +407,9 @@ function TourneyDetails() {
              
                </div>
             </Card>
-          </div>
-      </div>
+          </div> 
+      </div> */}
+      
         {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}
         <Button onClick={handleAddTeamToTourney}>signup Team</Button>
         <Button onClick={handleEditLink}>Edit Tourney</Button>
