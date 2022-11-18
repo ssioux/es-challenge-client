@@ -5,13 +5,19 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 // import CardGroup from 'react-bootstrap/CardGroup';
 
 
 function TeamList() {
   const navigate = useNavigate();
-  const [teamList, setTeamList] = useState();
+  const [teamList, setTeamList] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [teamListSearch, setTeamListSearch] = useState([])
+  const [searchInput, setSearchInput] = useState("")
+  
 
   useEffect(() => {
     getData();
@@ -22,11 +28,39 @@ function TeamList() {
       const allTeams = await listTeamsService();
       console.log("ASSDDDDDDDD",allTeams)
       setTeamList(allTeams.data);
-      setIsFetching(false);
+      
+       setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
+   
+
+    
+
+   const filterTeams = (filterQuery) => {
+  
+   
+     const filteredArr = teamList.filter((eachTeam) => {
+      return eachTeam.name.toLowerCase().includes(filterQuery.toLowerCase())
+     })
+     setTeamListSearch(filteredArr)
+ 
+   }
+   console.log("teamlistSearch",teamListSearch)
+  
+    // const copy = [...teamList]
+    // setTeamListSearch(copy)
+
+  
+
+  const handleSearchChange = (event) => {
+    
+    setSearchInput(event.target.value)
+    filterTeams(event.target.value)
+  }
+     
+      
 
   if (isFetching === true) {
     return <h3>...Loading</h3>;
@@ -52,11 +86,29 @@ function TeamList() {
     //   </ListGroup>
     // </div>
 <div>
-{/* <CardGroup> */}
-
-{teamList.map((eachTeam) => {
-  return (
-    <Card key={eachTeam._id} style={{ width: '12rem', marginBotton: "20px"}}>
+     {/* <CardGroup> */}
+   <div style={{display:"block", width:"25%", margin:"auto"}}>
+       <h5 style={{color:"white"}}>Find your team and sign up</h5>
+         <InputGroup className="mb-3">
+         <Form.Control
+          placeholder="search"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          value={searchInput}
+          onChange={handleSearchChange}
+       
+        />
+        <Button variant="outline-secondary" id="button-addon2">
+          Search
+        </Button>
+       </InputGroup>
+  </div>
+  <div style={{display:"flex", flexWrap:"wrap",gap:"40px"}}>
+     {
+      
+      teamListSearch.map((eachTeam) => {
+     return (
+      <Card key={eachTeam._id} style={{ width: '12rem', marginBotton: "20px", opacity:"0.7"}}>
       <Card.Img variant="top" src={eachTeam.picture} />
       <Card.Body>
         <Card.Title>{eachTeam.name}</Card.Title>
@@ -72,17 +124,18 @@ function TeamList() {
      
         ); 
        
-  })}
+      })}
      </ListGroup>
       <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Link to={`/team/${eachTeam._id}/details`}>Team Details</Link>
+        {/* <Card.Link href="#">Another Link</Card.Link> */}
       </Card.Body>
     </Card>
  
 
            );
          })}
+  </div>
               
  
             {/* </CardGroup> */}
