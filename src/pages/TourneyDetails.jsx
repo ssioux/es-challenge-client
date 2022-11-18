@@ -7,9 +7,17 @@ import {
 } from "../services/tourney.services";
 import { useEffect, useState } from "react";
 
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
+
 
 
 function TourneyDetails() {
+
+  const { isLoggedIn, user } = useContext(AuthContext);
+  
+
+
   const navigate = useNavigate();
   const { tourneyId } = useParams();
   const [details, setDetails] = useState();
@@ -17,6 +25,9 @@ function TourneyDetails() {
   // const [disorderList, setDisorderList] = useState()
   // console.log("disorderList[0]",disorderList[0].name)
   const [isFetching, setIsFetching] = useState(true);
+
+ 
+
   // const [isFetching2, setIsFetching2] = useState(false)
   // console.log("details", details);
 
@@ -411,8 +422,12 @@ function TourneyDetails() {
       </div> */}
       
         {details.quarterA.length === 0 && <Button onClick={handleStartSort}>Start</Button>}
-        <Button onClick={handleAddTeamToTourney}>signup Team</Button>
-        <Button onClick={handleEditLink}>Edit Tourney</Button>
+
+        {isLoggedIn === true ? (<Button disabled={false} onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
+        
+        {user.user.role === "admin" && <Button onClick={handleEditLink}>Edit Tourney</Button>}
+        
+        
     </div>
   );
 }

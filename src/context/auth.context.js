@@ -8,6 +8,7 @@ function AuthWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
+  
 
   useEffect(() => {
     authenticateUser();
@@ -29,6 +30,11 @@ function AuthWrapper(props) {
     }
   };
 
+  
+
+
+
+
   const passedContext = {
     isLoggedIn,
     user,
@@ -44,6 +50,7 @@ function AuthWrapper(props) {
       </div>
     );
   }
+
   return (
     <AuthContext.Provider value={passedContext}>
       {props.children}

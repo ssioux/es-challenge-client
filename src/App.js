@@ -27,6 +27,7 @@ import TeamList from "./components/profile/TeamList";
 
 
 
+
 function App() {
   return (
     <div className="App">
@@ -47,6 +48,7 @@ function App() {
         <Route path="/game/create" element={<CreateGameForm />} />
         <Route path="/team/create" element={<CreateTeamForm />} />
         <Route path="/profile/:userId/edit" element={<InfoEdit/>} />
+   
 
 
         {/* Error Pages */}

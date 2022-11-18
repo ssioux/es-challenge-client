@@ -1,17 +1,20 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { AuthContext } from "../context/auth.context.js";
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate()
   const { authenticateUser, isLoggedIn } = useContext(AuthContext);
   
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticateUser();
+    navigate("/")
   };
 
   return (
@@ -38,6 +41,8 @@ function NavBar() {
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/teams">Teams</Nav.Link>
+      <Nav.Link href="/signup">Signup</Nav.Link>
+      <Nav.Link href="/login">login</Nav.Link>
     </Nav>
   </Container>
 </Navbar>

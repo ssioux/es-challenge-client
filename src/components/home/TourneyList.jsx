@@ -4,7 +4,16 @@ import {listTourneysService} from "../../services/tourney.services.js"
 import Card from 'react-bootstrap/Card';
 // import CreateTourneyForm from "../profile/CreateTourneyForm.jsx"
 
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+
+
+
+
+
+
 function TourneyList() {
+  const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate()
   // create state to store the data
   const [list, setList] = useState([])
@@ -42,23 +51,25 @@ function TourneyList() {
 
         <h3>TourneyList</h3>
         {list.map((eachTourney) => {
-          console.log(eachTourney)
+          console.log("peppoooooo",eachTourney)
       return(
 
 
 
 
          
-         <Card style={{ height: "12rem" ,width: '40rem', margin:"auto" }}>
-         <div style={{display:"flex",}}>
+         <Card style={{ height: "12rem" ,width: '40rem', margin:"auto"}}>
+         <div style={{display:"flex"}}>
           <div width="20rem">
              <Card.Img  src={eachTourney.game.picture} maxWidth="200px" />
           </div>
           <div>
              <Card.Body style={{width:"400px"}}>
-              <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
-              <Card.Text>Game:{eachTourney.game.name} </Card.Text>
+              {isLoggedIn === true ? <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title> 
+              : <Card.Title><Link  to="/signup">{eachTourney.name}</Link></Card.Title>}
+              <Card.Text>Game:{eachTourney.game.name}</Card.Text>
               <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
+              <Card.Text>Description:{eachTourney.description}</Card.Text>
              </Card.Body>
           </div>
          </div>
@@ -67,7 +78,7 @@ function TourneyList() {
                
          })}
 
-    </div> 
+    </div>
 
 )
 }
