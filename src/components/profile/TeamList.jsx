@@ -26,7 +26,7 @@ function TeamList() {
   const getData = async () => {
     try {
       const allTeams = await listTeamsService();
-      console.log("ASSDDDDDDDD",allTeams)
+    
       setTeamList(allTeams.data);
       setTeamListSearch(allTeams.data)
       
@@ -48,7 +48,7 @@ function TeamList() {
      setTeamListSearch(filteredArr)
  
    }
-   console.log("teamlistSearch",teamListSearch)
+  
   
     // const copy = [...teamList]
     // setTeamListSearch(copy)

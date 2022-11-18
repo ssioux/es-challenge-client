@@ -26,15 +26,15 @@ function CreateGameForm() {
   const handlePictureChange = async (e) => {
     setIsLoadingPicture(true)
 
-    // setPictureInput(e.target.value)
-    console.log(e.target.files[0])
+    
+    
     
     const sendObj = new FormData()
     sendObj.append("picture",e.target.files[0])
 
     try {
       const response = await uploadPictureService(sendObj)
-      console.log(response.data.picture)
+     
       setPictureUrl(response.data.picture)
       setIsLoadingPicture(false)
     } catch (error) {
@@ -56,7 +56,7 @@ function CreateGameForm() {
     try {
   
       await createGameService(gameToAdd)
-      navigate("/")
+      navigate("/profile")
   
       
     } catch (error) {

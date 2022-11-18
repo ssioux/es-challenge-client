@@ -10,7 +10,7 @@ import { uploadPictureService } from '../../services/upload.services.js'
 
 function CreateTeamForm(props) {
   const navigate = useNavigate()
-  console.log("props",props)
+  
   
 
   const [nameInput, setNameInput] = useState("")
@@ -56,7 +56,7 @@ function CreateTeamForm(props) {
   }
   const handlePictureChange = async (e) => {
     setIsLoadingPicture(true)
-    console.log("target file",e.target.files[0])
+   
 
     // setPictureInput(e.target.value)
     
@@ -65,12 +65,12 @@ function CreateTeamForm(props) {
 
     try {
       const response = await uploadPictureService(sendObj)
-      console.log("response picture",response.data.picture)
+    
       setPictureUrl(response.data.picture)
       setIsLoadingPicture(false)
 
     } catch (error) {
-      console.log(error)
+      navigate("/error")
       
     }
   }

@@ -20,7 +20,7 @@ function TeamsUserIncluded() {
 
       try {
         const response = await findTeamUserService()
-        console.log(response)
+      
         setUserTeamList(response.data)
         setIsFetching(false)
       } catch (error) {

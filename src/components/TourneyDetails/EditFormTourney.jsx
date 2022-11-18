@@ -10,7 +10,7 @@ import { detailsTourneyService, updateTourneyService } from '../../services/tour
 
 function EditFormTourney() {
   const {tourneyId} = useParams()
-  console.log("paramsId",tourneyId)
+  
   const navigate = useNavigate()
 
   const [listGames , setListGames] = useState([])
@@ -67,7 +67,7 @@ const getData = async () => {
 
   try {
     const responseTourney= await detailsTourneyService(tourneyId)
-     console.log("responseTorune", responseTourney)
+    
 
      setDetails(responseTourney.data)
 //  setGameInput(responseTourney.data.game)
@@ -89,8 +89,7 @@ setResultQ8Input(responseTourney.data.scoreQD2)
 
  const responseGames = await listGamesService()
  setListGames(responseGames.data)
-  console.log("responseGames",responseGames.data)
-  console.log("nameGame",responseGames.data)
+
   setIsFetching(false)
  
 } catch (error) {
@@ -99,7 +98,7 @@ setResultQ8Input(responseTourney.data.scoreQD2)
 }
 
 const handleUpdtateQuarters = async(e) => {
-  console.log("actualizando torneo")
+ 
   e.preventDefault()
   const updateQuarter={
     name:nameInput,
@@ -123,7 +122,7 @@ const handleUpdtateQuarters = async(e) => {
 
   try {
     await updateTourneyService(tourneyId, updateQuarter)
-    console.log("llamando al servicio")
+   
     setIsFetching(false)
     navigate(`/list/${tourneyId}/details`)
   } catch (error) {
