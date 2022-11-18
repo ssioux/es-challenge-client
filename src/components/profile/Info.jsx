@@ -100,6 +100,16 @@ if(isFetching === true) {
                <Link to="/tourney/create" >Create Tourney</Link>  {/* admin */}
                </Card.Body>
                <Card.Body>
+               <Card.Body>
+               <Link to="/game/create" >Create Game</Link> 
+               </Card.Body>
+               </Card.Body>
+               
+               <Card.Body>
+               
+
+
+               
               {viewCreateTeam === true ? (
                <div>
                  <Button variant="outline-info" onClick={toggleForm}>Create Team</Button>
@@ -127,7 +137,7 @@ if(isFetching === true) {
               </div>
                )}
 
-               {/* <Link to="/game/create" >Create Game</Link>  */}
+               <Link to="/game/create" >Create Game</Link> 
                </Card.Body>
                <Card.Body>
 
