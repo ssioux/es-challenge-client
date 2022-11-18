@@ -137,7 +137,7 @@ if(isFetching === true) {
               </div>
                )}
 
-               <Link to="/game/create" >Create Game</Link> 
+              
                </Card.Body>
                <Card.Body>
 
