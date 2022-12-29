@@ -96,21 +96,7 @@ function TourneyList() {
 
 export default TourneyList
 
-{/* <div style={{display:"flex", width:"30%", margin:"auto", justifyContent:"space-between", gap:"30px"}}>
 
-
-<div key={eachTourney._id} >
-  <img src={eachTourney.game.picture} alt="pict" width={200}/>
-</div>
-<div >
-  <h4 >
- <Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link>
- </h4>
- <p>{eachTourney.game.name}</p>
- <p>by: {eachTourney.creator.username}</p>
-  <p>{eachTourney.game.name}</p>
-</div>
-</div> */}
 
 
 

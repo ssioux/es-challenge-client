@@ -19,6 +19,46 @@ body {
   display: block;
 }
 
+/* * HOME  * */
+.home{
+
+}
+
+/* * end of HOME * */
+
+
+
+/* * MAIN PAGE * */
+.main-page{
+  display: flex;
+  background-color: white;
+  height: 90vh ;
+  width: 100vw;
+  margin:auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+ 
+}
+.eslogan{
+  background-color: #a0a6a8;
+  width:600px;
+ 
+ 
+ 
+
+}
+  
+.register-login{
+  background-color: #2C7399;
+  width: 600px ;
+  
+ 
+
+}
+
+/* end of MAIN PAGE   */
+ 
 
 
 /* tourney-bracket */

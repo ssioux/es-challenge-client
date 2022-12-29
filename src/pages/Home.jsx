@@ -1,20 +1,18 @@
 // * IMPORTS
 // Components
+import MainPage from "../components/home/MainPage";
 import TourneyList from "../components/home/TourneyList";
 
 function Home() {
   return (
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     margin: "auto",
-    //     width: "80%",
-    //     justifyContent: "space-between",
-    //   }}
+     <div className="home">
 
-    <div>
+      <MainPage />
       <TourneyList />
-    </div>
+      
+    
+     </div>
+
   );
 }
 
