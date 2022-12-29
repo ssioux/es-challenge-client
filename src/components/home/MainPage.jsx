@@ -1,6 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
+import Login from '../../pages/Login'
+import Signup from '../../pages/Signup'
+
 
 function MainPage() {
+  const [signup, setSignup] = useState(false)
+  const [login, setLogin] = useState(false)
+
+const handleSignup = () => {
+    setSignup(true)
+    setLogin(false)
+
+}
+const handleLogin = () => {
+    setLogin(true)
+    setSignup(false)
+
+}
+
   return (
     <div className='main-page'>
         <div className='eslogan'>
@@ -14,7 +32,21 @@ function MainPage() {
         </div>
 
         <div className='register-login'>
-             <h1>div 2 main page</h1>
+             
+             <div>
+             {(signup === false && login === false) && <h1>div 2 main page</h1> }
+             {(signup === true) && <Signup/>}
+             {(login === true) && <Login/>}
+             
+             
+             </div>
+             <br/>
+             <div>
+        <Button type="submit" onClick={handleSignup} variant="primary" id="button-addon3">Signup</Button>
+        <Button type="submit" onClick={handleLogin} variant="primary" id="button-addon3">Login</Button>
+
+             </div>
+
         </div>
     </div>
   )

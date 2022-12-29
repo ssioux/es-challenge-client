@@ -32,30 +32,43 @@ body {
 .main-page{
   display: flex;
   background-color: white;
+  background-size: cover;
   height: 90vh ;
   width: 100vw;
   margin:auto;
   justify-content: center;
   flex-wrap: wrap;
   /* flex-wrap: wrap; */
- 
 }
+ @media (max-width:1000px){
+  .main-page{
+  flex-direction: column-reverse;
+ 
+  }
+  .main-page div{
+    height:auto;
+    width: 100%;
+  }
+
+
+ }
+
 .eslogan{
   background-color: #a0a6a8;
-  width:600px;
- 
- 
- 
-
+  width:50%;
 }
-  
+ 
 .register-login{
   background-color: #2C7399;
-  width: 600px ;
+  width:50%;
+}
+ 
+ 
+
+  
   
  
 
-}
 
 /* end of MAIN PAGE   */
  
