@@ -15,7 +15,7 @@ import { AuthContext } from "../context/auth.context";
 function TourneyDetails() {
 
   const { isLoggedIn, user } = useContext(AuthContext);
-  
+
 
 
   const navigate = useNavigate();
@@ -413,12 +413,12 @@ function TourneyDetails() {
           </div> 
       </div> */}
       
-        {(details.quarterA.length === 0 && user.user.role === "admin") && <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>}
+         {(details.quarterA.length === 0 && user.user.role === "admin") && <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>}
 
         {isLoggedIn === true ? (<Button disabled={false} variant="outline-secondary" id="button-addon3" onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
         
-        {user.user.role === "admin" && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
-        
+        {user?.user.role === "admin" && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
+         
         
     </div>
   );

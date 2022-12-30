@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
-import Login from '../../pages/Login'
-import Signup from '../../pages/Signup'
+import Login from '../../pages/navbar/Login'
+import Signup from '../../pages/navbar/Signup'
 
 
-function MainPage() {
+function Header() {
   const [signup, setSignup] = useState(false)
   const [login, setLogin] = useState(false)
 
@@ -52,4 +52,4 @@ const handleLogin = () => {
   )
 }
 
-export default MainPage
+export default Header

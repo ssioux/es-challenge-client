@@ -27,6 +27,7 @@ function NavBar() {
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/profile">Profile</Nav.Link>
+      <Nav.Link href="/tourneys">Tourneys</Nav.Link>
       <Nav.Link href="/teams">Teams</Nav.Link>
       <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
     </Nav>
@@ -41,6 +42,7 @@ function NavBar() {
     <Nav className="me-auto">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/teams">Teams</Nav.Link>
+      <Nav.Link href="/tourneys">Tourneys</Nav.Link>
       <Nav.Link href="/signup">Signup</Nav.Link>
       <Nav.Link href="/login">login</Nav.Link>
     </Nav>

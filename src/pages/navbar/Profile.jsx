@@ -1,4 +1,4 @@
-import Info from "../components/profile/Info"
+import Info from "../../components/profile/Info"
 
 
 function Profile() {

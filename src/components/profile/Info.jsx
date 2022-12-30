@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button"
 import CreateTeamForm from "./CreateTeamForm";
 import  Collapse  from "react-bootstrap/Collapse";
 import { findTeamCreatorService } from "../../services/team.services";
-import TeamList from "./TeamList";
+import TeamList from "../../pages/navbar/TeamList";
 import TeamsUserIncluded from "./TeamsUserIncluded";
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';

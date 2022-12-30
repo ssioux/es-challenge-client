@@ -6,12 +6,12 @@ import IsPrivate from "./components/IsPrivate";
 
 
 // pages
-import Error from "./pages/Error";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
+import Error from "./pages/error/Error";
+import Home from "./pages/navbar/Home";
+import Login from "./pages/navbar/Login";
+import NotFound from "./pages/error/NotFound";
+import Profile from "./pages/navbar/Profile";
+import Signup from "./pages/navbar/Signup";
 import TeamDetails from "./pages/TeamDetails";
 import TourneyDetails from "./pages/TourneyDetails";
 
@@ -23,7 +23,8 @@ import CreateTeamForm from "./components/profile/CreateTeamForm";
 import CreateTourneyForm from "./components/profile/CreateTourneyForm";
 import InfoEdit from "./components/profile/InfoEdit";
 import EditFormTourney from "./components/TourneyDetails/EditFormTourney";
-import TeamList from "./components/profile/TeamList";
+import TeamList from "./pages/navbar/TeamList";
+import TourneyList from "./pages/navbar/TourneyList";
 
 
 
@@ -40,7 +41,9 @@ function App() {
         <Route
           path="/profile"
           element={<IsPrivate><Profile /></IsPrivate>}/>
-          <Route path="/team/:teamId/details" element={<TeamDetails />} />
+        <Route path="/tourneys" element={<TourneyList />} />
+
+        <Route path="/team/:teamId/details" element={<TeamDetails />} />
         <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
         <Route path="/list/:tourneyId/details/edit" element={<EditFormTourney />} />
         <Route path="/teams" element={<TeamList />} />
