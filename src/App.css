@@ -10,21 +10,21 @@ body {
 
   color: white;
 }
-.tourney-list {
 
-  /* width: 80%;
-  height: 70%; */
-  
-  margin: auto;
-  display: block;
+.nav {
+ display: flex;
+ flex-wrap: wrap;
+ width: 100%;
 }
 
-/* * HOME  * */
-.home{
+
+@media (max-width: 600px){
+.nav {
+  flex-direction: column;
 
 }
-
-/* * end of HOME * */
+}
+ 
 
 
 
@@ -186,3 +186,39 @@ body {font-family: 'Istok Web', sans-serif;background: url("../public/images/bg-
 }
 
 
+/*  Card */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+  display: flex;  /* Utiliza flexbox para posicionar los elementos */
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+}
+
+.card img {
+  border-radius: 4px 0 0 4px;
+  height: 100%;
+  object-fit: cover;
+ 
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-content h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.card-content p {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.card:hover {
+  transform: scale(1.1);  /* Aumenta el tamaño de la imagen en un 10% */
+  transition: all 0.3s ease-in-out;  /* Suaviza la transición */
+} 

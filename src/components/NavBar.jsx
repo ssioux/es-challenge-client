@@ -18,13 +18,13 @@ function NavBar() {
   };
 
   return (
-    <div>
+    <div >
  {isLoggedIn === true ? (
  <>
 <Navbar bg="dark" variant="dark">
   <Container>
     <Navbar.Brand href="#home">eS-Challenge</Navbar.Brand>
-    <Nav className="me-auto">
+    <Nav className="nav">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/profile">Profile</Nav.Link>
       <Nav.Link href="/tourneys">Tourneys</Nav.Link>
@@ -39,7 +39,7 @@ function NavBar() {
 <Navbar bg="dark" variant="dark">
   <Container>
     <Navbar.Brand href="#home">eS-Challenge</Navbar.Brand>
-    <Nav className="me-auto">
+    <Nav className="nav">
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/teams">Teams</Nav.Link>
       <Nav.Link href="/tourneys">Tourneys</Nav.Link>

@@ -45,44 +45,38 @@ function TourneyList() {
     <div>
       <h3>Tourney List</h3>
 
-        {list.map((eachTourney) => {
-          return (
-            // <Card key={eachTourney._id} style={{ opacity: "0.6" }}>
-            //   <Card.Img variant="top" src={eachTourney.game.picture} />
-            //   <Card.Body>
-            //     <Card.Title>
-            //       <Link to={`/list/${eachTourney._id}/details`}>
-            //         {eachTourney.name}
-            //       </Link>
-            //     </Card.Title>
-            //     <Card.Text>Game: {eachTourney.game.name}</Card.Text>
-            //     <Card.Text>Teams: {eachTourney.teams.length}/8</Card.Text>
-            //     <Card.Text>Start Date: {eachTourney.description}</Card.Text>
-            //   </Card.Body>
-            //   <Card.Footer>
-            //     <small className="text-muted">Register your Team</small>
-            //   </Card.Footer>
-            // </Card>
+      {list.map((eachTourney) => {
+        return (
+          // <div className="card">
+          //   <div className="card-image">
+          //     <img src={eachTourney.game.picture} alt="Card image" />
+          //   </div>
+          //   <div className="card-content">
+          //     <h2>{eachTourney.name}</h2>
+          //     <p>Game: {eachTourney.game.name}</p>
+          //     <p>teams: {eachTourney.teams.length}/8</p>
+          //     <p>Description: {eachTourney.description}</p>
+          //   </div>
+          // </div>
 
-             <Card key={eachTourney._id} style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
-             <div style={{display:"flex"}}>
-              <div width="20rem">
-                 <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
-              </div>
-              <div>
-                 <Card.Body style={{width:"400px"}}>
-                  {isLoggedIn === true ? <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
-                  : <Card.Title><Link  to="/signup">{eachTourney.name}</Link></Card.Title>}
-                  <Card.Text>Game:{eachTourney.game.name}</Card.Text>
-                  <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
-                  <Card.Text>Description:{eachTourney.description}</Card.Text>
-                 </Card.Body>
-              </div>
-             </div>
-             </Card>
-          );
-        })}
-      
+           <Card key={eachTourney._id} style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
+           <div style={{display:"flex"}}>
+            <div width="20rem">
+               <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
+            </div>
+            <div>
+               <Card.Body style={{width:"400px"}}>
+                <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
+
+                <Card.Text>Game:{eachTourney.game.name}</Card.Text>
+                <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
+                <Card.Text>Description:{eachTourney.description}</Card.Text>
+               </Card.Body>
+            </div>
+           </div>
+           </Card>
+        );
+      })}
     </div>
   );
 }
