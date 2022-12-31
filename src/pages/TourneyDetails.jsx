@@ -15,6 +15,8 @@ import { AuthContext } from "../context/auth.context";
 function TourneyDetails() {
 
   const { isLoggedIn, user } = useContext(AuthContext);
+  console.log("🚀 ~ file: TourneyDetails.jsx:18 ~ TourneyDetails ~ user", user)
+  
 
 
 
@@ -91,8 +93,10 @@ function TourneyDetails() {
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
-   
+         console.log("tourneyDetails", tourneyDetails)
       setDetails(tourneyDetails);
+      
+      
       // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
       // NO HARIA FALTA ESTADOS PARA CADA UNO
 
@@ -165,6 +169,7 @@ function TourneyDetails() {
     } catch (error) {
       navigate("/error")
     }
+      
   };
 
   const handleAddTeamToTourney = async (e) => {
@@ -418,13 +423,14 @@ function TourneyDetails() {
           </div> 
       </div> */}
       
-         {(details.quarterA.length === 0 && user.user.role === "admin") && <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>}
+         {/* {(details.quarterA.length === 0 && user.user.role === "admin") && } */}
+         <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>
 
         {isLoggedIn === true ? (<Button disabled={false} variant="outline-secondary" id="button-addon3" onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
         {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
 
         
-        {user?.user.role === "admin" && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
+        {(user?.user.role === "admin" || user?.user._id === details.creator) && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
          
         
     </div>
