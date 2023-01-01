@@ -10,79 +10,68 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-
-
 function TourneyDetails() {
-
   const { isLoggedIn, user } = useContext(AuthContext);
-  console.log("🚀 ~ file: TourneyDetails.jsx:18 ~ TourneyDetails ~ user", user)
-  
-
-
+  console.log("🚀 ~ authContex ~ user", user);
 
   const navigate = useNavigate();
   const { tourneyId } = useParams();
   const [details, setDetails] = useState();
 
   const [isFetching, setIsFetching] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("")
-  
-
- 
-
-
+  const [errorMessage, setErrorMessage] = useState("");
 
   // ! QUARTER STATES
   // * Quarter A
-  const [quarterA1, setQuarterA1] = useState("Empty");
+  const [quarterA1, setQuarterA1] = useState("");
   const [scoreQA1, setScoreQA1] = useState("0");
 
-  const [quarterA2, setQuarterA2] = useState("Empty");
+  const [quarterA2, setQuarterA2] = useState("");
   const [scoreQA2, setScoreQA2] = useState("0");
 
   // * Quarter B
-  const [quarterB1, setQuarterB1] = useState("Empty");
+  const [quarterB1, setQuarterB1] = useState("");
   const [scoreQB1, setScoreQB1] = useState("0");
 
-  const [quarterB2, setQuarterB2] = useState("Empty");
+  const [quarterB2, setQuarterB2] = useState("");
   const [scoreQB2, setScoreQB2] = useState("0");
   // * Quarter C
-  const [quarterC1, setQuarterC1] = useState("Empty");
+  const [quarterC1, setQuarterC1] = useState("");
   const [scoreQC1, setScoreQC1] = useState("0");
 
-  const [quarterC2, setQuarterC2] = useState("Empty");
+  const [quarterC2, setQuarterC2] = useState("");
   const [scoreQC2, setScoreQC2] = useState("0");
 
   // * Quarter D
-  const [quarterD1, setQuarterD1] = useState("Empty");
+  const [quarterD1, setQuarterD1] = useState("");
   const [scoreQD1, setScoreQD1] = useState("0");
 
-  const [quarterD2, setQuarterD2] = useState("Empty");
+  const [quarterD2, setQuarterD2] = useState("");
   const [scoreQD2, setScoreQD2] = useState("0");
 
   // * Semi A
-  const [semiA1, setSemiA1] = useState("Empty");
+  const [semiA1, setSemiA1] = useState("");
   const [scoreSA1, setScoreSA1] = useState("0");
 
-  const [semiA2, setSemiA2] = useState("Empty");
+  const [semiA2, setSemiA2] = useState("");
   const [scoreSA2, setScoreSA2] = useState("0");
 
   // * Semi B
-  const [semiB1, setSemiB1] = useState("Empty");
+  const [semiB1, setSemiB1] = useState("");
   const [scoreSB1, setScoreSB1] = useState("0");
 
-  const [semiB2, setSemiB2] = useState("Empty");
+  const [semiB2, setSemiB2] = useState("");
   const [scoreSB2, setScoreSB2] = useState("0");
 
   // * Final
-  const [final1, setFinal1] = useState("Empty");
+  const [final1, setFinal1] = useState("");
   const [scoreF1, setScoreF1] = useState("0");
 
-  const [final2, setFinal2] = useState("Empty");
+  const [final2, setFinal2] = useState("");
   const [scoreF2, setScoreF2] = useState("0");
 
   // * Winner
-  const [winner, setWinner] = useState("Empty");
+  const [winner, setWinner] = useState("");
 
   useEffect(() => {
     getData();
@@ -93,10 +82,9 @@ function TourneyDetails() {
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
-         console.log("tourneyDetails", tourneyDetails)
+      console.log("tourneyDetails", tourneyDetails);
       setDetails(tourneyDetails);
-      
-      
+
       // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
       // NO HARIA FALTA ESTADOS PARA CADA UNO
 
@@ -117,31 +105,23 @@ function TourneyDetails() {
       }
 
       // semifinals
-      if(tourneyDetails.semiA.length === 2){
-
+      if (tourneyDetails.semiA.length === 2) {
         setSemiA1(tourneyDetails.semiA[0].name);
         setSemiA2(tourneyDetails.semiA[1].name);
       }
-    
-      if(tourneyDetails.semiB.length === 2){
 
+      if (tourneyDetails.semiB.length === 2) {
         setSemiB1(tourneyDetails.semiB[0].name);
         setSemiB2(tourneyDetails.semiB[1].name);
       }
-      if(tourneyDetails.final.length === 2){
-
+      if (tourneyDetails.final.length === 2) {
         setFinal1(tourneyDetails.final[0].name);
         setFinal2(tourneyDetails.final[1].name);
       }
-      if(tourneyDetails.winner !== undefined){
-
+      if (tourneyDetails.winner !== undefined) {
         setWinner(tourneyDetails.winner.name);
       }
       // winner
-      
-      
-
-      
 
       // final
 
@@ -156,35 +136,32 @@ function TourneyDetails() {
       setScoreQD1(tourneyDetails.scoreQD1);
       setScoreQD2(tourneyDetails.scoreQD2);
       // semifinals
-      setScoreSA1(tourneyDetails.scoreSA1)
-      setScoreSA2(tourneyDetails.scoreSA2)
+      setScoreSA1(tourneyDetails.scoreSA1);
+      setScoreSA2(tourneyDetails.scoreSA2);
 
-      setScoreSB1(tourneyDetails.scoreSB1)
-      setScoreSB2(tourneyDetails.scoreSB2)
+      setScoreSB1(tourneyDetails.scoreSB1);
+      setScoreSB2(tourneyDetails.scoreSB2);
       // finals
-      setScoreF1(tourneyDetails.scoreF1)
-      setScoreF2(tourneyDetails.scoreF2)
+      setScoreF1(tourneyDetails.scoreF1);
+      setScoreF2(tourneyDetails.scoreF2);
 
       setIsFetching(false);
     } catch (error) {
-      navigate("/error")
+      navigate("/error");
     }
-      
   };
 
   const handleAddTeamToTourney = async (e) => {
     e.preventDefault();
-    
+
     try {
       await addTeamToTourneyService(tourneyId);
-    
-      getData()
-   
-    } catch (error) {
-     if(error.response && error.response.status === 401){
-      setErrorMessage(error.response.data.errorMessage)
 
-     }
+      getData();
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        setErrorMessage(error.response.data.errorMessage);
+      }
     }
   };
 
@@ -192,10 +169,8 @@ function TourneyDetails() {
     e.preventDefault();
     try {
       const response = await sortTeamsToTourneyService(tourneyId);
-     
 
-      getData()
-    
+      getData();
 
       // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
       // KATA => TIENE UNA ESTRUCTURA DE DATA CON VARIOS ARRAYS
@@ -208,8 +183,6 @@ function TourneyDetails() {
       setQuarterC2(response.data[5].name);
       setQuarterD1(response.data[6].name);
       setQuarterD2(response.data[7].name);
-
-
 
       navigate(`/list/${tourneyId}/details`);
     } catch (error) {
@@ -225,9 +198,8 @@ function TourneyDetails() {
     navigate(`/list/${tourneyId}/details/edit`);
   };
 
-
   return (
-    <div className="tourney-list" >
+    <div className="tourney-list">
       <h3>TourneyDetails</h3>
 
       <header className="hero">
@@ -376,85 +348,46 @@ function TourneyDetails() {
         </div>
         {/* END ROUND ONE */}
       </section>
-      {/* <section className="share">
-        <div className="share-wrap">
-          <a className="share-icon" href="https://twitter.com/_joebeason">
-            <i className="fa fa-twitter"></i>
-          </a>
-          <a className="share-icon" href="#">
-            <i className="fa fa-facebook"></i>
-          </a>
-          <a className="share-icon" href="#">
-            <i className="fa fa-envelope"></i>
-          </a>
-        </div>
-      </section> */}
-        {/* <div style={{display:"flex"}}>
-        
-          <div>
-            <img src={details.game.picture} alt="pict" height="160rem" />
-          </div> 
+   
 
-          <div> 
+{/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
+      {details.quarterA.length === 0 && user?.user.role === "admin" && (
+        <Button
+          id="button-addon3"
+          variant="outline-secondary"
+          onClick={handleStartSort}
+        >
+          Start
+        </Button>
+      )}
 
-              <Card style={{ height: "10rem" ,width: '1800px', margin:"auto" }}>
-                <div style={{display:"flex", flexDirection:"column"}}>
-                 
-                 <div>
-                     <h3>Team List</h3>
-                 </div>
-                 <div style={{display:"flex", flexWrap:"wrap" , width:"1800px"}}>
+      {isLoggedIn === true ? (
+        <Button
+          disabled={false}
+          variant="outline-secondary"
+          id="button-addon3"
+          onClick={handleAddTeamToTourney}
+        >
+          signup Team
+        </Button>
+      ) : (
+        <Button disabled={true} onClick={handleAddTeamToTourney}>
+          signup Team
+        </Button>
+      )}
+      {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
 
-                    {details.teams.map((eachTeam) => {
-                    if(details.teams.length === 0){
-                      return null
-                         }
-                      return (
-                        
-                   <Card.Body width="1500px">
-                         <Card.Text key={eachTeam._id}>{eachTeam.name}</Card.Text>
-                   </Card.Body>
-                         )
-                       })}
-                 </div>
-             
-               </div>
-            </Card>
-          </div> 
-      </div> */}
-      
-         {/* {(details.quarterA.length === 0 && user.user.role === "admin") && } */}
-         <Button id="button-addon3" variant="outline-secondary" onClick={handleStartSort}>Start</Button>
-
-        {isLoggedIn === true ? (<Button disabled={false} variant="outline-secondary" id="button-addon3" onClick={handleAddTeamToTourney}>signup Team</Button>) : (<Button disabled={true} onClick={handleAddTeamToTourney}>signup Team</Button>)}
-        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-
-        
-        {(user?.user.role === "admin" || user?.user._id === details.creator) && <Button variant="outline-secondary" id="button-addon3" onClick={handleEditLink}>Edit Tourney</Button>}
-         
-        
+      {(user?.user.role === "admin" || user?.user._id === details.creator) && (
+        <Button
+          variant="outline-secondary"
+          id="button-addon3"
+          onClick={handleEditLink}
+        >
+          Edit Tourney
+        </Button>
+      )}
     </div>
   );
 }
 
 export default TourneyDetails;
-                
-          
-          
-
-
-          
-     
-
-
-
-        
-
-
-
-
-        
-      
-
-      
-
