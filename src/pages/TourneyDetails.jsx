@@ -3,13 +3,16 @@ import Button from "react-bootstrap/Button";
 import {
   addTeamToTourneyService,
   detailsTourneyService,
+  removeTeamFromTourneyService,
   sortTeamsToTourneyService,
 } from "../services/tourney.services";
+import { findTeamCreatorService } from "../services/team.services";
+
 import { useEffect, useState } from "react";
 
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 
 function TourneyDetails() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -18,6 +21,15 @@ function TourneyDetails() {
   const navigate = useNavigate();
   const { tourneyId } = useParams();
   const [details, setDetails] = useState();
+  console.log(
+    "🚀 ~ file: TourneyDetails.jsx:25 ~ TourneyDetails ~ details",
+    details
+  );
+  const [ownTeam, setOwnTeam] = useState();
+  console.log(
+    "🚀 ~ file: TourneyDetails.jsx:27 ~ TourneyDetails ~ ownTeam",
+    ownTeam
+  );
 
   const [isFetching, setIsFetching] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -76,11 +88,15 @@ function TourneyDetails() {
 
   useEffect(() => {
     getData();
-
   }, []);
 
   const getData = async () => {
     try {
+      // ******** Find Team Creator from Api
+      const responseOwnTeam = await findTeamCreatorService();
+      setOwnTeam(responseOwnTeam.data);
+
+      // ******** Tourney Details from Api
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
@@ -151,245 +167,270 @@ function TourneyDetails() {
     } catch (error) {
       navigate("/error");
     }
-  };
-
-  const handleAddTeamToTourney = async (e) => {
-    e.preventDefault();
-
-    try {
-      await addTeamToTourneyService(tourneyId);
-
-      getData();
-    } catch (error) {
-      if (error.response && error.response.status === 401) {
-        setErrorMessage(error.response.data.errorMessage);
-      }
-    }
-  };
-
-  const handleStartSort = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await sortTeamsToTourneyService(tourneyId);
-
-      getData();
-
-      // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
-      // KATA => TIENE UNA ESTRUCTURA DE DATA CON VARIOS ARRAYS
-      // ACTUALIZAR CADA ARRAY CON LOS VALORES ABAJO
-      setQuarterA1(response.data[0].name);
-      setQuarterA2(response.data[1].name);
-      setQuarterB1(response.data[2].name);
-      setQuarterB2(response.data[3].name);
-      setQuarterC1(response.data[4].name);
-      setQuarterC2(response.data[5].name);
-      setQuarterD1(response.data[6].name);
-      setQuarterD2(response.data[7].name);
-
-      navigate(`/list/${tourneyId}/details`);
-    } catch (error) {
-      navigate("/error");
-    }
-  };
-
-  if (isFetching === true) {
-    return   <Spinner animation="border" variant="light" />
   }
 
-  const handleEditLink = (e) => {
-    navigate(`/list/${tourneyId}/details/edit`);
+    // ********* Add team to Tourney
+    const handleAddTeamToTourney = async (e) => {
+      e.preventDefault();
+
+      try {
+        await addTeamToTourneyService(tourneyId);
+
+        getData();
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          setErrorMessage(error.response.data.errorMessage);
+        }
+      }
+    };
+    // ******* Remove team from Tourney
+    const handleRemoveTeamFromTourney = async (e) => {
+      e.preventDefault();
+
+      try {
+        await removeTeamFromTourneyService(tourneyId);
+
+        getData();
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          setErrorMessage(error.response.data.errorMessage);
+        }
+      }
+    };
+
+    // ******* Sort teams to start the tourney and update quarter finals
+    const handleStartSort = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await sortTeamsToTourneyService(tourneyId);
+
+        getData();
+
+        // CUANDO HAGAN EL SORT, ACTUALIZAN LOS DETALLES
+        // KATA => TIENE UNA ESTRUCTURA DE DATA CON VARIOS ARRAYS
+        // ACTUALIZAR CADA ARRAY CON LOS VALORES ABAJO
+        setQuarterA1(response.data[0].name);
+        setQuarterA2(response.data[1].name);
+        setQuarterB1(response.data[2].name);
+        setQuarterB2(response.data[3].name);
+        setQuarterC1(response.data[4].name);
+        setQuarterC2(response.data[5].name);
+        setQuarterD1(response.data[6].name);
+        setQuarterD2(response.data[7].name);
+
+        navigate(`/list/${tourneyId}/details`);
+      } catch (error) {
+        navigate("/error");
+      }
+    };
+    
+
+    if (isFetching === true) {
+      return <Spinner animation="border" variant="light" />;
+    }
+
+    const handleEditLink = (e) => {
+      navigate(`/list/${tourneyId}/details/edit`);
+    };
+
+    return (
+      <div className="tourney-list">
+        <h3>TourneyDetails</h3>
+
+        <header className="hero">
+          <div className="hero-wrap">
+            <p className="intro" id="intro">
+              {/* {details.game} */}
+            </p>
+            <h1 id="headline">Tournament</h1>
+            <p className="year">
+              <i className="fa fa-star"></i> {details.name}
+              <i className="fa fa-star"></i>
+            </p>
+            {/* <p>{details.name}</p> */}
+          </div>
+        </header>
+
+        <section id="bracket">
+          <div className="container">
+            <div className="split split-one">
+              <div className="round round-one current">
+                <div className="round-details">
+                  Round 1<br />
+                  <span className="date">Day 1</span>
+                </div>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {quarterA1}
+                    <span className="score">{scoreQA1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {quarterA2}
+                    <span className="score">{scoreQA2}</span>
+                  </li>
+                </ul>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {quarterB1}
+                    <span className="score">{scoreQB1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {quarterB2}
+                    <span className="score">{scoreQB2}</span>
+                  </li>
+                </ul>
+              </div>
+              {/* <!-- END ROUND ONE --> */}
+
+              <div className="round round-two">
+                <div className="round-details">
+                  Round 2<br />
+                  <span className="date">Day 2</span>
+                </div>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {semiA1}
+                    <span className="score">{scoreSA1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {semiA2}
+                    <span className="score">{scoreSA2}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* <!-- END ROUND TWO --> */}
+            {/*  END ROUND THREE   */}
+            <div className="champion">
+              <div className="semis-l">
+                <div className="round-details">
+                  Final <br />
+                  <span className="date">Day 3</span>
+                </div>
+                <ul className="matchup championship">
+                  <li className="team team-top">
+                    {final1}
+                    <span className="score">{scoreF1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {final2}
+                    <span className="score">{scoreF2}</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="semis-l">
+                {" "}
+                <span className="round-details">champion</span>
+                <i className="fa fa-trophy"></i>
+                <ul className="matchup championship">
+                  <li className="team team-top">
+                    {winner}
+                    <span className="vote-count"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="split split-two">
+              {/* END ROUND THREE  */}
+
+              <div className="round round-two">
+                <div className="round-details">
+                  Round 2<br />
+                  <span className="date">Day 2</span>
+                </div>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {semiB1}
+                    <span className="score">{scoreSB1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {semiB2}
+                    <span className="score">{scoreSB2}</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* END ROUND TWO  */}
+
+              <div className="round round-one current">
+                <div className="round-details">
+                  Round 1<br />
+                  <span className="date">Day 2</span>
+                </div>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {quarterC1}
+                    <span className="score">{scoreQC1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {quarterC2}
+                    <span className="score">{scoreQC2}</span>
+                  </li>
+                </ul>
+                <ul className="matchup">
+                  <li className="team team-top">
+                    {quarterD1}
+                    <span className="score">{scoreQD1}</span>
+                  </li>
+                  <li className="team team-bottom">
+                    {quarterD2}
+                    <span className="score">{scoreQD2}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* END ROUND ONE */}
+        </section>
+
+        {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
+        {details.quarterA.length === 0 && user?.user.role === "admin" && (
+          <Button
+            id="button-addon3"
+            variant="outline-secondary"
+            onClick={handleStartSort}
+          >
+            Start
+          </Button>
+        )}
+        {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
+        {isLoggedIn === true && (details.teams?.filter((each) => each._id === ownTeam._id)) === undefined  && (
+          <Button
+            disabled={false}
+            variant="outline-secondary"
+            id="button-addon3"
+            onClick={handleAddTeamToTourney}
+          >
+            Register Team
+          </Button>
+        )}
+        {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
+
+        {(details.teams?.filter((each) => each._id === ownTeam._id)) === ownTeam._id && (
+          <Button
+            variant="outline-secondary"
+            id="button-addon3"
+            onClick={handleRemoveTeamFromTourney}
+          >
+            Remove Team
+          </Button>
+        )}
+
+        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
+
+        {(user?.user.role === "admin" ||
+          user?.user._id === details.creator) && (
+          <Button
+            variant="outline-secondary"
+            id="button-addon3"
+            onClick={handleEditLink}
+          >
+            Edit Tourney
+          </Button>
+        )}
+      </div>
+    );
   };
-
-  return (
-    <div className="tourney-list">
-      <h3>TourneyDetails</h3>
-
-      <header className="hero">
-        <div className="hero-wrap">
-          <p className="intro" id="intro">
-            {/* {details.game} */}
-          </p>
-          <h1 id="headline">Tournament</h1>
-          <p className="year">
-            <i className="fa fa-star"></i> {details.name}
-            <i className="fa fa-star"></i>
-          </p>
-          {/* <p>{details.name}</p> */}
-        </div>
-      </header>
-
-      <section id="bracket">
-        <div className="container">
-          <div className="split split-one">
-            <div className="round round-one current">
-              <div className="round-details">
-                Round 1<br />
-                <span className="date">Day 1</span>
-              </div>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {quarterA1}
-                  <span className="score">{scoreQA1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {quarterA2}
-                  <span className="score">{scoreQA2}</span>
-                </li>
-              </ul>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {quarterB1}
-                  <span className="score">{scoreQB1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {quarterB2}
-                  <span className="score">{scoreQB2}</span>
-                </li>
-              </ul>
-            </div>
-            {/* <!-- END ROUND ONE --> */}
-
-            <div className="round round-two">
-              <div className="round-details">
-                Round 2<br />
-                <span className="date">Day 2</span>
-              </div>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {semiA1}
-                  <span className="score">{scoreSA1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {semiA2}
-                  <span className="score">{scoreSA2}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          {/* <!-- END ROUND TWO --> */}
-          {/*  END ROUND THREE   */}
-          <div className="champion">
-            <div className="semis-l">
-              <div className="round-details">
-                Final <br />
-                <span className="date">Day 3</span>
-              </div>
-              <ul className="matchup championship">
-                <li className="team team-top">
-                  {final1}
-                  <span className="score">{scoreF1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {final2}
-                  <span className="score">{scoreF2}</span>
-                </li>
-              </ul>
-            </div>
-            <div className="semis-l">
-              {" "}
-              <span className="round-details">champion</span>
-              <i className="fa fa-trophy"></i>
-              <ul className="matchup championship">
-                <li className="team team-top">
-                  {winner}
-                  <span className="vote-count"></span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="split split-two">
-            {/* END ROUND THREE  */}
-
-            <div className="round round-two">
-              <div className="round-details">
-                Round 2<br />
-                <span className="date">Day 2</span>
-              </div>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {semiB1}
-                  <span className="score">{scoreSB1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {semiB2}
-                  <span className="score">{scoreSB2}</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* END ROUND TWO  */}
-
-            <div className="round round-one current">
-              <div className="round-details">
-                Round 1<br />
-                <span className="date">Day 2</span>
-              </div>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {quarterC1}
-                  <span className="score">{scoreQC1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {quarterC2}
-                  <span className="score">{scoreQC2}</span>
-                </li>
-              </ul>
-              <ul className="matchup">
-                <li className="team team-top">
-                  {quarterD1}
-                  <span className="score">{scoreQD1}</span>
-                </li>
-                <li className="team team-bottom">
-                  {quarterD2}
-                  <span className="score">{scoreQD2}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        {/* END ROUND ONE */}
-      </section>
-   
-
-{/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
-      {details.quarterA.length === 0 && user?.user.role === "admin" && (
-        <Button
-          id="button-addon3"
-          variant="outline-secondary"
-          onClick={handleStartSort}
-        >
-          Start
-        </Button>
-      )}
-
-      {isLoggedIn === true ? (
-        <Button
-          disabled={false}
-          variant="outline-secondary"
-          id="button-addon3"
-          onClick={handleAddTeamToTourney}
-        >
-          signup Team
-        </Button>
-      ) : (
-        <Button disabled={true} onClick={handleAddTeamToTourney}>
-          signup Team
-        </Button>
-      )}
-      {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-
-      {(user?.user.role === "admin" || user?.user._id === details.creator) && (
-        <Button
-          variant="outline-secondary"
-          id="button-addon3"
-          onClick={handleEditLink}
-        >
-          Edit Tourney
-        </Button>
-      )}
-    </div>
-  );
-}
 
 export default TourneyDetails;
