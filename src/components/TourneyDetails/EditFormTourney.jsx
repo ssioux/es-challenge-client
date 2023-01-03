@@ -150,7 +150,7 @@ function EditFormTourney() {
             <div className="bg1">
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q1">
-                  {details?.quarterA[0].name}
+                  {details?.quarterA[0]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ1Input}
@@ -161,7 +161,7 @@ function EditFormTourney() {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q2">
-                  {details?.quarterA[1].name}
+                  {details?.quarterA[1]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ2Input}
@@ -174,7 +174,7 @@ function EditFormTourney() {
             <div className="bg2">
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q3">
-                  {details?.quarterB[0].name}
+                  {details?.quarterB[0]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ3Input}
@@ -185,7 +185,7 @@ function EditFormTourney() {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q4">
-                  {details?.quarterB[1].name}
+                  {details?.quarterB[1]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ4Input}
@@ -209,7 +209,7 @@ function EditFormTourney() {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q6">
-                  {details?.quarterC[1].name}
+                  {details?.quarterC[1]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ6Input}
@@ -222,7 +222,7 @@ function EditFormTourney() {
             <div className="bg2">
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q7">
-                  {details?.quarterD[0].name}
+                  {details?.quarterD[0]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ7Input}
@@ -233,7 +233,7 @@ function EditFormTourney() {
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label htmlFor="Q8">
-                  {details?.quarterD[1].name}
+                  {details?.quarterD[1]?.name}
                 </Form.Label>
                 <Form.Control
                   value={resultQ8Input}
@@ -249,7 +249,7 @@ function EditFormTourney() {
           <h5>Semifinals</h5>
           <div className="semia-bg-edit">
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="S1">{details?.semiA[0].name}</Form.Label>
+              <Form.Label htmlFor="S1">{details?.semiA[0]?.name}</Form.Label>
               <Form.Control
                 value={resultS1Input}
                 onChange={handleResultS1}
@@ -258,7 +258,7 @@ function EditFormTourney() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="S2">{details?.semiA[1].name}</Form.Label>
+              <Form.Label htmlFor="S2">{details?.semiA[1]?.name}</Form.Label>
               <Form.Control
                 value={resultS2Input}
                 onChange={handleResultS2}
@@ -269,7 +269,7 @@ function EditFormTourney() {
             </div>
             <div className="semib-bg-edit">
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="S3">{details?.semiB[0].name}</Form.Label>
+              <Form.Label htmlFor="S3">{details?.semiB[0]?.name}</Form.Label>
               <Form.Control
                 value={resultS3Input}
                 onChange={handleResultS3}
@@ -278,7 +278,7 @@ function EditFormTourney() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="S4">{details?.semiB[1].name}</Form.Label>
+              <Form.Label htmlFor="S4">{details?.semiB[1]?.name}</Form.Label>
               <Form.Control
                 value={resultS4Input}
                 onChange={handleResultS4}
@@ -293,7 +293,7 @@ function EditFormTourney() {
             <h5>Final</h5>
             <div className="final-tourney-edit-bg">
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="F1">{details?.final[0].name}</Form.Label>
+              <Form.Label htmlFor="F1">{details?.final[0]?.name}</Form.Label>
               <Form.Control
                 value={resultF1Input}
                 onChange={handleResultF1}
@@ -302,7 +302,7 @@ function EditFormTourney() {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label htmlFor="F2">{details?.final[1].name}</Form.Label>
+              <Form.Label htmlFor="F2">{details?.final[1]?.name}</Form.Label>
               <Form.Control
                 value={resultF2Input}
                 onChange={handleResultF2}

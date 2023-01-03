@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import Spinner from 'react-bootstrap/Spinner';
 
 function TourneyDetails() {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -75,6 +76,7 @@ function TourneyDetails() {
 
   useEffect(() => {
     getData();
+
   }, []);
 
   const getData = async () => {
@@ -191,7 +193,7 @@ function TourneyDetails() {
   };
 
   if (isFetching === true) {
-    return <h2>...Loading</h2>;
+    return   <Spinner animation="border" variant="light" />
   }
 
   const handleEditLink = (e) => {
