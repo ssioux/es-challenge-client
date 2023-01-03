@@ -9,6 +9,13 @@ body {
 .white-color {
   color: white;
 }
+/************************** ERROR MESSAGE ******************/
+.error-message {
+
+  
+  color: red;
+  font-size: 1rem;
+}
 
 /* * NAV BAR * */
 .nav-bar {

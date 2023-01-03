@@ -10,9 +10,10 @@ function NavBar() {
   const { authenticateUser, isLoggedIn } = useContext(AuthContext);
 
   const handleLogout = () => {
+    
     localStorage.removeItem("authToken");
     authenticateUser();
-    navigate("/");
+
   };
 
   return (
@@ -25,7 +26,7 @@ function NavBar() {
             <Link to="/profile">Profile</Link>
             <Link to="/tourneys">Tourneys</Link>
             <Link to="/teams">Teams</Link>
-            <Link onClick={handleLogout}>Logout</Link>
+            <Link to="/" onClick={handleLogout}>Logout</Link>
           </nav>
         </div>
       ) : (

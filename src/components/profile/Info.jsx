@@ -35,7 +35,8 @@ function Info () {
 useEffect(()=> {
 getData()
 
-},[])
+  
+},[ownTeam?._id])
 
 const getData = async() => {
   try {
