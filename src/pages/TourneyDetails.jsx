@@ -395,7 +395,7 @@ function TourneyDetails() {
           </Button>
         )}
         {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
-        {isLoggedIn === true && (details.teams?.filter((each) => each._id === ownTeam._id)) === undefined  && (
+        {isLoggedIn === true && (details.teams?.filter((each) => each._id === ownTeam._id).length === 0)   && (
           <Button
             disabled={false}
             variant="outline-secondary"
@@ -407,7 +407,7 @@ function TourneyDetails() {
         )}
         {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
 
-        {(details.teams?.filter((each) => each._id === ownTeam._id)) === ownTeam._id && (
+        {details.teams?.filter((each) => each._id === ownTeam._id)[0]?._id === ownTeam._id && (
           <Button
             variant="outline-secondary"
             id="button-addon3"
@@ -416,6 +416,7 @@ function TourneyDetails() {
             Remove Team
           </Button>
         )}
+       { console.log("jajaja",details.teams?.filter((each) => each._id === ownTeam._id))}
 
         {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
 
