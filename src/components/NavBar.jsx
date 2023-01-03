@@ -13,7 +13,7 @@ function NavBar() {
     
     localStorage.removeItem("authToken");
     authenticateUser();
-
+      navigate("/")
   };
 
   return (

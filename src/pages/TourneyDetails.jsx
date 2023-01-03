@@ -25,7 +25,7 @@ function TourneyDetails() {
     "🚀 ~ file: TourneyDetails.jsx:25 ~ TourneyDetails ~ details",
     details
   );
-  const [ownTeam, setOwnTeam] = useState();
+  const [ownTeam, setOwnTeam] = useState(null);
   console.log(
     "🚀 ~ file: TourneyDetails.jsx:27 ~ TourneyDetails ~ ownTeam",
     ownTeam
@@ -92,9 +92,17 @@ function TourneyDetails() {
 
   const getData = async () => {
     try {
-      // ******** Find Team Creator from Api
-      const responseOwnTeam = await findTeamCreatorService();
+      if (isLoggedIn === true) {
+    const responseOwnTeam = await findTeamCreatorService();
       setOwnTeam(responseOwnTeam.data);
+      }
+      
+      
+     
+
+      
+      // ******** Find Team Creator from Api
+    
 
       // ******** Tourney Details from Api
       const response = await detailsTourneyService(tourneyId);
@@ -164,6 +172,7 @@ function TourneyDetails() {
       setScoreF2(tourneyDetails.scoreF2);
 
       setIsFetching(false);
+    
     } catch (error) {
       navigate("/error");
     }
@@ -395,7 +404,7 @@ function TourneyDetails() {
           </Button>
         )}
         {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
-        {isLoggedIn === true && (details.teams?.filter((each) => each._id === ownTeam._id).length === 0)   && (
+        {isLoggedIn === true && (details.teams?.filter((each) => each._id === ownTeam?._id).length === 0)   && (
           <Button
             disabled={false}
             variant="outline-secondary"
@@ -407,7 +416,7 @@ function TourneyDetails() {
         )}
         {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
 
-        {details.teams?.filter((each) => each._id === ownTeam._id)[0]?._id === ownTeam._id && (
+        {details.teams?.filter((each) => each._id === ownTeam?._id)[0]?._id === ownTeam?._id && (
           <Button
             variant="outline-secondary"
             id="button-addon3"
@@ -416,7 +425,7 @@ function TourneyDetails() {
             Remove Team
           </Button>
         )}
-       { console.log("jajaja",details.teams?.filter((each) => each._id === ownTeam._id))}
+       { console.log("jajaja",details.teams?.filter((each) => each._id === ownTeam?._id))}
 
         {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
 
