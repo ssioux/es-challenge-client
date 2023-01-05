@@ -12,6 +12,9 @@ import { AuthContext } from "../../context/auth.context";
 // bootstrap
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import { Button, InputGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+
 
 function TourneyList() {
   const { isLoggedIn } = useContext(AuthContext);
@@ -19,6 +22,8 @@ function TourneyList() {
   // create state to store the data
   const [list, setList] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
+  const [tourneyListSearch, setTourneyListSearch] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getData();
@@ -30,6 +35,7 @@ function TourneyList() {
       console.log(response.data);
 
       setList(response.data);
+      setTourneyListSearch(response.data)
 
       setIsFetching(false);
     } catch (error) {
@@ -37,18 +43,48 @@ function TourneyList() {
     }
   };
 
+  // ***** Tourney Browser
+  const filterTourneys = (filterQuery) => {
+    const filteredArr = list.filter((eachTourney) => {
+      return eachTourney.name.toLowerCase().includes(filterQuery.toLowerCase());
+    });
+    setTourneyListSearch(filteredArr);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchInput(event.target.value);
+    filterTourneys(event.target.value);
+  }
+  
   if (isFetching === true) {
     return <h3>Loading . . .</h3>;
   }
 
   return (
     <div className="general-container">
-      <div className="search-box">
-        <h3>Buscador</h3>
+    <div className="tourney-header">
+      <div className="tourney-header-div1">
+        <h2>Tournaments</h2>
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="search"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            value={searchInput}
+            onChange={handleSearchChange}
+          />
+          <Button variant="outline-secondary" id="button-addon2">
+            Search 
+          </Button>
+        </InputGroup>
       </div>
-
+      <div className="tourney-header-div2">
+        <p> Elige un torneo y regístrate en él, date prisa porque sólamente hay 8 plazas y se completan muy rápido. Si todavía no tienes equipo, pulsa <span>aquí</span> para dirigirte a tu perfil y crear tu propio equipo. Una vez que estés registrado, presta atención a la fechas de cada fase, si no jugáiss la partida dentro de esas fechas, automáticamente quedaréis eliminados.</p>
+      </div>
+    </div>
+     
       <div className="card-container">
-        {list.map((eachTourney) => {
+        {tourneyListSearch.map((eachTourney) => {
           return (
             <Link to={`/list/${eachTourney._id}/details`}>
               <div className="tourney-card">

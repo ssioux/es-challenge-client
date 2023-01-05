@@ -550,18 +550,49 @@ body {
 /*___________________________________________________________________________*/
 
 .general-container {
-  background-color: rgb(139, 139, 139);
+  background-image: url("../public/images/tourneyList-bg.png");
+  background-size: cover;
+  height: 100vh;
 }
 
 .general-container a {
   text-decoration: none;
 }
-.search-box {
-  color: rgb(179, 179, 179);
-  background-color: rgb(255, 81, 0);
+/*____________________________  Tourney Header ____________________________*/
+
+.tourney-header{
+  height: auto;
+  background-color:  rgb(13, 13, 56);
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0px 10px 0px  rgb(255, 255, 255,0.9);
+}
+.tourney-header-div1{
+  width: 35%;
+  display:flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  padding:1% 3% 1% 3%
+}
+.tourney-header-div1 h2{
+color:rgb(243, 243, 243);
+font-size: 50px;
+font-family:monospace
 }
 
+.tourney-header-div2{
+  width: 65%;
+  padding:1% 15% 1% 15%;
+  color:rgb(243, 243, 243);
+
+}
+
+/*____________________________ End Tourney Header____________________________*/
+
+
 .card-container {
+  margin-top:20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -570,13 +601,14 @@ body {
 /*____________________________ Tourney Card ____________________________*/
 
 .tourney-card {
-  background-color: rgb(75, 75, 77);
+  background-color: rgb(2, 2, 28);
   width: 300px;
   height: 400px;
+  border:1px solid white;
   border-radius: 5%;
   margin: 20px;
   transition: all 300ms ease-out;
-  opacity: 0.9;
+  opacity: 0.97;
 }
 
 .tourney-card-image {
@@ -589,20 +621,59 @@ body {
 }
 
 .tourney-card-content {
-
+  display: flex;
+  flex-direction: column;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   height: 65%;
 }
 
 .tourney-card-content div {
-
   border-top: 1px solid white;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tourney-card:hover {
-  box-shadow: 10px 5px 5px white;
+  box-shadow: 10px 5px 5px rgb(253, 253, 253);
   transform: scale(1.05);
   transition: all 300ms ease-in;
   opacity: 1;
 }
+
+/*____________________________ END Tourney Card ____________________________*/
+
+
+@media screen and (max-width:1024px) {
+  .general-container {
+     height:auto;
+  }
+  .tourney-header div{
+    width: 100%;
+  }
+  .tourney-card {
+   
+  }
+}
+
+@media screen and (max-width:768px) {
+  .general-container {
+     height:auto;
+  }
+  .tourney-header div{
+    width: 100%;
+  }
+  
+}
+@media screen and (max-width:481px) {
+  .general-container {
+     height:auto;
+  }
+  .tourney-header div{
+    width: 100%;
+  }
+}
+/***************************** END Tourney List Page ****************************/
+/*___________________________________________________________________________*/
