@@ -14,7 +14,8 @@ import { AuthContext } from "../context/auth.context";
 
 
 function TeamDetails() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
+  console.log("user",user)
 
   const {teamId} = useParams()
 
@@ -37,6 +38,7 @@ function TeamDetails() {
   const getData = async () => {
     try {
         const details = await detailsTeamService(teamId)
+        console.log("🚀 ~ file: TeamDetails.jsx:41 ~ getData ~ details", details)
       
         setTeamDetails(details.data)
         setIsFetching(false)
@@ -59,21 +61,26 @@ if (isFetching === true) {
   }
 
   const handlePasswordChange = (e) => {
+    e.preventDefault()
+
    setPasswordInput(e.target.value)
   }
 
   const handlAcceptTeam = async(e) => {
-    setIsFetching(true)
+    e.preventDefault()
+   
     setPassToggle(false)
     
-    e.preventDefault()
     const pass = {password:passwordInput}
     try {
      await addMemberTeamService(teamId,pass)
       getData()
+      setErrorMessage("")
+      setPasswordInput("")
     } catch (error) {
-      if(error.response && error.response.status === 400){
+      if(error.response.status === 400){
         setErrorMessage(error.response.data.errorMessage)
+        setPasswordInput("")
       }else{
         navigate("/error")
       }
@@ -93,18 +100,28 @@ if (isFetching === true) {
       <ListGroup className="list-group-flush">
       {teamDetails.members.map((eachMember) => {
         return (
-        <ListGroup.Item key={eachMember._id}>{TeamDetails.nameTag} - {eachMember.username}</ListGroup.Item>
+        <ListGroup.Item key={eachMember._id}>{teamDetails.nameTag} - {eachMember.username}</ListGroup.Item>
         ); 
       })}
      </ListGroup>
-     {isLoggedIn && 
-     <Button type="submit" variant="outline-secondary" id="button-addon3" onClick={handleJoinTeam}>
+     {teamDetails?.members.filter((eachMember) => {
+      return eachMember?._id === user?.user?._id
+     })[0]?._id === user?.user?.id && isLoggedIn ? (
+
+      <Button type="submit" variant="outline-secondary" id="button-addon3" onClick={handleJoinTeam}>
         Join Team
         </Button>
-     }
+     ):(
+      <Button type="submit" variant="outline-secondary" id="button-addon3" onClick={handleJoinTeam}>
+        Remove from Team
+        </Button>
+     )}
+     
+     
         {passToggle &&  
         <InputGroup className="mb-3">
           <Form.Control
+            type="password"
             placeholder="Password"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -115,6 +132,7 @@ if (isFetching === true) {
             Accept
           </Button>
         </InputGroup> }
+        
           {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
     </Card>
      
