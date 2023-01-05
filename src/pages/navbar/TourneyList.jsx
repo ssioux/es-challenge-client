@@ -42,41 +42,56 @@ function TourneyList() {
   }
 
   return (
-    <div>
-      <h3>Tourney List</h3>
+    <div className="general-container">
+      <div className="search-box">
+        <h3>Buscador</h3>
+      </div>
 
-      {list.map((eachTourney) => {
-        return (
-          // <div className="card">
-          //   <div className="card-image">
-          //     <img src={eachTourney.game.picture} alt="Card image" />
-          //   </div>
-          //   <div className="card-content">
-          //     <h2>{eachTourney.name}</h2>
-          //     <p>Game: {eachTourney.game.name}</p>
-          //     <p>teams: {eachTourney.teams.length}/8</p>
-          //     <p>Description: {eachTourney.description}</p>
-          //   </div>
-          // </div>
+      <div className="card-container">
+        {list.map((eachTourney) => {
+          return (
+            <Link to={`/list/${eachTourney._id}/details`}>
+              <div className="tourney-card">
+                <div className="tourney-card-image">
+                  <img src={eachTourney.game.picture} alt="Card image" />
+                </div>
 
-           <Card key={eachTourney._id} style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
-           <div style={{display:"flex"}}>
-            <div width="20rem">
-               <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
-            </div>
-            <div>
-               <Card.Body style={{width:"400px"}}>
-                <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
+                <div className="tourney-card-content">
+                  <div>
+                    <h4>{eachTourney.name}</h4>
+                  </div>
+                  <div>
+                    <p>Game: {eachTourney.game.name}</p>
+                  </div>
+                  <div>
+                    <p>teams: {eachTourney.teams.length}/8</p>
+                  </div>
+                  <div>
+                    <p>Description: {eachTourney.description}</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
 
-                <Card.Text>Game:{eachTourney.game.name}</Card.Text>
-                <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
-                <Card.Text>Description:{eachTourney.description}</Card.Text>
-               </Card.Body>
-            </div>
-           </div>
-           </Card>
-        );
-      })}
+            //  <Card key={eachTourney._id} style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
+            //  <div style={{display:"flex"}}>
+            //   <div width="20rem">
+            //      <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
+            //   </div>
+            //   <div>
+            //      <Card.Body style={{width:"400px"}}>
+            //       <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
+
+            //       <Card.Text>Game:{eachTourney.game.name}</Card.Text>
+            //       <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
+            //       <Card.Text>Description:{eachTourney.description}</Card.Text>
+            //      </Card.Body>
+            //   </div>
+            //  </div>
+            //  </Card>
+          );
+        })}
+      </div>
     </div>
   );
 }

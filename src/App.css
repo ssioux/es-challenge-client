@@ -11,8 +11,6 @@ body {
 }
 /************************** ERROR MESSAGE ******************/
 .error-message {
-
-  
   color: red;
   font-size: 1rem;
 }
@@ -62,7 +60,7 @@ body {
 /* * MAIN PAGE * */
 .main-page {
   display: flex;
-  background-color: white;
+  background-color: rgb(238, 228, 228);
   background-size: cover;
   height: 90vh;
   width: 100vw;
@@ -446,6 +444,7 @@ body {
   display: flex;
   justify-content: center;
   color: yellow;
+  border: 4px solid yellow;
 }
 
 .tourney-edit-form h5 {
@@ -453,10 +452,14 @@ body {
   border: 2px outset black;
   padding: 2%;
 }
+.tourney-edit-form #quarter-edit h5 {
+  color: red;
+}
 
 #quarter-edit {
   padding: 2%;
   border-radius: 2%;
+  border: 4px solid rgb(255, 81, 0);
 }
 
 #semi-edit {
@@ -465,6 +468,7 @@ body {
 
   padding: 5%;
   border-radius: 2%;
+  border: 4px solid black;
 }
 
 #final-edit {
@@ -472,6 +476,7 @@ body {
   height: 10%;
   padding: 5%;
   border-radius: 2%;
+  border: 4px solid rgb(25, 0, 255);
 }
 .bg1 {
   background-color: #b6b6b6;
@@ -485,6 +490,8 @@ body {
   padding: 5%;
   border-radius: 2%;
   margin: 3%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .semia-bg-edit {
@@ -539,39 +546,63 @@ body {
   border-radius: 2%;
 }
 
-/*****************************  Card ****************************/
+/*****************************  Tourney List Page ****************************/
+/*___________________________________________________________________________*/
 
-.card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-  display: flex; /* Utiliza flexbox para posicionar los elementos */
-  margin: 10px;
-  padding: 20px;
+.general-container {
+  background-color: rgb(139, 139, 139);
+}
+
+.general-container a {
+  text-decoration: none;
+}
+.search-box {
+  color: rgb(179, 179, 179);
+  background-color: rgb(255, 81, 0);
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/*____________________________ Tourney Card ____________________________*/
+
+.tourney-card {
+  background-color: rgb(75, 75, 77);
   width: 300px;
+  height: 400px;
+  border-radius: 5%;
+  margin: 20px;
+  transition: all 300ms ease-out;
+  opacity: 0.9;
 }
 
-.card img {
-  border-radius: 4px 0 0 4px;
+.tourney-card-image {
+  width: 100%;
+  height: 35%;
+}
+
+.tourney-card-image img {
   height: 100%;
-  object-fit: cover;
 }
 
-.card-content {
-  padding: 20px;
+.tourney-card-content {
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  height: 65%;
 }
 
-.card-content h2 {
-  font-size: 18px;
-  margin: 0;
+.tourney-card-content div {
+
+  border-top: 1px solid white;
 }
 
-.card-content p {
-  font-size: 14px;
-  margin: 10px 0;
-}
-
-.card:hover {
-  transform: scale(1.1); /* Aumenta el tamaño de la imagen en un 10% */
-  transition: all 0.3s ease-in-out; /* Suaviza la transición */
+.tourney-card:hover {
+  box-shadow: 10px 5px 5px white;
+  transform: scale(1.05);
+  transition: all 300ms ease-in;
+  opacity: 1;
 }
