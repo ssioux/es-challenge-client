@@ -33,6 +33,8 @@ function Signup() {
       } catch (error) {
         if ((error.response && error.response.status === 406) || (error.response && error.response.status === 400)) {
           setErrorMessage(error.response.data.errorMessage)
+        }else{
+          navigate("/error")
         }
        
       }

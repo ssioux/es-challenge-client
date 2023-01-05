@@ -21,8 +21,8 @@ const findTeamCreatorService = () => {
     return service.get("/team/find-creator")
 }
 
-const addMemberTeamService = (teamId) => {
-    return service.patch(`/team/${teamId}/add-member`)
+const addMemberTeamService = (teamId,pass) => {
+    return service.patch(`/team/${teamId}/add-member`,pass)
 }
 
 const findTeamUserService = () => {

@@ -1,20 +1,31 @@
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { addMemberTeamService, detailsTeamService } from "../services/team.services"
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "react-bootstrap/Button"
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import { InputGroup } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import { AuthContext } from "../context/auth.context";
+
+
 
 
 
 function TeamDetails() {
+  const { isLoggedIn } = useContext(AuthContext);
+
   const {teamId} = useParams()
 
   const navigate = useNavigate()
 
   const [teamDetails, setTeamDetails] = useState()
   const [isFetching, setIsFetching] = useState(true)
+  const [passToggle, setPassToggle] = useState(false)
+  const [passwordInput, setPasswordInput] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
+
   
 
   useEffect(() => {
@@ -41,18 +52,31 @@ if (isFetching === true) {
 }
 
   const handleJoinTeam = async(e) => {
-    setIsFetching(true)
-    e.preventDefault()
-    try {
-     await addMemberTeamService(teamId)
-    //  const details = await detailsTeamService(teamId)
-      getData()
-    //  setTeamDetails(details.data)
+ 
+    setPassToggle(true)
     
 
-      // navigate(`/team/${teamId}/details`)
+  }
+
+  const handlePasswordChange = (e) => {
+   setPasswordInput(e.target.value)
+  }
+
+  const handlAcceptTeam = async(e) => {
+    setIsFetching(true)
+    setPassToggle(false)
+    
+    e.preventDefault()
+    const pass = {password:passwordInput}
+    try {
+     await addMemberTeamService(teamId,pass)
+      getData()
     } catch (error) {
-      navigate("/error")
+      if(error.response && error.response.status === 400){
+        setErrorMessage(error.response.data.errorMessage)
+      }else{
+        navigate("/error")
+      }
     }
   }
   return (
@@ -73,9 +97,25 @@ if (isFetching === true) {
         ); 
       })}
      </ListGroup>
+     {isLoggedIn && 
      <Button type="submit" variant="outline-secondary" id="button-addon3" onClick={handleJoinTeam}>
         Join Team
         </Button>
+     }
+        {passToggle &&  
+        <InputGroup className="mb-3">
+          <Form.Control
+            placeholder="Password"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            value={passwordInput}
+            onChange={handlePasswordChange}
+          />
+          <Button type="submit" variant="outline-secondary" id="button-addon3" onClick={handlAcceptTeam}>
+            Accept
+          </Button>
+        </InputGroup> }
+          {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
     </Card>
      
        
