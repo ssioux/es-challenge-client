@@ -25,10 +25,13 @@ const addMemberTeamService = (teamId,pass) => {
     return service.patch(`/team/${teamId}/add-member`,pass)
 }
 
+const removeMemberTeamService = (teamId) => {
+    return service.patch(`/team/${teamId}/remove-member`)
+}
+
 const findTeamUserService = () => {
     return service.get("/team/find-team-user")
 }
-
 
 
 export{
@@ -39,5 +42,6 @@ export{
     deleteTeamService,
     findTeamCreatorService,
     addMemberTeamService,
-    findTeamUserService
+    findTeamUserService,
+    removeMemberTeamService
 }
