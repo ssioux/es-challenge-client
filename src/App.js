@@ -13,8 +13,7 @@ import NotFound from "./pages/error/NotFound";
 import Profile from "./pages/navbar/Profile";
 import Signup from "./pages/navbar/Signup";
 import TeamDetails from "./pages/TeamDetails";
-import TourneyDetails from "./pages/TourneyDetails";
-
+import TeamList from "./pages/navbar/TeamList";
 
 // components
 import NavBar from "./components/NavBar";
@@ -22,9 +21,10 @@ import CreateGameForm from "./components/profile/CreateGameForm";
 import CreateTeamForm from "./components/profile/CreateTeamForm";
 import CreateTourneyForm from "./components/profile/CreateTourneyForm";
 import InfoEdit from "./components/profile/InfoEdit";
-import EditFormTourney from "./components/TourneyDetails/EditFormTourney";
-import TeamList from "./pages/navbar/TeamList";
+import EditFormTourney from "./components/Tourney/EditFormTourney";
+
 import TourneyList from "./pages/navbar/TourneyList";
+import TourneyMain from "./components/Tourney/TourneyMain.jsx"
 
 
 
@@ -44,7 +44,7 @@ function App() {
         <Route path="/tourneys" element={<TourneyList />} />
 
         <Route path="/team/:teamId/details" element={<TeamDetails />} />
-        <Route path="/list/:tourneyId/details" element={<TourneyDetails />} />
+        <Route path="/list/:tourneyId/details" element={<TourneyMain />} />
         <Route path="/list/:tourneyId/details/edit" element={<EditFormTourney />} />
         <Route path="/teams" element={<TeamList />} />
         <Route path="/tourney/create" element={<CreateTourneyForm />} />

@@ -95,11 +95,19 @@ body {
 
 body {
   font-family: "Istok Web", sans-serif;
-  background: url("../public/images/bg-chall-bw4.jpg") no-repeat #000;
+  background-color:#464646;
   background-size: cover;
   min-height: 100%;
   margin: 0;
 }
+
+.tourney-list {
+  background: url("../public/images/tourneyDetails.png") no-repeat #000;
+  min-height: 100vh;
+ background-position: center;
+  background-size: cover;
+}
+
 .hero {
   position: relative;
   text-align: center;
@@ -140,8 +148,9 @@ body {
   margin: -25px 0 25px;
 }
 .hero p.year i {
-  font-size: 14px;
+  font-size: 24px;
   vertical-align: middle;
+  margin-left: 18px;
 }
 #bracket {
   overflow: hidden;
@@ -207,8 +216,7 @@ body {
   width: 95%;
   width: 30.8333%\9;
 }
-.split-two {
-}
+
 .split-one .round {
   margin: 0 2.5% 0 0;
 }
@@ -255,16 +263,16 @@ body {
 .round-details {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 13px;
-  color: #2c7399;
+  color: #f6f9fa;
   text-transform: uppercase;
   text-align: center;
   height: 40px;
 }
 .champion li,
 .round li {
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   box-shadow: none;
-  opacity: 0.45;
+  opacity: 1;
 }
 .current li {
   opacity: 1;
@@ -346,7 +354,7 @@ body {
   font-size: 10px;
   letter-spacing: 2px;
   font-family: "Istok Web", sans-serif;
-  color: #3f915f;
+  color: #06086d;
 }
 
 @media screen and (min-width: 981px) and (max-width: 1099px) {

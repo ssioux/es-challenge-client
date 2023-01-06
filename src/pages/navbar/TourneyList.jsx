@@ -86,7 +86,7 @@ function TourneyList() {
       <div className="card-container">
         {tourneyListSearch.map((eachTourney) => {
           return (
-            <Link to={`/list/${eachTourney._id}/details`}>
+            <Link key={eachTourney._id} to={`/list/${eachTourney._id}/details`}>
               <div className="tourney-card">
                 <div className="tourney-card-image">
                   <img src={eachTourney.game.picture} alt="Card image" />
@@ -109,22 +109,6 @@ function TourneyList() {
               </div>
             </Link>
 
-            //  <Card key={eachTourney._id} style={{ height: "12rem" ,width: '40rem', margin:"auto", opacity: "0.6"}}>
-            //  <div style={{display:"flex"}}>
-            //   <div width="20rem">
-            //      <Card.Img  src={eachTourney.game.picture} style={{width: "60%", marginTop: "25px"}}/>
-            //   </div>
-            //   <div>
-            //      <Card.Body style={{width:"400px"}}>
-            //       <Card.Title><Link to={`/list/${eachTourney._id}/details`}>{eachTourney.name}</Link></Card.Title>
-
-            //       <Card.Text>Game:{eachTourney.game.name}</Card.Text>
-            //       <Card.Text>teams:{eachTourney.teams.length}/8</Card.Text>
-            //       <Card.Text>Description:{eachTourney.description}</Card.Text>
-            //      </Card.Body>
-            //   </div>
-            //  </div>
-            //  </Card>
           );
         })}
       </div>
