@@ -683,5 +683,78 @@ font-family:monospace
     width: 100%;
   }
 }
-/***************************** END Tourney List Page ****************************/
+/*****************************  Tourney List Teams Page ****************************/
 /*___________________________________________________________________________*/
+.tourney-list-teams{
+  background-color: #f9f1f1;
+  width:100vw;
+  height: 100vh;
+}
+.tourney-list-teams-header{
+  padding:20px;
+  height: 30vh;
+  background-color: #5cca87;
+  display: flex;
+  justify-content: center;
+  
+
+
+}
+.tourney-list-teams-header img{
+height: 80%;
+}
+.game-tourney-list{
+  width:25%;
+  
+}
+.buttons{
+  background-color: #000;
+  width:25%
+}
+
+/* .tourney-list-tourney-name{
+  width:70%;
+} */
+.tourney-list-tourney-name{
+ 
+  width: 50%;
+}
+.tourney-list-tourney-name h1{
+  font-size: 100px;
+}
+
+.start-tourney-btn{
+  
+  background-color:rgb(255, 71, 47);
+
+
+}
+.add-team-btn{
+ 
+  background-color:rgb(255, 151, 47);
+ 
+}
+.tourney-list-team-list{
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:20px;
+}
+@media screen and (max-width:1024px) {
+  .tourney-list-teams-header{
+    height:auto;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .start-tourney-btn{
+  width:100%;
+}
+.add-team-btn{
+  width:100%;
+}
+
+  
+  
+}

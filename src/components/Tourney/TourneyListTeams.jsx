@@ -1,5 +1,10 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Carousel from 'react-multi-carousel';
+
+
+
 import {
   addTeamToTourneyService,
   detailsTourneyService,
@@ -13,6 +18,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import Spinner from "react-bootstrap/Spinner";
+import { ListGroup } from "react-bootstrap";
 
 function TourneyListTeams(props) {
   console.log(props.mainData);
@@ -104,45 +110,118 @@ function TourneyListTeams(props) {
       }
     }
   };
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
-    <div>
-      {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
-      {details.quarterA.length === 0 && user?.user.role === "admin" && (
-        <Button
-          id="button-addon3"
-          variant="outline-secondary"
-          onClick={handleStartSort}
-        >
-          Start
-        </Button>
-      )}
-      {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
-      {isLoggedIn === true &&
-        details.teams?.filter((each) => each._id === ownTeam?._id).length ===
-          0 && (
-          <Button
-            disabled={false}
-            variant="outline-secondary"
-            id="button-addon3"
-            onClick={handleAddTeamToTourney}
-          >
-            Register Team
-          </Button>
-        )}
-      {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
+    <div className="tourney-list-teams">
+      <div className="tourney-list-teams-header">
+        <div className="game-tourney-list">
+          <img src={details.game.picture} alt="gamePicture" />
+          <h2>{details.game.name}</h2>
+        </div>
+        <div className="tourney-list-tourney-name">
+          <h1>{details.name}</h1>
+        </div>
+        <div className="buttons">
+          {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
+          {details.quarterA.length === 0 && user?.user.role === "admin" && (
+            <div className="start-tourney-btn">
+              <p>Press Start to begins the tourney</p>
+              <Button
+                id="button-addon3"
+                variant="outline-secondary"
+                onClick={handleStartSort}
+              >
+                Start
+              </Button>
+            </div>
+          )}
+          {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
+          {isLoggedIn === true &&
+            details.teams?.filter((each) => each._id === ownTeam?._id)
+              .length === 0 && (
+              <Button
+                disabled={false}
+                variant="outline-secondary"
+                id="button-addon3"
+                onClick={handleAddTeamToTourney}
+              >
+                Register Team
+              </Button>
+            )}
+          {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
 
-      {isLoggedIn === true && findOwnTeamTourney[0]?._id === ownTeam?._id && (
-        <Button
-          variant="outline-secondary"
-          id="button-addon3"
-          onClick={handleRemoveTeamFromTourney}
-        >
-          Remove Team
-        </Button>
-      )}
+          {isLoggedIn === true &&
+            findOwnTeamTourney[0]?._id === ownTeam?._id && (
+              <div className="add-team-btn">
+                <p>
+                  If you want remove your team from the tourney press Remove
+                  team button
+                </p>
+                <Button
+                  variant="outline-secondary"
+                  id="button-addon3"
+                  onClick={handleRemoveTeamFromTourney}
+                >
+                  Remove Team
+                </Button>
+              </div>
+            )}
 
-      {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
+          {errorMessage !== "" && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          )}
+        </div>
+      </div>
+      <div className="tourney-list-team-list">
+        {details.teams.map((eachTeam) => {
+          return(
+            <Card
+              key={eachTeam._id}
+              style={{ width: "12rem", marginBotton: "20px", opacity: "0.7" }}
+            >
+              <Card.Img variant="top" src={eachTeam.picture} />
+              <Card.Body>
+                <Card.Title>{eachTeam.name}</Card.Title>
+                <Card.Text>Members:</Card.Text>
+              </Card.Body>
+
+              <ListGroup className="list-group-flush">
+                {eachTeam.members.map((eachMember) => {
+                  return (
+                    <ListGroup.Item key={eachMember._id}>
+                      {eachTeam.nameTag} - {eachMember.username}
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
+              <Card.Body>
+                <Link to={`/team/${eachTeam._id}/details`}>Team Details</Link>
+                {/* <Card.Link href="#">Another Link</Card.Link> */}
+              </Card.Body>
+            </Card>
+          )
+        })}
+      </div>
+      
     </div>
   );
 }
