@@ -1,10 +1,13 @@
+// React Hooks
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
+// Bootstrap components
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Carousel from 'react-multi-carousel';
-
-
-
+import Spinner from "react-bootstrap/Spinner";
+import { ListGroup } from "react-bootstrap";
+// Axios Services for API Rest
 import {
   addTeamToTourneyService,
   detailsTourneyService,
@@ -13,15 +16,8 @@ import {
 } from "../../services/tourney.services";
 import { findTeamCreatorService } from "../../services/team.services";
 
-import { useEffect, useState } from "react";
-
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
-import Spinner from "react-bootstrap/Spinner";
-import { ListGroup } from "react-bootstrap";
-
 function TourneyListTeams(props) {
-  console.log(props.mainData);
+  // Hooks
   const { isLoggedIn, user } = useContext(AuthContext);
   const { tourneyId } = useParams();
   const navigate = useNavigate();
@@ -35,6 +31,7 @@ function TourneyListTeams(props) {
     getData();
   }, []);
 
+  // Axios Data
   const getData = async () => {
     try {
       // ******** Find Team Creator from Api
@@ -50,9 +47,6 @@ function TourneyListTeams(props) {
 
       setDetails(tourneyDetails);
 
-      // EN DETAILS TIENEN TODA LA INFO DE LOS TIERS DEL TORNEO
-      // NO HARIA FALTA ESTADOS PARA CADA UNO
-
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -63,6 +57,7 @@ function TourneyListTeams(props) {
     return <Spinner animation="border" variant="light" />;
   }
 
+  // ********************  FUNCTIONS ***************
   // Find the team of the current user inscribed in the tourney
   const findOwnTeamTourney = details?.teams?.filter(
     (each) => each._id === ownTeam?._id
@@ -73,7 +68,7 @@ function TourneyListTeams(props) {
     e.preventDefault();
     try {
       const response = await sortTeamsToTourneyService(tourneyId);
-
+      // Reload Data from Main to change to the Tourneybracket Component
       props.mainData();
 
       navigate(`/list/${tourneyId}/details`);
@@ -109,25 +104,6 @@ function TourneyListTeams(props) {
         setErrorMessage(error.response.data.errorMessage);
       }
     }
-  };
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
   };
 
   return (
@@ -193,7 +169,7 @@ function TourneyListTeams(props) {
       </div>
       <div className="tourney-list-team-list">
         {details.teams.map((eachTeam) => {
-          return(
+          return (
             <Card
               key={eachTeam._id}
               style={{ width: "12rem", marginBotton: "20px", opacity: "0.7" }}
@@ -215,13 +191,11 @@ function TourneyListTeams(props) {
               </ListGroup>
               <Card.Body>
                 <Link to={`/team/${eachTeam._id}/details`}>Team Details</Link>
-                {/* <Card.Link href="#">Another Link</Card.Link> */}
               </Card.Body>
             </Card>
-          )
+          );
         })}
       </div>
-      
     </div>
   );
 }

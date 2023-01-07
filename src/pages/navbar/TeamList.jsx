@@ -72,7 +72,7 @@ function TeamList() {
 
     //   </ListGroup>
     // </div>
-    <div>
+    <div id="teams-container">
       {/* <CardGroup> */}
       <div style={{ display: "block", width: "25%", margin: "auto" }}>
         <h5 style={{ color: "white" }}>Find your team and sign up</h5>

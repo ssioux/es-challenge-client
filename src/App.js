@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import IsPrivate from "./components/IsPrivate";
 
-
 // pages
 import Error from "./pages/error/Error";
 import Home from "./pages/navbar/Home";
@@ -24,10 +23,8 @@ import InfoEdit from "./components/profile/InfoEdit";
 import EditFormTourney from "./components/Tourney/EditFormTourney";
 
 import TourneyList from "./pages/navbar/TourneyList";
-import TourneyMain from "./components/Tourney/TourneyMain.jsx"
-
-
-
+import TourneyMain from "./components/Tourney/TourneyMain.jsx";
+import About from "./pages/navbar/About";
 
 function App() {
   return (
@@ -35,25 +32,36 @@ function App() {
       <NavBar />
 
       <Routes>
+        {/*  ********* Auth Pages ********/}
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/profile"
-          element={<IsPrivate><Profile /></IsPrivate>}/>
+          element={
+            <IsPrivate>
+              <Profile />
+            </IsPrivate>
+          }
+        />
+        <Route path="/profile/:userId/edit" element={<InfoEdit />} />
+
+        {/*  ********* Tourney Pages ********/}
         <Route path="/tourneys" element={<TourneyList />} />
-
-        <Route path="/team/:teamId/details" element={<TeamDetails />} />
         <Route path="/list/:tourneyId/details" element={<TourneyMain />} />
-        <Route path="/list/:tourneyId/details/edit" element={<EditFormTourney />} />
-        <Route path="/teams" element={<TeamList />} />
+        <Route
+          path="/list/:tourneyId/details/edit"
+          element={<EditFormTourney />}
+        />
         <Route path="/tourney/create" element={<CreateTourneyForm />} />
-        <Route path="/game/create" element={<CreateGameForm />} />
+        {/*  ********* Team Pages ********/}
+        <Route path="/team/:teamId/details" element={<TeamDetails />} />
         <Route path="/team/create" element={<CreateTeamForm />} />
-        <Route path="/profile/:userId/edit" element={<InfoEdit/>} />
-   
-
-
+        <Route path="/teams" element={<TeamList />} />
+        {/*  ********* Game Pages ********/}
+        <Route path="/game/create" element={<CreateGameForm />} />
+        {/*  ********* About Pages ********/}
+        <Route path="/about" element={<About />} />
         {/* Error Pages */}
 
         <Route path="/error" element={<Error />} />
