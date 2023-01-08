@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  background-color: #bec0ca;
 }
 
 .white-color {
@@ -70,9 +71,12 @@ body {
   width: 100%;
   background-color: #bec0ca;
   background-repeat: repeat;
+  background-size: cover;
 }
 
-
+.home img {
+width: 80%;
+}
 
 /* .main-page {
   display: flex;

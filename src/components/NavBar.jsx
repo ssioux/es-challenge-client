@@ -19,9 +19,11 @@ function NavBar() {
     <div className="nav-bar">
       {isLoggedIn === true ? (
         <div className="full-nav">
+          
           <Link to="/" id="brand">
-            eS-Challenge
+            <img src="../../images/nav-logo.png" alt="nav-logo" width={30} style={{marginBottom: "10px" }} /> eS-Challenge
           </Link>
+          
           <nav>
             <Link to="/">Home</Link>
 
