@@ -601,7 +601,8 @@ body {
 /*___________________________________________________________________________*/
 
 .general-container {
-  background-image: url("../public/images/tourneyList-bg.png");
+  /* background-image: url("../public/images/tourneyList-bg.png"); */
+  background-color: #bec0ca;
   background-size: cover;
   height: 100vh;
 }
