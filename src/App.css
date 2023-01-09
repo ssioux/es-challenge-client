@@ -743,7 +743,7 @@ body {
     width: 100%;
   }
 }
-/*****************************  Tourney List Teams Page ****************************/
+/*****************************  Tourney - Teams Page ****************************/
 /*___________________________________________________________________________*/
 .tourney-list-teams {
   background-color: #f9f1f1;
@@ -804,3 +804,63 @@ body {
     width: 100%;
   }
 }
+
+
+/********************  Teams List Page ****************************/
+/*___________________________________________________________________________*/
+
+.teams-container{
+  padding-top: 40px;
+  background-color: #bec0ca;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:20px;
+}
+.teams-container a{
+  text-decoration:none;
+ 
+}
+.search-team{
+  padding-top: 20px;
+display:block;
+width: 25%;
+margin:auto;
+}
+.search-team h5{
+  color: #000d56;
+}
+.card-team{
+  background-color: white;
+  height:400px;
+ width:14rem;
+ opacity:1; 
+ gap:40px;
+ transition: all 300ms ease-out;
+
+}
+.card-team:hover {
+  box-shadow: 10px 5px 5px #525462;
+  transform: scale(1.05);
+  transition: all 300ms ease-in;
+  opacity: 1;
+}
+.div-img{
+  height:18rem;
+  display:flex;
+  align-items: center;
+}
+.card-team img{
+opacity:1;
+}
+.name{
+  height: 30%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-team h5{
+  color:#000d56;
+  /* font-family: Orbitron; */
+}
+
