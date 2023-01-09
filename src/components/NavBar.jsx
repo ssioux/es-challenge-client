@@ -16,44 +16,51 @@ function NavBar() {
   };
 
   return (
-    <div className="nav-bar">
+    <nav className="nav-bar">
       {isLoggedIn === true ? (
         <div className="full-nav">
-          
-          <Link to="/" id="brand">
-            <img src="../../images/nav-logo.png" alt="nav-logo" width={30} style={{marginBottom: "10px" }} /> eS-Challenge
-          </Link>
-          
-          <nav>
+          <div>
+            <img src="../../images/nav-logo.png" alt="nav-logo" /> eS-Challenge
+          </div>
+
+          <div>
             <Link to="/">Home</Link>
 
             <Link to="/tourneys">Tourneys</Link>
             <Link to="/teams">Teams</Link>
             <Link to="/about">About</Link>
             <Link to="/profile">Profile</Link>
-            <Link to="#"></Link>
+          </div>
+
+          <div id="auth">
             <Link to="/" onClick={handleLogout}>
               Logout
             </Link>
-          </nav>
+          </div>
         </div>
       ) : (
         <div className="full-nav">
-          <Link href="/" id="brand">
-            eS-Challenge
-          </Link>
-          <nav>
+          <div>
+            <Link href="/" id="brand">
+              <img src="../../images/nav-logo.png" alt="nav-logo" />{" "}
+              eS-Challenge
+            </Link>
+          </div>
+
+          <div>
             <Link to="/">Home</Link>
             <Link to="/tourneys">Tourneys</Link>
             <Link to="/teams">Teams</Link>
             <Link to="/about">About</Link>
-            <Link to="#"></Link>
+          </div>
+
+          <div id="auth">
             <Link to="/signup">Signup</Link>
             <Link to="/login">login</Link>
-          </nav>
+          </div>
         </div>
       )}
-    </div>
+    </nav>
   );
 }
 
