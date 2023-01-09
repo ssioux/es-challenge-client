@@ -49,50 +49,33 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Log In</h1>
-
-<Form style={{display:"block" , width:"25%",color:"white", margin:"auto"}}>
-      <fieldset >
+    <section id="log-in-container">
+     
+      <div className="log-in-picture">
+        <img src="../../../images/login-pic3.jpg" alt="log-in-logo" />
+        </div>
       
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="username">Em@il:</Form.Label>
-          <Form.Control value ={email} onChange={handleEmailChange} id="disabledTextInput" placeholder="Em@il:" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control value ={password} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
-        </Form.Group>
+     <div className="log-in-container">
+        <form>
+           <h3>Log-In</h3>
+
+          <label htmlFor="email">Em@il:</label>
+          <input value ={email} onChange={handleEmailChange} name="email" placeholder="Em@il:" />
+        
+        
+          <label htmlFor="password">Password</label>
+          <input value ={password} type="password" onChange={handlePasswordChange} name="password" placeholder="password" />
+       
         
         {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
     
         <Button type="submit" onClick={handleLogin} variant="outline-secondary" id="button-addon3">Login</Button>
-      </fieldset>
-    </Form>
+     
+    </form>
+</div>
 
-
-      {/* <form onSubmit={handleLogin}>
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-
-        <button type="submit">Login</button>
-
-        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </form> */}
-    </div>
+   
+    </section>
   );
 }
 

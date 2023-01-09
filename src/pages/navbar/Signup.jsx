@@ -52,15 +52,15 @@ function Signup() {
         
         
           <label htmlFor="username">User Name</label>
-          <input value ={usernameInput} onChange={handleUsernameChange} id="disabledTextInput" placeholder="userName" />
+          <input value ={usernameInput} onChange={handleUsernameChange}  placeholder="userName" />
         
         
           <label htmlFor="username">Em@il:</label>
-          <input value ={emailInput} onChange={handleEmailChange} id="disabledTextInput" placeholder="Em@il:" />
+          <input value ={emailInput} onChange={handleEmailChange}  placeholder="Em@il:" />
        
         
           <label htmlFor="password">Password</label>
-          <input value ={passwordInput} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
+          <input value ={passwordInput} type="password" onChange={handlePasswordChange}  placeholder="password" />
         
         
         {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
