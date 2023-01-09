@@ -7,16 +7,15 @@ body {
   background-color: #bec0ca;
 }
 
-.white-color {
-  color: white;
-}
 /************************** ERROR MESSAGE ******************/
 .error-message {
+  margin-top:20px;
   color: red;
   font-size: 1rem;
 }
 
-/* * NAV BAR * */
+/*****************************       NAV BAR      ****************************/
+/*___________________________________________________________________________*/
 .nav-bar {
   position: sticky;
   background-color: rgb(28, 28, 28);
@@ -42,10 +41,7 @@ body {
   padding: 10px;
   /* transition: all 0.3s ease-out; */
 }
-/* .brand {
-  text-align: center;
-  width: 20%;
-} */
+
 .nav-bar div nav {
   width: 80%;
   display: flex;
@@ -68,10 +64,176 @@ body {
     justify-content: center;
   }
 }
+/*****************************     SIGN-UP PAGE   ****************************/
+/*___________________________________________________________________________*/
+#sign-up-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #bec0ca;
+  width: 65%;
+  align-items: center;
+}
 
-/* * end of  NAV BAR * */
+.sign-up-container form {
+  width: 300px;
+  color: white;
+  margin: auto;
+}
 
-/* * MAIN PAGE * */
+.sign-up-container form input::placeholder {
+  font-size: 0.7rem;
+  color: white;
+  font-style: italic;
+}
+.sign-up-container form input:focus::placeholder {
+  font-size: 0.7rem;
+  color: red;
+  font-style: italic;
+}
+.sign-up-container form input {
+  width:100%;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #000d56;
+  color: white;
+}
+.sign-up-container form input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  background-color: #000d56;
+  color: white;
+}
+.sign-up-container form h3 {
+  display:flex;
+  font-family:'Courier New', Courier, monospace;
+  border: 1px solid  #000d56;
+  justify-content: center;
+ margin-bottom: 40px;
+  color: #000d56;
+  box-shadow:rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;;
+}
+
+.sign-up-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  
+  background-color: rgb(163, 19, 19);
+  color: white;
+  border-radius: 5px;
+}
+.sign-up-picture {
+  
+  background-color: #2c7399;
+  width: 35%;
+}
+.sign-up-picture img {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .sign-up-picture {
+    display:none;
+  }
+  .sign-up-container {
+    align-items:flex-start;
+    width:100%;
+  }
+}
+
+/*****************************     LOG-IN PAGE   ****************************/
+/*___________________________________________________________________________*/
+#log-in-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.log-in-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #bec0ca;
+  width: 65%;
+  align-items: center;
+}
+
+.log-in-container form {
+  width: 300px;
+  color: white;
+  margin: auto;
+}
+
+.log-in-container form input::placeholder {
+  font-size: 0.7rem;
+  color: white;
+  font-style: italic;
+}
+.log-in-container form input:focus::placeholder {
+  font-size: 0.7rem;
+  color: red;
+  font-style: italic;
+}
+.log-in-container form input {
+  width:100%;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #000d56;
+  color: white;
+}
+.log-in-container form input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  background-color: #000d56;
+  color: white;
+}
+.log-in-container form h3 {
+  display:flex;
+  font-family:'Courier New', Courier, monospace;
+  border: 1px solid  #000d56;
+  justify-content: center;
+ margin-bottom: 40px;
+  color: #000d56;
+  box-shadow:rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;;
+}
+
+.log-in-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  
+  background-color: rgb(163, 19, 19);
+  color: white;
+  border-radius: 5px;
+}
+.log-in-picture {
+  
+  background-color: #2c7399;
+  width: 35%;
+}
+.log-in-picture img {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .log-in-picture {
+    display:none;
+  }
+  .log-in-container {
+    align-items:flex-start;
+    width:100%;
+  }
+}
+
+/*****************************     HOME PAGE     ****************************/
+/*___________________________________________________________________________*/
 
 .home {
   height: 100vh;
@@ -85,37 +247,6 @@ body {
 .home img {
   width: 80%;
 }
-
-/* .main-page {
-  display: flex;
-  background-color: rgb(238, 228, 228);
-  background-size: cover;
-  height: 90vh;
-  width: 100vw;
-  margin: auto;
-  justify-content: center;
-  flex-wrap: wrap;
- 
-}
-@media (max-width: 1000px) {
-  .main-page {
-    flex-direction: column-reverse;
-  }
-  .main-page div {
-    height: auto;
-    width: 100%;
-  }
-}
-
-.eslogan {
-  background-color: #a0a6a8;
-  width: 50%;
-}
-
-.register-login {
-  background-color: #2c7399;
-  width: 50%;
-} */
 
 /*****************************     ABOUT PAGE     ****************************/
 /*___________________________________________________________________________*/

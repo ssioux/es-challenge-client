@@ -1,8 +1,7 @@
 import { singupService } from "../../services/auth.services";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+
 function Signup() {
   const navigate = useNavigate();
 
@@ -43,36 +42,45 @@ function Signup() {
   };
 
   return (
-    <div>
-      <h2>signup</h2>
- 
-<Form style={{display:"block" , width:"25%",color:"white", margin:"auto"}}>
-      <fieldset >
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="username">username</Form.Label>
-          <Form.Control value ={usernameInput} onChange={handleUsernameChange} id="disabledTextInput" placeholder="username" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="username">Em@il:</Form.Label>
-          <Form.Control value ={emailInput} onChange={handleEmailChange} id="disabledTextInput" placeholder="Em@il:" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control value ={passwordInput} type="password" onChange={handlePasswordChange} id="disabledTextInput" placeholder="password" />
-        </Form.Group>
-        
-        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
+    <section id="sign-up-container">
     
-        <Button type="submit" onClick={handleSignup} variant="outline-secondary" id="button-addon3">Signup</Button>
-      </fieldset>
-    </Form>
+
+      <div className="sign-up-container">
+       
+        <form>
+        <h3>Sign-Up</h3>
+        
+        
+          <label htmlFor="username">User Name</label>
+          <input value ={usernameInput} onChange={handleUsernameChange}  placeholder="userName" />
+        
+        
+          <label htmlFor="username">Em@il:</label>
+          <input value ={emailInput} onChange={handleEmailChange}  placeholder="Em@il:" />
+       
+        
+          <label htmlFor="password">Password</label>
+          <input value ={passwordInput} type="password" onChange={handlePasswordChange}  placeholder="password" />
+        
+        
+        {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
+    
+        <button type="submit" onClick={handleSignup} variant="outline-secondary" id="button-addon3">Register</button>
+      
+      </form>
+      </div>
+
+      <div className="sign-up-picture">
+        <img src="../../../images/signup-pic1.jpg" alt="sign-up-logo" />
+        </div>
+
+    </section>
 
 
 
 
 
-
-    </div>
+   
   );
 }
 

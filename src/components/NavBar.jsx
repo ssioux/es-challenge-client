@@ -42,7 +42,7 @@ function NavBar() {
         <div className="full-nav">
           <div>
             <Link href="/" id="brand">
-              <img src="../../images/nav-logo.png" alt="nav-logo" />{" "}
+              <img src="../../images/nav-logo.png" alt="nav-logo" />
               eS-Challenge
             </Link>
           </div>
@@ -58,6 +58,7 @@ function NavBar() {
             <Link to="/signup">Signup</Link>
             <Link to="/login">login</Link>
           </div>
+          
         </div>
       )}
     </nav>
