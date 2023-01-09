@@ -94,30 +94,22 @@ function TeamDetails() {
   };
 
   return (
-    <div>
-      <h3>team details</h3>
-      <Card
-        style={{
-          margin: "auto",
-          width: "20rem",
-          marginBotton: "20px",
-          opacity: "0.7",
-        }}
-      >
-        <Card.Img variant="top" src={teamDetails.picture} />
-        <Card.Body>
-          <Card.Title>{teamDetails.name}</Card.Title>
-          <Card.Text>Members:</Card.Text>
-        </Card.Body>
-        <ListGroup className="list-group-flush">
+    <div className="team-details-container">
+     
+      <div className="image-team">
+      <img src={teamDetails.picture} alt="shield" />
+        </div>
+        <div className="data-team">
+          <h1>{teamDetails.name}</h1>
+          <h2>Players:</h2>
           {teamDetails.members.map((eachMember) => {
             return (
-              <ListGroup.Item key={eachMember._id}>
-                {teamDetails.nameTag} - {eachMember.username}
-              </ListGroup.Item>
+              <div className="team-member" key={eachMember._id}>
+                <h2>{teamDetails.nameTag} - {eachMember.username}</h2>
+              </div>
             );
           })}
-        </ListGroup>
+      
         {isLoggedIn &&
           (filteredUser[0]?._id === user?.user?.id ? (
             <Button
@@ -161,7 +153,7 @@ function TeamDetails() {
         )}
 
         {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
-      </Card>
+      </div>
     </div>
   );
 }
