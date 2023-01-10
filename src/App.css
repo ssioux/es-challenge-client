@@ -9,14 +9,16 @@ body {
 
 /************************** ERROR MESSAGE ******************/
 .error-message {
-  margin-top:20px;
+  margin-top: 20px;
   color: red;
   font-size: 1rem;
 }
 
 /*****************************       NAV BAR      ****************************/
 /*___________________________________________________________________________*/
+
 .nav-bar {
+  color: white;
   position: sticky;
   background-color: rgb(28, 28, 28);
   width: 100vw;
@@ -31,7 +33,7 @@ body {
   background-color: #000d56;
 }
 
-#brand img {
+.full-nav img {
   width: 30px;
   margin-bottom: 7px;
 }
@@ -116,56 +118,36 @@ display: none;
 }
 
 .sign-up-container form {
-  width: 300px;
-  color: white;
-  margin: auto;
+  padding-top: 80px;
+  max-width: 340px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
+/* ---------*/
 
-.sign-up-container form input::placeholder {
-  font-size: 0.7rem;
-  color: white;
-  font-style: italic;
-}
-.sign-up-container form input:focus::placeholder {
-  font-size: 0.7rem;
-  color: red;
-  font-style: italic;
-}
-.sign-up-container form input {
-  width:100%;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #000d56;
-  color: white;
-}
-.sign-up-container form input:focus {
+.sign-up-container form h3 {
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid #000d56;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: #000d56;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  background-color: #000d56;
-  color: white;
-}
-.sign-up-container form h3 {
-  display:flex;
-  font-family:'Courier New', Courier, monospace;
-  border: 1px solid  #000d56;
-  justify-content: center;
- margin-bottom: 40px;
-  color: #000d56;
-  box-shadow:rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;;
 }
 
 .sign-up-container button {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  
+
   background-color: rgb(163, 19, 19);
   color: white;
   border-radius: 5px;
 }
 .sign-up-picture {
-  
   background-color: #2c7399;
   width: 35%;
 }
@@ -176,11 +158,11 @@ display: none;
 
 @media screen and (max-width: 1024px) {
   .sign-up-picture {
-    display:none;
+    display: none;
   }
   .sign-up-container {
-    align-items:flex-start;
-    width:100%;
+    align-items: flex-start;
+    width: 100%;
   }
 }
 
@@ -198,8 +180,16 @@ display: none;
   width: 65%;
   align-items: center;
 }
+.log-incontainer form {
+  padding-top: 80px;
+  max-width: 340px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
 
-.log-in-container form {
+/* .log-in-container form {
   width: 300px;
   color: white;
   margin: auto;
@@ -209,47 +199,40 @@ display: none;
   font-size: 0.7rem;
   color: white;
   font-style: italic;
-}
+
 .log-in-container form input:focus::placeholder {
   font-size: 0.7rem;
   color: red;
   font-style: italic;
 }
-.log-in-container form input {
-  width:100%;
-  border-radius: 5px;
-  padding: 10px;
-  background-color: #000d56;
-  color: white;
 }
 .log-in-container form input:focus {
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
   background-color: #000d56;
   color: white;
-}
+} */
+
 .log-in-container form h3 {
-  display:flex;
-  font-family:'Courier New', Courier, monospace;
-  border: 1px solid  #000d56;
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid #000d56;
   justify-content: center;
- margin-bottom: 40px;
+  margin-bottom: 40px;
   color: #000d56;
-  box-shadow:rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .log-in-container button {
   width: 100%;
   padding: 10px;
   margin-top: 20px;
-  
+
   background-color: rgb(163, 19, 19);
   color: white;
   border-radius: 5px;
 }
 .log-in-picture {
-  
   background-color: #2c7399;
   width: 35%;
 }
@@ -260,13 +243,64 @@ display: none;
 
 @media screen and (max-width: 1024px) {
   .log-in-picture {
-    display:none;
+    display: none;
   }
   .log-in-container {
-    align-items:flex-start;
-    width:100%;
+    align-items: flex-start;
+    width: 100%;
   }
 }
+
+/* -------------  Auth Form --------------*/
+
+
+
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container:focus-within label {
+  transform: translate(0, 12px) scale(0.8);
+  color: rgb(163, 19, 19);
+}
+
+.input-container .filled {
+  transform: translate(0, 12px) scale(0.8);
+}
+
+.input-container label {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(0, 23px) scale(1);
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  color: #6f81a5;
+  font-size: 16px;
+  line-height: 1;
+  left: 16px;
+}
+
+.input-container input {
+  background-color: #000d56;
+  color: white;
+  height: 64px;
+  border-radius: 4px;
+  border: none;
+  padding: 24px 16px 4px 16px;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.input-container input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 
 /*****************************     HOME PAGE     ****************************/
 /*___________________________________________________________________________*/
@@ -1027,7 +1061,7 @@ body {
   color: #000d56;
   /* font-family: Orbitron; */
 }
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   .search-team {
     padding-top: 10px;
     display: block;
@@ -1037,19 +1071,18 @@ body {
 }
 @media screen and (max-width: 768px) {
   .teams-container {
- justify-content: space-around;
+    justify-content: space-around;
   }
 }
 @media screen and (max-width: 481px) {
-  .card-team{
+  .card-team {
     justify-content: center;
-    width:20rem;
+    width: 20rem;
     height: 550px;
-     }
-     .div-img {
-      height: 21rem;
-     }
-     
+  }
+  .div-img {
+    height: 21rem;
+  }
 }
 
 /***************************** Team Details Page ****************************/
@@ -1099,7 +1132,6 @@ body {
   .team-details-container div {
     width: 100%;
     justify-content: center;
-   
   }
   .image-team {
     padding: 10px 0px 0px 0px;
@@ -1109,7 +1141,7 @@ body {
     padding: 10px 0px 0px 0px;
 
     display: flex;
-   align-items: center;
+    align-items: center;
   }
   .data-team h1 {
     font-size: 3rem;
@@ -1144,3 +1176,60 @@ body {
   }
 }
 
+/* ------------------  Prueba ---------------------*/
+
+form {
+  padding-top: 80px;
+  max-width: 340px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Input style */
+.input-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container:focus-within label {
+  transform: translate(0, 12px) scale(0.8);
+  color: rgb(163, 19, 19);
+}
+
+.input-container .filled {
+  transform: translate(0, 12px) scale(0.8);
+}
+
+.input-container label {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(0, 23px) scale(1);
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  color: #6f81a5;
+  font-size: 16px;
+  line-height: 1;
+  left: 16px;
+}
+
+.input-container input {
+  background-color: #000d56;
+  color: white;
+  height: 64px;
+  border-radius: 4px;
+  border: none;
+  padding: 24px 16px 4px 16px;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.input-container input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}

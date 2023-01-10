@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { loginService } from "../../services/auth.services";
 import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
 
-
+import Button from "react-bootstrap/Button";
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
@@ -17,9 +15,16 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+ 
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleEmailChange = (e) => {
+    
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    
+    setPassword(e.target.value);
+  };
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -50,31 +55,45 @@ function Login() {
 
   return (
     <section id="log-in-container">
-     
       <div className="log-in-picture">
         <img src="../../../images/login-pic3.jpg" alt="log-in-logo" />
-        </div>
-      
-     <div className="log-in-container">
+      </div>
+
+      <div className="log-in-container">
         <form>
-           <h3>Log-In</h3>
+          <h3>Log-In</h3>
+          <div className="input-container">
+            <input value={email} onChange={handleEmailChange} name="email" />
+            <label className={email && "filled"} htmlFor="email">
+              Email
+            </label>
+          </div>
+          <div className="input-container">
+            <input
+              value={password}
+              type="password"
+              onChange={handlePasswordChange}
+              name="password"
+            />
+            <label className={password && "filled"} htmlFor="password">
+              Password
+            </label>
+          </div>
 
-          <label htmlFor="email">Em@il:</label>
-          <input value ={email} onChange={handleEmailChange} name="email" placeholder="Em@il:" />
-        
-        
-          <label htmlFor="password">Password</label>
-          <input value ={password} type="password" onChange={handlePasswordChange} name="password" placeholder="password" />
-       
-        
-        {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
-    
-        <Button type="submit" onClick={handleLogin} variant="outline-secondary" id="button-addon3">Login</Button>
-     
-    </form>
-</div>
+          {errorMessage !== "" && (
+            <p style={{ color: "red" }}>{errorMessage}</p>
+          )}
 
-   
+          <Button
+            type="submit"
+            onClick={handleLogin}
+            variant="outline-secondary"
+            id="button-addon3"
+          >
+            Login
+          </Button>
+        </form>
+      </div>
     </section>
   );
 }

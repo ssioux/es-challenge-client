@@ -49,24 +49,25 @@ function NavBar() {
             <div className="links">
               <Link to="/">Home</Link>
 
-              <Link to="/tourneys">Tourneys</Link>
-              <Link to="/teams">Teams</Link>
-              <Link to="/about">About</Link>
-              <Link to="/profile">Profile</Link>
-            </div>
-
-            <div className="auth">
-              <Link to="/" onClick={handleLogout}>
-                Logout
-              </Link>
-            </div>
+            <Link to="/tourneys">Tourneys</Link>
+            <Link to="/teams">Teams</Link>
+            <Link to="/about">About</Link>
+            <Link to="/profile">Profile</Link>
           </div>
-        ) : (
-          <div className="full-nav">
-            <div id="brand">
-              <img src="../../images/nav-logo.png" alt="nav-logo" />
-              eS-Challenge
-            </div>
+
+          <div id="auth">
+            <Link to="/" onClick={handleLogout}>
+              Logout
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className="full-nav">
+          <div>
+            
+              <img src="../../images/nav-logo.png" alt="nav-logo" /> eS-Challenge
+            
+          </div>
 
             <div className="links">
               <Link to="/">Home</Link>

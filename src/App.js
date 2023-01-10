@@ -26,11 +26,12 @@ import TourneyList from "./pages/navbar/TourneyList";
 import TourneyMain from "./components/Tourney/TourneyMain.jsx";
 import About from "./pages/navbar/About";
 
+
 function App() {
   return (
     <div className="App">
       <NavBar />
-
+ 
       <Routes>
         {/*  ********* Auth Pages ********/}
         <Route path="/" element={<Home />} />
