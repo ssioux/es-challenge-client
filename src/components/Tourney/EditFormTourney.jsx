@@ -131,6 +131,7 @@ function EditFormTourney() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        backgroundColor: "#bec0ca"
       }}
     >
       <Form>
@@ -247,7 +248,7 @@ function EditFormTourney() {
 
           <section id="semi-edit">
           <h5>Semifinals</h5>
-          <div className="semia-bg-edit">
+          <div className="bg1">
             <Form.Group className="mb-3">
               <Form.Label htmlFor="S1">{details?.semiA[0]?.name}</Form.Label>
               <Form.Control
@@ -267,7 +268,7 @@ function EditFormTourney() {
               />
             </Form.Group>
             </div>
-            <div className="semib-bg-edit">
+            <div className="bg2">
             <Form.Group className="mb-3">
               <Form.Label htmlFor="S3">{details?.semiB[0]?.name}</Form.Label>
               <Form.Control
@@ -291,7 +292,7 @@ function EditFormTourney() {
 
           <section id="final-edit">
             <h5>Final</h5>
-            <div className="final-tourney-edit-bg">
+            <div className="bg2">
             <Form.Group className="mb-3">
               <Form.Label htmlFor="F1">{details?.final[0]?.name}</Form.Label>
               <Form.Control
