@@ -65,22 +65,21 @@ function TourneyList() {
     <div className="tourney-header">
       <div className="tourney-header-div1">
         <h2>Tournaments</h2>
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-3" style={{ marginTop: "10px", width: "39%"}}>
           <Form.Control
             placeholder="search"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             value={searchInput}
             onChange={handleSearchChange}
+            
           />
           <Button variant="outline-secondary" id="button-addon2">
             Search 
           </Button>
         </InputGroup>
       </div>
-      <div className="tourney-header-div2">
-        <p> Elige un torneo y regístrate en él, date prisa porque sólamente hay 8 plazas y se completan muy rápido. Si todavía no tienes equipo, pulsa <span>aquí</span> para dirigirte a tu perfil y crear tu propio equipo. Una vez que estés registrado, presta atención a la fechas de cada fase, si no jugáiss la partida dentro de esas fechas, automáticamente quedaréis eliminados.</p>
-      </div>
+   
     </div>
      
       <div className="card-container">
