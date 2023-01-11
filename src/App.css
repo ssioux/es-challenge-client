@@ -290,8 +290,24 @@ display: none;
   background-image: url("../public/images/ryu.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  color: white;
+}
+.home-paraph {
+  position: relative;
+  width: 400px;
+  top:100px;
+  left:100px;
+  
+
+}
+.home div p {
+  text-align:justify;
+
 }
 
+.home div p span {
+ color: #000d56;
+}
 .home img {
   width: 80%;
 }

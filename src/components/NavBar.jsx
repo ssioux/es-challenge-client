@@ -63,7 +63,7 @@ function NavBar() {
         </div>
       ) : (
         <div className="full-nav">
-          <div>
+          <div id="brand">
             
               <img src="../../images/nav-logo.png" alt="nav-logo" /> eS-Challenge
             
