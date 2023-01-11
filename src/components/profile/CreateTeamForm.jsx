@@ -31,6 +31,7 @@ function CreateTeamForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const teamToCreate = {
       name: nameInput,
       nameTag: nameTagInput,
@@ -43,6 +44,8 @@ function CreateTeamForm(props) {
 
       // navigate("/profile")
       props.updateTeamCreated();
+      props.setCreateTeam(false)
+      props.setYourTeam(true)
 
       setIsFetching(false);
     } catch (error) {

@@ -1136,3 +1136,74 @@ body {
   }
 }
 
+/***************************** PROFILE ****************************/
+/*___________________________________________________________________________*/
+   /************************ Div 1 Data User********************/
+.info-container{
+  background-color: #bec0ca;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+ 
+  align-items: center;
+}
+.info-user{
+  width: 50%;
+ 
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info-user h2, h4{
+  font-weight: bold
+}
+.info-user .image-user img{
+width:300px;
+}
+.info-user button{
+  width: 300px;
+  height: 80px;
+  background-color:  #000d56;
+  color: white;
+  border-radius: 5px;
+  font-size: 25px;
+}
+.buttons-user{
+  display: flex;
+  border: 2px solid #000d56;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.button-group{
+  
+  display: flex;
+  flex-direction: column;
+}
+.button-group div{
+  font-family: "Courier New", Courier, monospace;
+  padding: 10px;
+}
+ /************************ Div 2 Components ********************/
+
+ .profile-components{
+  padding-left: 200px;
+ }
+ .your-team{
+  font-family: "Courier New", Courier, monospace;
+  font-size:50px;
+ 
+ }
+ .your-team img{
+width:300px;
+
+ }
+ .your-team h2{
+  font-size:50px;
+   }
+   .your-team p{
+    font-size:40px;
+     }

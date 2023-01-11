@@ -7,9 +7,8 @@ import Form from "react-bootstrap/Form"
 import Button from 'react-bootstrap/Button';
 import { uploadPictureService } from '../../services/upload.services';
 
-function InfoEdit() {
+function InfoEdit(props) {
    const navigate = useNavigate()
-   const {userId} = useParams()
    const [usernameInput, setUserNameInput] = useState("")
    const [emailInput, setEmailInput] = useState("")
 
@@ -21,7 +20,7 @@ function InfoEdit() {
    },[])
    const getData = async () => {
     try {
-      const response = await detailsUserService(userId)
+      const response = await detailsUserService(props.id)
     
 
       setUserNameInput(response.data.username)
@@ -65,9 +64,9 @@ function InfoEdit() {
     }
      
     try {
-      await updateUserService(userId, userUpdate)
-  
-       navigate("/profile")
+      await updateUserService(props.id, userUpdate)
+        props.updateUser()
+       navigate("/logout")
       
     } catch (error) {
       navigate("/error")
@@ -82,8 +81,8 @@ function InfoEdit() {
     <div>
       <div>
       
-      <h3>Formulario Editar</h3>
-      <Form style={{display:"block",width:"30%", margin:"auto"}}>
+      <h3>Edit User</h3>
+      <Form style={{display:"block",width:"80%", margin:"auto"}}>
       <fieldset >
         <Form.Group className="mb-3" >
           <Form.Label htmlFor="username">Username</Form.Label>
