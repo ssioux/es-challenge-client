@@ -5,7 +5,6 @@
 body {
   margin: 0;
   background-color: #bec0ca;
-
 }
 
 /************************** ERROR MESSAGE ******************/
@@ -56,47 +55,45 @@ body {
   /* transform: scale(1.3);
   transition: all 0.3s ease-in;  */
 }
-.links-cotainer{
+.links-cotainer {
   display: flex;
   justify-content: space-between;
 }
-.nav-bar .full-nav-burger{
-display: none;
-  
- }
- #brand{
-  color:white;
- }
+.nav-bar .full-nav-burger {
+  display: none;
+}
+#brand {
+  color: white;
+}
 
 @media screen and (max-width: 768px) {
- 
-  .nav-bar .full-nav{
+  .nav-bar .full-nav {
     flex-direction: column;
     justify-content: center;
   }
-  .nav-bar .full-nav .links ,.auth{
+  .nav-bar .full-nav .links,
+  .auth {
     flex-direction: column;
     justify-content: center;
     font-size: 40px;
   }
- .nav-bar .full-nav-burger{
-  width: 100%;
-  height: 55px;
-  background-color: #000d56;
+  .nav-bar .full-nav-burger {
+    width: 100%;
+    height: 55px;
+    background-color: #000d56;
   }
-  .nav-bar .full-nav-burger img{
-    display:flex;
-   width: 40px;
-   
-  }
-  .nav-bar .full-nav-burger{
+  .nav-bar .full-nav-burger img {
     display: flex;
-    color:white
+    width: 40px;
   }
-  #brand{
-   display: none;
+  .nav-bar .full-nav-burger {
+    display: flex;
+    color: white;
   }
- 
+  #brand {
+    display: none;
+  }
+
   /* .nav-bar div nav {
     width: 65%;
     flex-direction: column;
@@ -229,9 +226,51 @@ display: none;
   }
 }
 
-/* -------------  Auth Form --------------*/
+/*****************************     LOG-IN PAGE   ****************************/
+/*___________________________________________________________________________*/
+#create-team-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.create-team-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #bec0ca;
+  width: 65%;
+  align-items: center;
+}
+.create-team-container form {
+  padding-top: 80px;
+  max-width: 340px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
 
+.create-team-container form h3 {
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid #000d56;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: #000d56;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
 
+.create-team-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+
+  background-color: rgb(163, 19, 19);
+  color: white;
+  border-radius: 5px;
+}
+
+/* -------------  Form --------------*/
 
 .input-container {
   position: relative;
@@ -276,10 +315,52 @@ display: none;
 
 .input-container input:focus {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
+/*_________________________  Uploader Pic Form_____________________________________________*/
+.uploader-pic {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
 
+.uploader-pic label {
+  position: absolute;
+  pointer-events: none;
+
+  transform-origin: top left;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  color: rgb(163, 19, 19);
+  font-size: 15px;
+  line-height: 1;
+  left: 16px;
+  top: 6px;
+}
+
+.uploader-pic input {
+  background-color: #000d56;
+  color: white;
+  height: 64px;
+  border-radius: 4px;
+  border: none;
+  padding: 24px 16px 4px 16px;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.uploader-pic input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.uploader-img {
+  margin: 0 auto;
+  border-radius: 5%;
+  border: 1px solid #000d56;
+}
 /*****************************     HOME PAGE     ****************************/
 /*___________________________________________________________________________*/
 
@@ -295,18 +376,15 @@ display: none;
 .home-paraph {
   position: relative;
   width: 400px;
-  top:100px;
-  left:100px;
-  
-
+  top: 100px;
+  left: 100px;
 }
 .home div p {
-  text-align:justify;
-
+  text-align: justify;
 }
 
 .home div p span {
- color: #000d56;
+  color: #000d56;
 }
 .home img {
   width: 80%;
@@ -713,23 +791,19 @@ body {
   display: flex;
   justify-content: center;
   color: white;
-  
 }
 
 .tourney-edit-form h5 {
-
   border: 2px outset #000d56;
   padding: 2%;
   color: rgb(163, 19, 19);
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
-
 
 #quarter-edit {
   padding: 2%;
   border-radius: 2%;
- 
 }
 
 #semi-edit {
@@ -738,7 +812,6 @@ body {
 
   padding: 5%;
   border-radius: 2%;
-
 }
 
 #final-edit {
@@ -746,7 +819,6 @@ body {
   height: 10%;
   padding: 5%;
   border-radius: 2%;
-  
 }
 .bg1 {
   background-color: #b6b6b6;
@@ -754,7 +826,7 @@ body {
   padding: 5%;
   border-radius: 2%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   margin-top: 10px;
 }
 .bg2 {
@@ -762,14 +834,13 @@ body {
 
   padding: 5%;
   border-radius: 2%;
-  
+
   width: 100%;
   box-sizing: border-box;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   margin-top: 10px;
 }
-
 
 /*****************************  Tourney List Page ****************************/
 /*___________________________________________________________________________*/
@@ -787,20 +858,18 @@ body {
 /*____________________________  Tourney Header ____________________________*/
 
 .tourney-header {
- 
   height: auto;
   background-color: rgb(210, 210, 223);
   display: flex;
   flex-wrap: wrap;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 .tourney-header-div1 {
-  
   width: 100%;
   display: flex;
-  justify-content:space-around;
-  
+  justify-content: space-around;
+
   align-items: center;
   padding: 1% 3% 1% 3%;
 }
@@ -816,7 +885,6 @@ body {
   color: rgb(243, 243, 243);
 }
 
-
 /*____________________________ Tourney Card ____________________________*/
 .card-container {
   background-color: #bec0ca;
@@ -826,10 +894,7 @@ body {
   justify-content: space-around;
 }
 
-
-
 .tourney-card {
-
   background-color: rgb(2, 2, 28);
   width: 300px;
   height: 400px;
@@ -838,7 +903,6 @@ body {
   margin: 20px;
   transition: all 300ms ease-out;
   opacity: 0.97;
-
 }
 
 .tourney-card-image {
@@ -1113,26 +1177,25 @@ body {
 
 /***************************** BURGER COMPONENT ****************************/
 /*___________________________________________________________________________*/
-.burger{
+.burger {
   width: 2rem;
   height: 2rem;
-  position:fixed;
+  position: fixed;
   top: 12px;
   right: 20px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
 }
-.burger div{
+.burger div {
   width: 2rem;
   height: 0.25rem;
   background-color: white;
   border-radius: 0.1rem;
-
 }
-@media screen and (min-width:768px) {
-  .burger div{
-  display: none;
+@media screen and (min-width: 768px) {
+  .burger div {
+    display: none;
   }
 }
 
