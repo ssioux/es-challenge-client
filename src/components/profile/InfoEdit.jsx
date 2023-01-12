@@ -78,49 +78,40 @@ function InfoEdit(props) {
   
 
   return (
-    <div>
-      <div>
+    <div id="user-edit-container">
+      <div className="create-team-container">
       
-      <h3>Edit User</h3>
-      <Form style={{display:"block",width:"80%", margin:"auto"}}>
-      <fieldset >
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="username">Username</Form.Label>
-          <Form.Control value ={usernameInput} onChange={usernameChange} id="disabledTextInput" placeholder="username" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-        <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control value ={emailInput} onChange={emailChange} id="disabledTextInput" placeholder="email@email.com" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-        <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control onChange={pictureChange} type="file" name="picture" />
-        </Form.Group>
+     
+      <form >
+       <h3>Edit User</h3>
+      
+        <div className="input-container">
+           <input value ={usernameInput} onChange={usernameChange} id="disabledTextInput" />
+          <label className={usernameInput && "filled"} htmlFor="username">Username</label>
+         
+       </div>
+
+       <div className="input-container">
+        <input value ={emailInput} onChange={emailChange} id="disabledTextInput"  />
+        <label className={emailInput && "filled"} htmlFor="email">Email</label>
+          
+        </div>
+
+        <div className="uploader-pic">
+         <input onChange={pictureChange} type="file" name="picture" />
+        <label  htmlFor="picture">Picture</label>
+         
+    </div>
           
                 
         
         {isLoadingPicture === true && <p>...loading picture</p>}
-{pictureURL !== "" ? <img src={pictureURL} alt="pict"/> : <p>Choose image</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict" className="uploader-img" /> : <p>[ No Picture Selected ]</p>}
         
-        <Button type="submit" onClick={handleUpdate} variant="outline-secondary" id="button-addon3">Edit User</Button>
-      </fieldset>
-    </Form>
+        <button type="submit" onClick={handleUpdate} >Edit User</button>
+     
+    </form>
 
-      {/* <form>
-
-        <label htmlFor="username">Username: </label>
-        <input type="text" name="username" value={usernameInput} onChange={usernameChange}/>
-        <br />
-        <label htmlFor="email">Email: </label>
-        <input type="email" name="email" value={emailInput} onChange={emailChange}/>
-        <br />
-        <label htmlFor="picture">Add picture</label>
-        <input type="file" name="picture" onChange={pictureChange}/>
-        <br />
-        {isLoadingPicture === true && <p>...loading picture</p>}
-        {pictureURL !== "" ? <img src={pictureURL} alt="pict" width={200}/> : <p>Choose image</p>}
-        <Button onClick={handleUpdate}>Edit</Button>
-      </form> */}
 
     </div>
 
