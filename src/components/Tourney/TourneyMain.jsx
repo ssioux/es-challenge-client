@@ -22,7 +22,7 @@ function TourneyMain() {
   const getData = async () => {
     try {
       const response = await detailsTourneyService(tourneyId);
-      console.log("🚀 response", response.data.game);
+
       setTourneyDetails(response.data);
       setIsFetching(false);
     } catch (error) {

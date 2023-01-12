@@ -1,24 +1,24 @@
-import axios from "axios";
-import { detailsUser, updateUser } from "../../services/profile.services";
-import { useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useContext } from "react";
+
+// React Hooks
+import { useNavigate} from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+
 import { AuthContext } from "../../context/auth.context.js";
+// Components
 import InfoEdit from "./InfoEdit";
 import CreateTourneyForm from "./CreateTourneyForm";
-import Button from "react-bootstrap/Button";
 import CreateTeamForm from "./CreateTeamForm";
-import Collapse from "react-bootstrap/Collapse";
-import { findTeamCreatorService } from "../../services/team.services";
-import TeamList from "../../pages/navbar/TeamList";
 import TeamsUserIncluded from "./TeamsUserIncluded";
 import CreateGameForm from "./CreateGameForm";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
+// Axios Services
+import { findTeamCreatorService } from "../../services/team.services";
+
+
+
 
 function Info() {
   const navigate = useNavigate();
-  const [formIsShowing, setFormIsShowing] = useState(false);
+
   const [isFetching, setIsFetching] = useState(true);
 
   // State to show or destroy Collapse
@@ -36,7 +36,7 @@ function Info() {
   const [teamsYouAreIncluded, setTeamsYouAreIncluded] = useState(false);
   const [createGame, setCreateGame] = useState(false);
 
-  // GET BUSCAR EQUIPO
+  // Search the team created for the current user
   useEffect(() => {
     getData();
   }, [ownTeam?._id]);
@@ -47,9 +47,11 @@ function Info() {
 
       const findTeamCreator = response.data;
       if (findTeamCreator === null) {
+        // Activates the button Create Team & desabled the buttonshow Your Team
         setBtnCreateTeam(true);
         setOwnTeam(null);
       } else {
+        // Activates Show Your Team & desabled Create Team Button
         setBtnCreateTeam(false);
         setOwnTeam(findTeamCreator);
       }
@@ -58,7 +60,7 @@ function Info() {
       navigate("/error");
     }
   };
-
+// Loading is finished
   if (isFetching === true) {
     return <h3>...Loading</h3>;
   }

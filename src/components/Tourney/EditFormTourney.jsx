@@ -15,7 +15,7 @@ function EditFormTourney() {
 
   const [listGames, setListGames] = useState([]);
   const [details, setDetails] = useState(null);
-  console.log("🚀 EditFormTourney ~ details", details);
+
 
   const [resultQ1Input, setResultQ1Input] = useState("");
   const [resultQ2Input, setResultQ2Input] = useState("");

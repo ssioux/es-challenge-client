@@ -14,7 +14,7 @@ import { AuthContext } from "../context/auth.context";
 
 function TeamDetails() {
   const { isLoggedIn, user } = useContext(AuthContext);
-  console.log("user", user);
+
 
   const { teamId } = useParams();
 
@@ -33,8 +33,7 @@ function TeamDetails() {
   const getData = async () => {
     try {
       const details = await detailsTeamService(teamId);
-      console.log("🚀 ~ file: TeamDetails.jsx:41 ~ getData ~ details", details);
-
+     
       setTeamDetails(details.data);
       setIsFetching(false);
     } catch (error) {

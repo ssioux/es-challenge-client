@@ -14,9 +14,9 @@ import { AuthContext } from "../../context/auth.context";
 import Spinner from "react-bootstrap/Spinner";
 
 function TourneyBracket(props) {
-  console.log("props", props);
+
   const { isLoggedIn, user } = useContext(AuthContext);
-  console.log("🚀 ~ authContex ~ user", user);
+
 
   const navigate = useNavigate();
  const { tourneyId } = useParams();

@@ -32,7 +32,7 @@ function TourneyList() {
     try {
       const response = await listTourneysService();
 
-      console.log(response.data);
+
 
       setList(response.data);
       setTourneyListSearch(response.data)
