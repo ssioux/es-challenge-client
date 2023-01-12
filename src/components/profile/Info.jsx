@@ -166,6 +166,7 @@ function Info() {
       </section>
 
       <section id="profile-components">
+         {/* Create Team Component */}
         {createTeam && (
           <CreateTeamForm
             setCreateTeam={setCreateTeam}
@@ -193,9 +194,13 @@ function Info() {
             </h4>
           </div>
         )}
+         {/* Edit User Component */}
         {editUser && <InfoEdit id={_id} updateUser={getData} />}
+         {/* Create Tourney Component */}
         {createTourney && <CreateTourneyForm />}
+         {/* Team Current User Included Component */}
         {teamsYouAreIncluded && <TeamsUserIncluded />}
+         {/* Create Game Component */}
         {createGame && <CreateGameForm />}
       </section>
     </div>

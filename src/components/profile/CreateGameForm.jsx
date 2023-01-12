@@ -82,7 +82,7 @@ function CreateGameForm() {
             <input onChange={handlePictureChange} type="file" name="picture" />
             <label htmlFor="picture">Picture</label>
           </div>
-    Show the picture in this form after Load
+    {/* Show the picture in this form after Load */}
           {isLoadingPicture === true && <p>...loading picture</p>}
           {pictureURL !== "" ? (
             <img src={pictureURL} alt="pict" className="uploader-img" />

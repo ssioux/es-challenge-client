@@ -1,5 +1,8 @@
+
+// React Hooks
 import {useEffect, useState} from "react"
 import { useNavigate, Link } from "react-router-dom"
+// Axios Services
 import { findTeamUserService } from "../../services/team.services"
 
 
@@ -19,9 +22,11 @@ function TeamsUserIncluded() {
   const getData = async () =>  {
 
       try {
+        // Find the Current User Team
         const response = await findTeamUserService()
-      
+        // Send Team Data to the State
         setUserTeamList(response.data)
+        // Loading Finished
         setIsFetching(false)
       } catch (error) {
        navigate("/error")
@@ -37,17 +42,27 @@ function TeamsUserIncluded() {
 
 
   return (
-    <div>
-      <h3>Teams You are included</h3>
+    <div id="team-included-container">
+      <div className="team-included-container">
+      <h3>Your Teams</h3>
 
 
       {userTeamList.map((eachTeam)=> {
         return (
-          <div key={eachTeam._id}>
+          <div key={eachTeam._id} className="team-included-card">
+
+            <div className="team-included-card-box1">
+            <img src={eachTeam.picture} alt="team-pic" className="team-flag"/>
+         </div>
+
+          <div className="team-included-card-box2">
           <Link to={`/team/${eachTeam._id}/details`}>{eachTeam.name}</Link>
+          </div>
+
           </div>
         )
       })}
+      </div>
     </div>
   );
 }
