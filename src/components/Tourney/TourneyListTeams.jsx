@@ -170,29 +170,16 @@ function TourneyListTeams(props) {
       <div className="tourney-list-team-list">
         {details.teams.map((eachTeam) => {
           return (
-            <Card
-              key={eachTeam._id}
-              style={{ width: "12rem", marginBotton: "20px", opacity: "0.7" }}
-            >
-              <Card.Img variant="top" src={eachTeam.picture} />
-              <Card.Body>
-                <Card.Title>{eachTeam.name}</Card.Title>
-                <Card.Text>Members:</Card.Text>
-              </Card.Body>
-
-              <ListGroup className="list-group-flush">
-                {eachTeam.members.map((eachMember) => {
-                  return (
-                    <ListGroup.Item key={eachMember._id}>
-                      {eachTeam.nameTag} - {eachMember.username}
-                    </ListGroup.Item>
-                  );
-                })}
-              </ListGroup>
-              <Card.Body>
-                <Link to={`/team/${eachTeam._id}/details`}>Team Details</Link>
-              </Card.Body>
-            </Card>
+            <div className="team-card">
+              <Link to={`/team/${eachTeam._id}/details`}>
+                <div className="image-card" key={eachTeam._id}>
+                  <img src={eachTeam.picture} alt="" />
+                </div>
+                <div className="name-team">
+                  <h3>{eachTeam.name}</h3>
+                </div>
+              </Link>
+            </div>
           );
         })}
       </div>
