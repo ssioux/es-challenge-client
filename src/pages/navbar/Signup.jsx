@@ -54,17 +54,17 @@ function Signup() {
 
          
           <input value ={usernameInput} onChange={handleUsernameChange} />
-           <label className={usernameInput && "filled"}htmlFor="username">User Name</label>
+           <label className={usernameInput && "filled"} htmlFor="username">User Name</label>
           </div>
           <div className="input-container">
          
           <input value ={emailInput} onChange={handleEmailChange} />
-           <label className={emailInput && "filled"} htmlFor="username">Em@il:</label>
+           <label className={emailInput && "filled"} htmlFor="email">Email</label>
           </div>
           <div className="input-container">
           
           <input value ={passwordInput} type="password" onChange={handlePasswordChange} />
-          <label className={passwordInput && "filled"} tmlFor="password">Password</label>
+          <label className={passwordInput && "filled"} htmlFor="password">Password</label>
           </div>
         
         {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
