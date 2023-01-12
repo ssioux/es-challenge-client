@@ -275,6 +275,14 @@ body {
   justify-content: center;
 }
 
+#create-tourney-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+
 
 /* -------------  General Form --------------*/
 
@@ -362,6 +370,41 @@ body {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+.uploader-img {
+  width:70%;
+  margin: 0 auto;
+  border-radius: 5%;
+  border: 1px solid #000d56;
+}
+
+/*_________________________  Select Option  Form_____________________________________________*/
+.select-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.select-option input {
+  background-color: #000d56;
+  color: white;
+  height: 64px;
+  border-radius: 4px;
+  border: none;
+  padding: 24px 16px 4px 16px;
+  font-size: 16px;
+  line-height: 1;
+  outline: none;
+  box-shadow: none;
+  transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+
+.select-option input:focus {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 .uploader-img {
   width:70%;
   margin: 0 auto;

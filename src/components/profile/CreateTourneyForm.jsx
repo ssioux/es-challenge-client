@@ -64,41 +64,38 @@ function CreateTourneyForm(props) {
      
   }
   return (
-    <div style={{display:"flex",
-      justifyContent:"center",
-     alignItems:"center"}} >
-           <Form style={{display:"flex"}}>
-      <fieldset >
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Name">Name</Form.Label>
-          <Form.Control value ={nameInput} onChange={handleNameChange} id="disabledTextInput" placeholder="Name of Tourney" />
-        </Form.Group>
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="description">Description</Form.Label>
-          <Form.Control value ={descriptionInput} onChange={handleDescriptionChange} id="disabledTextInput" placeholder="Event dates" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label htmlFor="Game">Choose your Game</Form.Label>
-                      {/* <Form.Control  as="select"  onChange={handleGameChange}>
-                       {listGames.map(opt => (
-                       <option key={opt._id} value={opt._id}>{opt.name}</option>
-                       ))}
-                      </Form.Control>
-                    */}
-                    <Form.Select onChange={handleGameChange}>
+    <div id="create-tourney-container">
+      <div className="create-team-container">
+           <form >
+           <h3>Create a  Tourney</h3>
+        <div className="input-container">
+          
+          <input value ={nameInput} onChange={handleNameChange} />
+      <label className={nameInput && "filled"} htmlFor="Name">Name</label>
+       </div>
+<div className="input-container">
+          
+          <input value ={descriptionInput} onChange={handleDescriptionChange} />
+    <label className={descriptionInput && "filled"} htmlFor="description">Description</label>
+     </div>
+       
+       <div className="select-option">
+          <label htmlFor="Game">Choose your Game</label>
+                    
+                    <select onChange={handleGameChange}>
                     {listGames.map(opt => (
                        <option key={opt._id} value={opt._id}>{opt.name}</option>
                        ))}
-        </Form.Select>
-        
-        </Form.Group>
+        </select>
+        </div>
+     
        
     
-        <Button type="submit" onClick={handleSubmit} variant="outline-secondary" id="button-addon3">Create Tourney</Button>
-      </fieldset>
-    </Form>
+        <button type="submit" onClick={handleSubmit} >Create Tourney</button>
+     
+    </form>
                   
-
+</div>
 
     </div>
   )
