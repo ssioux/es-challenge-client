@@ -282,6 +282,13 @@ body {
   justify-content: center;
 }
 
+#create-game-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
 
 
 /* -------------  General Form --------------*/

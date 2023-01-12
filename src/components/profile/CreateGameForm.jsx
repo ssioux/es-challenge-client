@@ -69,36 +69,34 @@ function CreateGameForm() {
 
 
   return (
-    <div style={{display:"flex",
-      justifyContent:"center",
-     alignItems:"center", flexDirection:"column"}} >
-        <h1>Create new Game</h1>
-        <hr />
-           <Form style={{display:"flex"}}>
-      <fieldset >
-        <Form.Group className="mb-3" >
-          <Form.Label htmlFor="Name">Name</Form.Label>
-          <Form.Control value ={nameInput} onChange={handleNameChange} id="disabledTextInput" placeholder="Name of Game" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-        <Form.Label htmlFor="description">Description</Form.Label>
-          <Form.Control value ={descriptionInput} onChange={handDescriptionChange} id="disabledTextInput" placeholder="Description of Game" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-        <Form.Label htmlFor="picture">Picture</Form.Label>
-          <Form.Control onChange={handlePictureChange} type="file" name="picture" />
-        </Form.Group>
-          
+    <div id="create-game-container">
+        
+<div className="create-team-container">>
+           <form>
+<h3>Create New Game</h3>
+
+          <div className="input-container">
+          <input value ={nameInput} onChange={handleNameChange}  />
+<label className={nameInput && "filled"} htmlFor="name">Name</label>
+</div>
+<div className="input-container">
+          <input value ={descriptionInput} onChange={handDescriptionChange}  />
+ <label className={descriptionInput && "filled"} htmlFor="description">Description</label>
+        </div>
+        <div className="uploader-pic">
+          <input onChange={handlePictureChange} type="file" name="picture" />
+       <label htmlFor="picture">Picture</label>
+          </div>
                 
         
         {isLoadingPicture === true && <p>...loading picture</p>}
-{pictureURL !== "" ? <img src={pictureURL} alt="pict"/> : <p>Choose image</p>}
+{pictureURL !== "" ? <img src={pictureURL} alt="pict" className="uploader-img"  /> : <p> [ No Picture Selected ]</p>}
         
-        <Button type="submit" onClick={handleSubmit}>Create Game</Button>
-      </fieldset>
-    </Form>
+        <button type="submit" onClick={handleSubmit}>Create Game</button>
+     
+    </form>
                   
-
+</div>
 
     </div>
   )
