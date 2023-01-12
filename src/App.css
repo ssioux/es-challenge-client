@@ -232,14 +232,9 @@ body {
   display: flex;
   width: 100vw;
   height: 100vh;
+  justify-content: center;
 }
-.create-team-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #bec0ca;
-  width: 65%;
-  align-items: center;
-}
+
 .create-team-container form {
   padding-top: 80px;
   max-width: 340px;
@@ -1200,73 +1195,132 @@ body {
 }
 
 /***************************** PROFILE ****************************/
-/*___________________________________________________________________________*/
-   /************************ Div 1 Data User********************/
-.info-container{
+/*___________________________ Data User Box______________________*/
+.info-container {
   background-color: #bec0ca;
   height: 100vh;
   width: 100%;
   display: flex;
- 
+  border: 2px solid red;
   align-items: center;
 }
-.info-user{
-  width: 50%;
- 
+.info-user {
+  width: 35%;
+  height: 100%;
+  border: 2px solid rgb(66, 38, 228);
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
-
-  display:flex;
+  margin: 0 auto;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.info-user h2, h4{
-  font-weight: bold
+
+.info-user h2,
+h4 {
+  font-weight: bold;
 }
-.info-user .image-user img{
-width:300px;
+.box-user {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width:100%;
+  
+  border: 2px solid #24db13;
 }
-.info-user button{
-  width: 300px;
-  height: 80px;
-  background-color:  #000d56;
+.image-user {
+  width: 50%;
+  border: 2px solid red;
+}
+.image-user img {
+  width: 100%;
+  border-radius:5%;
+  border: 1px solid #000d56;
+
+}
+.info-user button {
+  width: 100%;
+  height: 70px;
+  background-color: #000d56;
   color: white;
   border-radius: 5px;
-  font-size: 25px;
+  
+  font-size: 1rem;
 }
-.buttons-user{
+.box-buttons {
   display: flex;
+  width: 100%;
+ 
   border: 2px solid #000d56;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
-.button-group{
-  
+.button-group {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  border: 2px solid red;
 }
-.button-group div{
+.button-group div {
   font-family: "Courier New", Courier, monospace;
   padding: 10px;
 }
- /************************ Div 2 Components ********************/
+/* ________________________ Components Box__________________*/
+#profile-components {
+  display:flex;
+  width: 65%;
+  border: 2px solid yellow;
+}
 
- .profile-components{
-  padding-left: 200px;
- }
- .your-team{
-  font-family: "Courier New", Courier, monospace;
-  font-size:50px;
- 
- }
- .your-team img{
-width:300px;
+.your-team {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  
+}
+#own-team-box {
+  display:flex;
+  flex-direction: column;
+  width: 40%;
+  
+  border: 1px solid #000d56;
+  border-radius:5%;
+  background-color:rgb(163, 19, 19);
+}
+.your-team #own-team-box img {
+  
+ border-top-left-radius:  5%;
+ border-top-right-radius: 5%;
+  width: 100%;
+}
 
- }
- .your-team h2{
-  font-size:50px;
-   }
-   .your-team p{
-    font-size:40px;
-     }
+.your-team h4 {
+ margin:20px;
+  
+}
+.your-team p {
+ margin:10px;
+}
+
+@media screen and (max-width: 768px) {
+  .info-container {
+    background-color: #bec0ca;
+    height: 100%;
+  
+
+    display:flex;
+    flex-direction:column;
+
+  }
+  .info-user {
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}

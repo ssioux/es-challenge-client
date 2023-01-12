@@ -5,14 +5,14 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth.context.js";
 import InfoEdit from "./InfoEdit";
-import CreateTourneyForm from "./CreateTourneyForm"
+import CreateTourneyForm from "./CreateTourneyForm";
 import Button from "react-bootstrap/Button";
 import CreateTeamForm from "./CreateTeamForm";
 import Collapse from "react-bootstrap/Collapse";
 import { findTeamCreatorService } from "../../services/team.services";
 import TeamList from "../../pages/navbar/TeamList";
 import TeamsUserIncluded from "./TeamsUserIncluded";
-import CreateGameForm from "./CreateGameForm"
+import CreateGameForm from "./CreateGameForm";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 
@@ -22,7 +22,7 @@ function Info() {
   const [isFetching, setIsFetching] = useState(true);
 
   // State to show or destroy Collapse
-  const [viewCreateTeam, setViewCreateTeam] = useState(true);
+  const [btnCreateTeam, setBtnCreateTeam] = useState(true);
   const [ownTeam, setOwnTeam] = useState();
 
   const { user } = useContext(AuthContext);
@@ -33,8 +33,8 @@ function Info() {
   const [yourTeam, setYourTeam] = useState(false);
   const [editUser, setEditUser] = useState(false);
   const [createTourney, setCreateTourney] = useState(false);
-  const [teamsYouAreIncluded, setTeamsYouAreIncluded] = useState(false)
-  const [createGame, setCreateGame] = useState(false)
+  const [teamsYouAreIncluded, setTeamsYouAreIncluded] = useState(false);
+  const [createGame, setCreateGame] = useState(false);
 
   // GET BUSCAR EQUIPO
   useEffect(() => {
@@ -47,10 +47,10 @@ function Info() {
 
       const findTeamCreator = response.data;
       if (findTeamCreator === null) {
-        setViewCreateTeam(true);
+        setBtnCreateTeam(true);
         setOwnTeam(null);
       } else {
-        setViewCreateTeam(false);
+        setBtnCreateTeam(false);
         setOwnTeam(findTeamCreator);
       }
       setIsFetching(false);
@@ -62,135 +62,108 @@ function Info() {
   if (isFetching === true) {
     return <h3>...Loading</h3>;
   }
-  
 
- // Toogle components
+  // Toogle components
   const createTeamForm = () => {
-    setCreateGame(false)
-    setTeamsYouAreIncluded(false)
+    setCreateGame(false);
+    setTeamsYouAreIncluded(false);
     setCreateTourney(false);
     setYourTeam(false);
     setEditUser(false);
     setCreateTeam(true);
   };
   const handleYourTeam = () => {
-    setCreateGame(false)
-    setTeamsYouAreIncluded(false)
+    setCreateGame(false);
+    setTeamsYouAreIncluded(false);
     setCreateTourney(false);
     setCreateTeam(false);
     setEditUser(false);
     setYourTeam(true);
   };
   const handleEditUser = () => {
-    setCreateGame(false)
-    setTeamsYouAreIncluded(false)
+    setCreateGame(false);
+    setTeamsYouAreIncluded(false);
     setCreateTourney(false);
     setYourTeam(false);
     setCreateTeam(false);
     setEditUser(true);
   };
   const handleCreateTourney = () => {
-    setCreateGame(false)
-    setTeamsYouAreIncluded(false)
+    setCreateGame(false);
+    setTeamsYouAreIncluded(false);
     setYourTeam(false);
     setCreateTeam(false);
     setEditUser(false);
     setCreateTourney(true);
   };
   const handleteamsYouAreIncluded = () => {
-    setCreateGame(false)
+    setCreateGame(false);
     setYourTeam(false);
     setCreateTeam(false);
     setEditUser(false);
     setCreateTourney(false);
-    setTeamsYouAreIncluded(true)
+    setTeamsYouAreIncluded(true);
   };
   const handleCreateGame = () => {
-    setCreateGame(false)
+    setCreateGame(false);
     setYourTeam(false);
     setCreateTeam(false);
     setEditUser(false);
     setCreateTourney(false);
-    setTeamsYouAreIncluded(false)
-    setCreateGame(true)
+    setTeamsYouAreIncluded(false);
+    setCreateGame(true);
   };
 
   return (
     <div className="info-container">
-      <div className="info-user">
-        <div className="image-user">
-          <img src={picture} alt="imag-user" />
-        </div>
 
-        <div className="data-user">
-          <div className="personal-info">
-            <div>
-              <h2>{username}</h2>
-            </div>
-            <div>
-              <h4>{email}</h4>
-            </div>
-            {viewCreateTeam === true ? (
-              <div>
-                <button variant="outline-info">Create Team</button>
-                <Collapse in={formIsShowing}>
-                  <div>
-                    <CreateTeamForm updateTeamCreated={getData} />
-                  </div>
-                </Collapse>
-              </div>
-            ) : (
-              <div>
-                <p>Your Team: {ownTeam.name}</p>
-                <p>
-                  Members:{" "}
-                  {ownTeam.members.map((eachMem) => {
-                    return (
-                      <div key={eachMem._id}>
-                        <p>{eachMem.username}</p>
-                      </div>
-                    );
-                  })}
-                </p>
-              </div>
-            )}
+      <section className="info-user">
+
+        <div className="box-user">
+          <div className="image-user">
+            <img src={picture} alt="imag-user" />
           </div>
 
-          <div className="buttons-user">
-            <div className="button-group">
-              <div>
-                <Button onClick={handleEditUser}>Edit User</Button>
-              </div>
-              <div>
-               
-                  <Button onClick={createTeamForm}>Create Team</Button>
-                
-              </div>
-              <div>
-                
-                  <Button onClick={handleCreateGame}>Create Game</Button>
-                
-              </div>
+          <div>
+            <h2>{username}</h2>
+          </div>
+        </div>
+
+        <div className="box-buttons">
+          <div className="button-group">
+            <div>
+              <button onClick={handleEditUser}>Edit User</button>
             </div>
-            <div className="button-group">
-              <div>
-                
-                  <Button onClick={handleCreateTourney}>Create Tourney</Button>
-               
-              </div>
-              <div>
-                <Button onClick={handleYourTeam}>Your Team</Button>
-              </div>
-              <div>
-                
-                  <Button onClick={handleteamsYouAreIncluded}>Teams You are included</Button>
-               
-              </div>
+            <div>
+              {btnCreateTeam ? (
+                <button onClick={createTeamForm}>Create Team</button>
+              ) : (
+                <button disabled>-</button>
+              )}
+            </div>
+            <div>
+              <button onClick={handleCreateGame}>Create Game</button>
+            </div>
+          </div>
+          <div className="button-group">
+            <div>
+              <button onClick={handleCreateTourney}>Create Tourney</button>
+            </div>
+            <div>
+              {btnCreateTeam ? (
+                <button disabled> - </button>
+              ) : (
+                <button onClick={handleYourTeam}>Own Team</button>
+              )}
+            </div>
+            <div>
+              <button onClick={handleteamsYouAreIncluded}>Your Teams</button>
             </div>
           </div>
         </div>
-      </div>
-      <div className="profile-components">
+      </section>
+
+      <section id="profile-components">
         {createTeam && (
           <CreateTeamForm
             setCreateTeam={setCreateTeam}
@@ -199,27 +172,30 @@ function Info() {
           />
         )}
 
+        {/* ownTeam Component */}
         {yourTeam && (
           <div className="your-team">
-            <img src={ownTeam.picture} alt="" />
-            <h2> {ownTeam.name}</h2>
-            <p>
+            <div id="own-team-box">
+            <img src={ownTeam?.picture} alt="team-pic" />
+            <h2> <b> {ownTeam?.name}</b></h2>
+            </div>
+            <h4>
               Members:{" "}
-              {ownTeam.members.map((eachMem) => {
+              {ownTeam?.members.map((eachMem) => {
                 return (
-                  <div key={eachMem._id}>
-                    <p>{eachMem.username}</p>
-                  </div>
+                  <p key={eachMem._id}> <i>
+                    {eachMem.username}</i></p>
+                  
                 );
               })}
-            </p>
+            </h4>
           </div>
         )}
         {editUser && <InfoEdit id={_id} updateUser={getData} />}
-        {createTourney && <CreateTourneyForm/>}
-        {teamsYouAreIncluded && <TeamsUserIncluded/>}
-        {createGame && <CreateGameForm/>}
-      </div>
+        {createTourney && <CreateTourneyForm />}
+        {teamsYouAreIncluded && <TeamsUserIncluded />}
+        {createGame && <CreateGameForm />}
+      </section>
     </div>
   );
 }
