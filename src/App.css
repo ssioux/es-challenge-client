@@ -909,39 +909,92 @@ body {
   height: 100vh;
 }
 .tourney-list-teams-header {
-  padding: 20px;
+  padding: 10px;
   height: 30vh;
   background-color: #5cca87;
   display: flex;
   justify-content: center;
 }
-.tourney-list-teams-header img {
-  height: 80%;
+@media screen and (max-width:1024px){
+  .game-tourney-list  {
+    flex-flow: column wrap;
+    height: auto;
+  }
 }
+/*_______________Game div___________________________________________________________*/
+
 .game-tourney-list {
+  border:2px solid red;
+  height: 100%;
   width: 25%;
 }
-.buttons {
+.game-tourney-list .game-img{
+  background-color: #6f81a5;
+  height: 65%;
+}
+.game-img img{
+  height: 100%;
+}
+.game-name{
+  background-color: yellow;
+  height: 35%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.game-name h3{
+  display: flex;
+  flex-flow: column wrap;
+}
+@media screen and (max-width:1024px){
+  .game-tourney-list {
+    border:2px solid rgb(119, 255, 0);
+    height: 30vh;
+    width: 100%;
+  }
+}
+/*_______________Tourney Name div___________________________________________________________*/
+
+
+
+.tourney-list-tourney-name {
+  border: 2px solid red;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tourney-list-tourney-name h1 {
+  font-size: 4rem;
+  font-family:Orbitron;
+  /* font-weight: bold; */
+
+}
+@media screen and (max-width:1024px){
+  .tourney-list-tourney-name{
+    border:2px solid rgb(119, 255, 0);
+    height: 30vh;
+    width: 100%;
+  }
+}
+/*_______________ Tourney-list Buttons div___________________________________________________________*/
+
+.tourney-list-buttons {
   background-color: rgb(126, 31, 31);
   width: 25%;
 }
 
-/* .tourney-list-tourney-name{
-  width:70%;
-} */
-.tourney-list-tourney-name {
-  width: 50%;
-}
-.tourney-list-tourney-name h1 {
-  font-size: 100px;
+@media screen and (max-width:1024px){
+  .tourney-list-buttons{
+    border:2px solid rgb(119, 255, 0);
+    height: 30vh;
+    width: 100%;
+  }
 }
 
-.start-tourney-btn {
-  background-color: rgb(255, 71, 47);
-}
-.add-team-btn {
-  background-color: rgb(255, 151, 47);
-}
+/*_______________Team List container___________________________________________________________*/
+
 .tourney-list-team-list {
   padding: 40px;
   display: flex;

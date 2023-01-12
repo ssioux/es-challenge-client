@@ -110,13 +110,21 @@ function TourneyListTeams(props) {
     <div className="tourney-list-teams">
       <div className="tourney-list-teams-header">
         <div className="game-tourney-list">
+          <div className="game-img">
           <img src={details.game.picture} alt="gamePicture" />
-          <h2>{details.game.name}</h2>
+          </div>
+          <div className="game-name">
+             <h3>{details.game.name}</h3>
+          </div>
+         
         </div>
         <div className="tourney-list-tourney-name">
           <h1>{details.name}</h1>
         </div>
-        <div className="buttons">
+        <div className="tourney-list-buttons">
+          <div>
+            <h3>OPTIONS</h3>
+          </div>
           {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
           {details.quarterA.length === 0 && user?.user.role === "admin" && (
             <div className="start-tourney-btn">
@@ -170,10 +178,10 @@ function TourneyListTeams(props) {
       <div className="tourney-list-team-list">
         {details.teams.map((eachTeam) => {
           return (
-            <div className="team-card">
+            <div className="team-card" key={eachTeam._id}>
               <Link to={`/team/${eachTeam._id}/details`}>
-                <div className="image-card" key={eachTeam._id}>
-                  <img src={eachTeam.picture} alt="" />
+                <div className="image-card" >
+                  <img src={eachTeam.picture} alt="shield" />
                 </div>
                 <div className="name-team">
                   <h3>{eachTeam.name}</h3>
