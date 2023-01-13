@@ -1394,8 +1394,26 @@ h4 {
     flex-direction: column;
   }
   .info-user {
+    margin-top:100px;
     width: 100%;
     margin-bottom: 100px;
+    box-shadow:none;
+  }
+  #profile-components {
+    left: 120px;
+    top: 830px;
+    position: absolute;
+    display: flex;
+    width: 65%;
+   
+  }
+  #profile-components-image {
+
+    width: 100vw;
+    height: 100vh;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+   
   }
 }
 
