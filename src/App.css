@@ -1084,8 +1084,9 @@ body {
 .tourney-list-teams {
  
   background-color: #f9f1f1;
-  height: 100vh ;
-  background-size:initial;
+  width: 100vw;
+  background-size:cover;
+  height: 100% ;
 
 }
 .tourney-list-teams-header {
