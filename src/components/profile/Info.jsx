@@ -118,7 +118,7 @@ function Info() {
 
   return (
     <div className="info-container">
-
+      
       <section className="info-user">
 
         <div className="box-user">
@@ -164,6 +164,11 @@ function Info() {
           </div>
         </div>
       </section>
+
+      <section id="profile-components-image">
+        <img src="../../../images/profile-eschallenge.jpg" alt="profile-image" />
+
+       </section>
 
       <section id="profile-components">
          {/* Create Team Component */}

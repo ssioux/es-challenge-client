@@ -49,17 +49,19 @@ function TeamsUserIncluded() {
 
       {userTeamList.map((eachTeam)=> {
         return (
-          <div key={eachTeam._id} className="team-included-card">
+          <Link to={`/team/${eachTeam._id}/details`} key={eachTeam._id}> 
+          <div  className="team-included-card">
 
             <div className="team-included-card-box1">
             <img src={eachTeam.picture} alt="team-pic" className="team-flag"/>
          </div>
 
           <div className="team-included-card-box2">
-          <Link to={`/team/${eachTeam._id}/details`}>{eachTeam.name}</Link>
+          {eachTeam.name}
           </div>
 
           </div>
+          </Link>
         )
       })}
       </div>
