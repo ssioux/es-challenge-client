@@ -27,6 +27,9 @@ function NavBar() {
   };
 
   return (
+
+   
+
     <nav className="nav-bar">
       <div className="full-nav-burger">
         <div>

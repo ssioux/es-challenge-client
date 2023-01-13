@@ -3,7 +3,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import IsPrivate from "./components/IsPrivate";
-
+import {useState} from "react"
 // pages
 import Error from "./pages/error/Error";
 import Home from "./pages/navbar/Home";
@@ -27,11 +27,15 @@ import TourneyMain from "./components/Tourney/TourneyMain.jsx";
 import About from "./pages/navbar/About";
 
 
+
+
 function App() {
+  const [isOpen, setOpen] = useState(false)
   return (
-    <div className="App">
+    <div className="App"> 
+    
       <NavBar />
- 
+   
       <Routes>
         {/*  ********* Auth Pages ********/}
         <Route path="/" element={<Home />} />
