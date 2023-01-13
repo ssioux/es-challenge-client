@@ -1082,50 +1082,213 @@ body {
 /*___________________________________________________________________________*/
 
 .tourney-list-teams {
+ 
   background-color: #f9f1f1;
-  width: 100vw;
-  height: 100vh;
+  height: 100vh ;
+  background-size:initial;
+
 }
 .tourney-list-teams-header {
-  padding: 20px;
+  margin: 12px;
+  border: 3px solid #000d56;
+  border-radius: 2rem;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  background-color: #bec0ca;
   height: 30vh;
-  background-color: #5cca87;
   display: flex;
   justify-content: center;
 }
-.tourney-list-teams-header img {
-  height: 80%;
-}
-.game-tourney-list {
-  width: 25%;
-}
-.buttons {
-  background-color: #000;
-  width: 25%;
-}
 
-/* .tourney-list-tourney-name{
-  width:70%;
-} */
+  
+
+@media screen and (max-width: 1024px) {
+  .game-tourney-list {
+    flex-flow: column wrap;
+    height: auto;
+  }
+  .tourney-list-teams {
+    height: auto;
+  }
+}
+/*_______________Game div___________________________________________________________*/
+
+.game-tourney-list {
+  height: 100%;
+  width: 25%;
+}
+.game-tourney-list .game-img {
+  height: 65%;
+}
+.game-img img {
+  height: 100%;
+}
+.game-name {
+  height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-name h3 {
+  display: flex;
+  flex-flow: column wrap;
+}
+@media screen and (max-width: 1024px) {
+  .game-tourney-list {
+    height: 30vh;
+    width: 100%;
+  }
+}
+/*_______________Tourney Name div___________________________________________________________*/
+
 .tourney-list-tourney-name {
+  border-right: 3px solid #000d56;
+  border-left: 3px solid #000d56;
   width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tourney-list-tourney-name h1 {
-  font-size: 100px;
+  font-size: 4rem;
+  font-family: Orbitron;
+}
+@media screen and (max-width: 1024px) {
+  .tourney-list-tourney-name {
+    border-right: 0px solid #000d56;
+    border-left: 0px solid #000d56;
+    border-top: 3px solid #000d56;
+    border-bottom: 3px solid #000d56;
+    height: 30vh;
+    width: 100%;
+  }
+}
+/*_______________ Tourney-teams-List Options div___________________________________________________________*/
+
+.tourney-team-list-options {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tourney-team-list-options-text h3 {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
 
-.start-tourney-btn {
-  background-color: rgb(255, 71, 47);
+.tourney-team-list-options-buttons {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.add-team-btn {
-  background-color: rgb(255, 151, 47);
+.options-buttons {
+  width: 30%;
+  height: 40%;
 }
-.tourney-list-team-list {
+.options-buttons button {
+  width: 100px;
+  height: 100%;
+  background-color: #000d56;
+  color: white;
+  border-radius: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 300ms ease-out;
+}
+.options-buttons button:hover{
+  box-shadow: 10px 5px 5px #525462;
+  transform: scale(1.1);
+  transition: all 300ms ease-in;
+}
+.options-buttons button:disabled {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .tourney-team-list-options {
+    height: 30vh;
+    width: 100%;
+  }
+}
+
+/*_______________Team List container___________________________________________________________*/
+
+.tourney-list-team-container {
+
   padding: 40px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  
+}
+.team-card {
+  background-color: #bec0ca;
+  border: 2px solid #000d56;
+  border-radius: 1rem;
+  width: 12rem;
+  height: 24rem;
+  transition: all 300ms ease-out;
+
+}
+.team-card a {
+  text-decoration: none;
+  color: black;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.image-card {
+  border-bottom: 2px solid #000d56;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  
+  align-items: center;
+}
+.image-card img {
+  width: 100%;
+}
+.name-team {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.name-team h3 {
+  font-family: "Courier New", Courier, monospace;
+}
+.team-card:hover{
+  box-shadow: 10px 5px 5px #525462;
+  transform: scale(1.05);
+  transition: all 300ms ease-in;
+  opacity: 1;
+
+}
+.team-card:hover .image-card{
+  transform:scale(1.1);
+  background-color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  
+  border:2px solid rgb(163, 19, 19);
+}
+.team-card:hover .name-team{
+  background-color: #000d56;
+  color:white;
+  border-radius: 1rem;
+  border:2px solid rgb(163, 19, 19);
+
 }
 @media screen and (max-width: 1024px) {
   .tourney-list-teams-header {
@@ -1139,9 +1302,16 @@ body {
   .add-team-btn {
     width: 100%;
   }
+ 
+}
+@media screen and (max-width:768px) {
+  .team-card{
+    width:80vw;
+    height: 26rem;
+  }
 }
 
-/********************  Teams List Page ****************************/
+/******************** Teams List Page ****************************/
 /*___________________________________________________________________________*/
 
 .teams-container {
