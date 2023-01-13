@@ -23,7 +23,7 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticateUser();
-    navigate("/");
+    navigate("/home");
   };
 
   return (
