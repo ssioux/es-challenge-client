@@ -436,6 +436,8 @@ body {
   flex-direction: column;
 }
 .home-paraph {
+  margin-left:2%;
+  margin-top:2%;
   border-radius: 5%;
   background-color: #52546277;
   border: 2px solid rgb(0, 34, 128);
@@ -489,11 +491,15 @@ body {
 }
 .home-button-instructions button{
  
-  background-color: #000d56;
-  color: white;
-  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  background-color: #969ab3;
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
+  color: #000d56;
+  border-radius: 5px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   font-size: 1rem;
   transition: all 300ms ease-out
 }
@@ -502,12 +508,83 @@ body {
   box-shadow: 10px 5px 5px #525462;
   transform: scale(1.1);
   transition: all 300ms ease-in;
+  background-color: rgb(137, 8, 8);
+  color: white;
 }
 /*_________________________Instructions__________________________________________________*/
-.Instructions-container{
-  background-color: red;
+.instructions-container{
+  background-color:  #e4e5ec;
+  background-size: cover;
+  height: 100%;
+  color:#06086d;
 }
+.instructions-container h1{
+padding: 2%;
+}
+.instructions-container h1 span{
+  color:red;
+}
+ .instructions-card{
+  padding:1%;
+  height: 500px;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  color:#06086d
+}
+.instructions-card-img{
+  height: 100%;
+  width:35%;
+}
+.instructions-card-img img{
+  border:3px solid  rgb(0, 34, 128);
+  border-radius: 5%;
+  height: 100%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+ 
+}
+.instructions-card-text{
+width:50%;
+height: 100%;
+display: flex;
+flex-direction: column;
+align-items:flex-start;
+justify-content: center;
+box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.instructions-card li{
+  text-align: start;
+  font-size: 2rem;
+}
+.instructions-card h3{
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3rem;
+  color:#000d56;
+padding-left: 2%;
+}
+@media screen and (max-width:1024px) {
+  .instructions-card{
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .instructions-card-text{
+    width: 100%;
+    padding:1rem;
 
+  }
+  .instructions-card li{
+    text-align: start;
+    font-size: 1rem;
+  }
+  .instructions-card-img{
+    width:100%
+  }
+}
 @media screen and (max-width: 768px) {
   .home {
     flex-direction: column;
@@ -532,6 +609,7 @@ body {
   .home-button-instructions{
     justify-content: center;
   }
+ 
 }
 /*****************************     ABOUT PAGE     ****************************/
 /*___________________________________________________________________________*/
