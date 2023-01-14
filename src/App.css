@@ -69,10 +69,9 @@ body {
 
 @media screen and (max-width: 768px) {
   .nav-bar {
-z-index: 999;
+    z-index: 999;
   }
   .nav-bar .full-nav {
-   
     flex-direction: column;
     justify-content: center;
   }
@@ -97,10 +96,10 @@ z-index: 999;
     color: white;
   }
   .full-nav {
-    background-color:#000d56c7;
-    width:100vw;
+    background-color: #000d56c7;
+    width: 100vw;
     position: fixed;
-    
+
     margin-top: 50px;
   }
   #brand {
@@ -425,7 +424,6 @@ z-index: 999;
 /*___________________________________________________________________________*/
 
 .home {
-  
   height: 100vh;
   width: 100%;
   background-color: #bec0ca;
@@ -435,16 +433,14 @@ z-index: 999;
   color: white;
   display: flex;
 
+  flex-direction: column;
 }
 .home-paraph {
   border-radius: 5%;
-  background-color:#52546277;
-  
-  margin-top: 400px;
-  margin-left: 200px;
+  background-color: #52546277;
   border: 2px solid rgb(0, 34, 128);
   width: 240px;
-  height: 150px;
+  height: 200px;
 }
 
 .home-braket-pic {
@@ -452,15 +448,13 @@ z-index: 999;
   justify-content: center;
   align-items: center;
   width: 60%;
- 
-  
 }
 .home-paraph p {
+  padding:0px 5px 0px 5px;
   text-align: justify;
 }
 
 .home div p span {
-  
   margin-left: 20px;
   color: #000d56;
 }
@@ -469,27 +463,74 @@ z-index: 999;
 }
 #title-access span {
   text-decoration: underline;
-  color:rgb(163, 19, 19);
+  color: rgb(163, 19, 19);
+}
+.home-title {
+  width: 70%;
+  margin: auto;
+  background-color: #52546277;
+  padding: 20px 0px 20px 0px;
+  
+}
+.home-title h1 {
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+.home-image-tourney {
+
+}
+.home-image-tourney img {
+  width: 70%;
+  opacity: 0.8;
+}
+.home-button-instructions{
+  display: flex;
+  justify-content: end;
+}
+.home-button-instructions button{
+ 
+  background-color: #000d56;
+  color: white;
+  border-radius: 5px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 300ms ease-out
+}
+
+.home-button-instructions button:hover {
+  box-shadow: 10px 5px 5px #525462;
+  transform: scale(1.1);
+  transition: all 300ms ease-in;
+}
+/*_________________________Instructions__________________________________________________*/
+.Instructions-container{
+  background-color: red;
 }
 
 @media screen and (max-width: 768px) {
- .home {
-  
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
- }
+  .home {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
   .home-braket-pic {
-  margin-top: 100px;
+    margin-top: 100px;
     width: 100%;
-   
-    
   }
   .home-paraph {
-    margin: 200px 0px 100px 0px;
-
-   
+    margin: 80px 0px 40px 0px;
+  }
+  .home-image-tourney img {
+    width: 100%;
+  }
+  .home-title {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .home-button-instructions{
+    justify-content: center;
   }
 }
 /*****************************     ABOUT PAGE     ****************************/
@@ -1082,12 +1123,10 @@ body {
 /*___________________________________________________________________________*/
 
 .tourney-list-teams {
- 
   background-color: #f9f1f1;
   width: 100vw;
-  background-size:cover;
-  height: 100% ;
-
+  background-size: cover;
+  height: 100%;
 }
 .tourney-list-teams-header {
   margin: 12px;
@@ -1100,8 +1139,6 @@ body {
   display: flex;
   justify-content: center;
 }
-
-  
 
 @media screen and (max-width: 1024px) {
   .game-tourney-list {
@@ -1204,7 +1241,7 @@ body {
   font-size: 1rem;
   transition: all 300ms ease-out;
 }
-.options-buttons button:hover{
+.options-buttons button:hover {
   box-shadow: 10px 5px 5px #525462;
   transform: scale(1.1);
   transition: all 300ms ease-in;
@@ -1225,13 +1262,11 @@ body {
 /*_______________Team List container___________________________________________________________*/
 
 .tourney-list-team-container {
-
   padding: 40px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  
 }
 .team-card {
   background-color: #bec0ca;
@@ -1240,20 +1275,19 @@ body {
   width: 12rem;
   height: 24rem;
   transition: all 300ms ease-out;
-
 }
 .team-card a {
   text-decoration: none;
   color: black;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-  rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 .image-card {
   border-bottom: 2px solid #000d56;
   width: 100%;
   height: 70%;
   display: flex;
-  
+
   align-items: center;
 }
 .image-card img {
@@ -1269,27 +1303,25 @@ body {
 .name-team h3 {
   font-family: "Courier New", Courier, monospace;
 }
-.team-card:hover{
+.team-card:hover {
   box-shadow: 10px 5px 5px #525462;
   transform: scale(1.05);
   transition: all 300ms ease-in;
   opacity: 1;
-
 }
-.team-card:hover .image-card{
-  transform:scale(1.1);
+.team-card:hover .image-card {
+  transform: scale(1.1);
   background-color: white;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-  
-  border:2px solid rgb(163, 19, 19);
-}
-.team-card:hover .name-team{
-  background-color: #000d56;
-  color:white;
-  border-radius: 1rem;
-  border:2px solid rgb(163, 19, 19);
 
+  border: 2px solid rgb(163, 19, 19);
+}
+.team-card:hover .name-team {
+  background-color: #000d56;
+  color: white;
+  border-radius: 1rem;
+  border: 2px solid rgb(163, 19, 19);
 }
 @media screen and (max-width: 1024px) {
   .tourney-list-teams-header {
@@ -1303,11 +1335,10 @@ body {
   .add-team-btn {
     width: 100%;
   }
- 
 }
-@media screen and (max-width:768px) {
-  .team-card{
-    width:80vw;
+@media screen and (max-width: 768px) {
+  .team-card {
+    width: 80vw;
     height: 26rem;
   }
 }
@@ -1476,7 +1507,7 @@ body {
 .burger div {
   width: 2rem;
   height: 0.25rem;
-  background-color:  rgb(163, 19, 19);
+  background-color: rgb(163, 19, 19);
   border-radius: 0.1rem;
 }
 @media screen and (min-width: 768px) {
@@ -1620,10 +1651,10 @@ h4 {
     flex-direction: column;
   }
   .info-user {
-    margin-top:100px;
+    margin-top: 100px;
     width: 100%;
     margin-bottom: 100px;
-    box-shadow:none;
+    box-shadow: none;
   }
   #profile-components {
     left: 120px;
@@ -1631,15 +1662,12 @@ h4 {
     position: absolute;
     display: flex;
     width: 65%;
-   
   }
   #profile-components-image {
-
     width: 100vw;
     height: 100vh;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-   
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   }
 }
 
