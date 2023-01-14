@@ -25,6 +25,8 @@ import EditFormTourney from "./components/Tourney/EditFormTourney";
 import TourneyList from "./pages/navbar/TourneyList";
 import TourneyMain from "./components/Tourney/TourneyMain.jsx";
 import About from "./pages/navbar/About";
+import Footer from "./components/Footer";
+import Instructions from "./components/Instructions";
 
 
 
@@ -67,11 +69,14 @@ function App() {
         <Route path="/game/create" element={<CreateGameForm />} />
         {/*  ********* About Pages ********/}
         <Route path="/about" element={<About />} />
+        
         {/* Error Pages */}
 
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
+
     </div>
   );
 }

@@ -19,7 +19,9 @@ body {
 
 .nav-bar {
   color: white;
+  z-index: 999;
   position: sticky;
+  top: 0; /* required */  
   background-color: rgb(28, 28, 28);
   width: 100vw;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
@@ -422,10 +424,17 @@ body {
 }
 /*****************************     HOME PAGE     ****************************/
 /*___________________________________________________________________________*/
-
+.home-container{
+  margin:0px;
+  padding:0px;
+  border:2px solid red;
+  width: 100vw;
+  
+}
 .home {
-  height: 100vh;
+  /* height: 40vh; */
   width: 100%;
+  height: 100%;
   background-color: #bec0ca;
   background-image: url("../public/images/ryu.jpg");
   background-repeat: no-repeat;
@@ -436,8 +445,11 @@ body {
   flex-direction: column;
 }
 .home-paraph {
-  margin-left:2%;
-  margin-top:2%;
+  position:absolute;
+  left:300px;
+  top:7px;
+  margin-left: 2%;
+  margin-top: 2%;
   border-radius: 5%;
   background-color: #52546277;
   border: 2px solid rgb(0, 34, 128);
@@ -452,7 +464,7 @@ body {
   width: 60%;
 }
 .home-paraph p {
-  padding:0px 5px 0px 5px;
+  padding: 0px 5px 0px 5px;
   text-align: justify;
 }
 
@@ -471,26 +483,22 @@ body {
   width: 70%;
   margin: auto;
   background-color: #52546277;
-  padding: 20px 0px 20px 0px;
-  
+  padding: 40px 0px 20px 0px;
 }
 .home-title h1 {
   font-weight: bold;
   font-family: "Courier New", Courier, monospace;
 }
-.home-image-tourney {
 
-}
 .home-image-tourney img {
   width: 70%;
   opacity: 0.8;
 }
-.home-button-instructions{
+.home-button-instructions {
   display: flex;
   justify-content: end;
 }
-.home-button-instructions button{
- 
+.home-button-instructions button {
   width: 100%;
   height: 50px;
   background-color: #969ab3;
@@ -501,7 +509,7 @@ body {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   font-size: 1rem;
-  transition: all 300ms ease-out
+  transition: all 300ms ease-out;
 }
 
 .home-button-instructions button:hover {
@@ -512,80 +520,79 @@ body {
   color: white;
 }
 /*_________________________Instructions__________________________________________________*/
-.instructions-container{
-  background-color:  #e4e5ec;
+.instructions-container {
+  background-color: #e4e5ec;
   background-size: cover;
   height: 100%;
-  color:#06086d;
+  color: #06086d;
 }
-.instructions-container h1{
-padding: 2%;
+.instructions-container h1 {
+  padding: 2%;
 }
-.instructions-container h1 span{
-  color:red;
+.instructions-container h1 span {
+  color: red;
 }
- .instructions-card{
-  padding:1%;
+.instructions-card {
+  padding: 1%;
   height: 500px;
   width: 70%;
   margin: auto;
   display: flex;
   justify-content: center;
-  color:#06086d
+  color: #06086d;
 }
-.instructions-card-img{
+.instructions-card-img {
   height: 100%;
-  width:35%;
+  width: 35%;
 }
-.instructions-card-img img{
-  border:3px solid  rgb(0, 34, 128);
+.instructions-card-img img {
+  border: 3px solid rgb(0, 34, 128);
   border-radius: 5%;
   height: 100%;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
- 
 }
-.instructions-card-text{
-width:50%;
-height: 100%;
-display: flex;
-flex-direction: column;
-align-items:flex-start;
-justify-content: center;
-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+.instructions-card-text {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
-.instructions-card li{
+.instructions-card li {
   text-align: start;
   font-size: 2rem;
 }
-.instructions-card h3{
+.instructions-card h3 {
   font-family: "Courier New", Courier, monospace;
   font-size: 3rem;
-  color:#000d56;
-padding-left: 2%;
+  color: #000d56;
+  padding-left: 2%;
 }
-@media screen and (max-width:1024px) {
-  .instructions-card{
+@media screen and (max-width: 1024px) {
+  .instructions-card {
     width: 100%;
     height: auto;
     flex-direction: column;
     justify-content: center;
   }
-  .instructions-card-text{
+  .instructions-card-text {
     width: 100%;
-    padding:1rem;
-
+    padding: 1rem;
   }
-  .instructions-card li{
+  .instructions-card li {
     text-align: start;
     font-size: 1rem;
   }
-  .instructions-card-img{
-    width:100%
+  .instructions-card-img {
+    width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
+ 
   .home {
     flex-direction: column;
     justify-content: center;
@@ -606,10 +613,9 @@ padding-left: 2%;
     width: 100%;
     margin-bottom: 20px;
   }
-  .home-button-instructions{
+  .home-button-instructions {
     justify-content: center;
   }
- 
 }
 /*****************************     ABOUT PAGE     ****************************/
 /*___________________________________________________________________________*/
@@ -1431,6 +1437,8 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  padding-bottom: 2rem;
+
 }
 
 .teams-container a {
@@ -1840,4 +1848,71 @@ h4 {
 
 .team-included-card-box2:hover {
   transition: all 0.3s ease-in;
+}
+
+/***************************** FOOTER ****************************/
+/*_________________________________________________*/
+
+.footer{
+  /* position:sticky; */
+  bottom:0;
+  width: 100vw;
+ 
+  height:20vh;
+  background-color:  #000d56;
+  opacity: 0.7;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    color:white;
+    display:flex;
+}
+.footer-logo{
+ 
+  width: 50%;
+  height: 100%;
+}
+.footer-logo-img{
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-logo img{
+  padding: 1rem;
+  height:100%;
+
+}
+.footer-logo-text{
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-developers{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-contact{
+ 
+  width:25%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: flex-start ;
+}
+@media screen and (max-width: 1024px) {
+ .footer{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center ;
+  height: auto;
+  gap:20px;
+ }
+ .footer-contact{
+  align-items: center;
+ }
 }

@@ -2,19 +2,16 @@
 // Components
 // import Header from "../../components/home/Header";
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import Instructions from "../../components/Instructions";
 import { HashLink } from 'react-router-hash-link';
 
 function Home() {
-  const [activeLink, setActiveLink] = useState("home");
 
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
   return (
-    <section className="home">
+    
+
+    
+    <div className="home">
       {/* <Header /> */}
 
       {/* <div className="home-braket-pic">
@@ -27,7 +24,7 @@ function Home() {
           {" "}
           <span>Login Access </span>
         </p>
-        <p>Fell free as an admin using the user bellow:</p>
+        <p>Feel free as an admin using the user bellow:</p>
         <p>
           <span>E-mail: </span>user1@user1.com
         </p>
@@ -57,7 +54,7 @@ function Home() {
       <div id="Instructions">
         <Instructions />
       </div>
-    </section>
+    </div>
   );
 }
 
