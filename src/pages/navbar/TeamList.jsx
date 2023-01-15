@@ -59,8 +59,9 @@ function TeamList() {
         <div className="tourney-header">
           <div className="tourney-header-div1">
             <h2>Teams</h2>
-            <InputGroup className="mb-3" style={{ marginTop: "10px", width: "39%" }}>
+            <InputGroup className="mb-3" style={{ marginTop: "10px", width: "50%" }}>
               <Form.Control
+              className="input-search-list"
                 placeholder="search"
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"

@@ -5,13 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 // Data RestApi
 import { listTourneysService } from "../../services/tourney.services.js";
 
-// import CreateTourneyForm from "../profile/CreateTourneyForm.jsx"
+
 
 import { AuthContext } from "../../context/auth.context";
 
 // bootstrap
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
+
 import { Button, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
@@ -64,9 +63,11 @@ function TourneyList() {
           <h2>Tournaments</h2>
           <InputGroup
             className="mb-3"
-            style={{ marginTop: "10px", width: "39%" }}
+            style={{ marginTop: "10px", width: "50%"}}
           >
             <Form.Control
+            className="input-search-list"
+            
               placeholder="search"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"

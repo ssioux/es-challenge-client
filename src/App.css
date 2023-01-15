@@ -566,6 +566,13 @@ body {
   padding-left: 2%;
 }
 @media screen and (max-width: 1024px) {
+  .home-paraph {
+    display: none;
+  }
+  .home-title {
+    
+    margin-top: 80px;
+  }
   .instructions-card {
     width: 100%;
     height: auto;
@@ -585,6 +592,7 @@ body {
   }
 }
 @media screen and (max-width: 768px) {
+ 
  .home {
   
   flex-direction: column;
@@ -612,6 +620,8 @@ body {
     justify-content: center;
   }
 }
+
+
 /*****************************     ABOUT PAGE     ****************************/
 /*___________________________________________________________________________*/
 #about-container {
@@ -1177,7 +1187,13 @@ body {
   .general-container {
     height: auto;
   }
+  .input-search-list {
+    width:100% !important;
+  }
   .tourney-header div {
+    display:flex;
+    flex-direction: column;
+    margin-top: 60px;
     width: 100%;
   }
 }
@@ -1189,12 +1205,17 @@ body {
   .tourney-header div {
     width: 100%;
   }
+  .tourney-header h2 {
+    width:100%;
+  }
 }
 @media screen and (max-width: 481px) {
   .general-container {
     height: auto;
   }
+
   .tourney-header div {
+    margin-top: 50px;
     width: 100%;
   }
 }
