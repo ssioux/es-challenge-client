@@ -1,30 +1,31 @@
+// React Hooks
 import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
+// Axios Services
 import {
   addMemberTeamService,
   detailsTeamService,
   removeMemberTeamService,
 } from "../services/team.services";
-import { useNavigate, useParams } from "react-router-dom";
+// Bootstrap Imports
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import { InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { AuthContext } from "../context/auth.context";
 
 function TeamDetails() {
   const { isLoggedIn, user } = useContext(AuthContext);
 
-
   const { teamId } = useParams();
 
   const navigate = useNavigate();
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [teamDetails, setTeamDetails] = useState();
   const [isFetching, setIsFetching] = useState(true);
+  // Toggle for add the password to join the team
   const [passToggle, setPassToggle] = useState(false);
+  // Keeps the joinPassword
   const [passwordInput, setPasswordInput] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getData();
@@ -33,7 +34,7 @@ function TeamDetails() {
   const getData = async () => {
     try {
       const details = await detailsTeamService(teamId);
-     
+
       setTeamDetails(details.data);
       setIsFetching(false);
     } catch (error) {
@@ -49,7 +50,7 @@ function TeamDetails() {
   });
 
   // Toggle that opens the input password
-  const toggleJoinTeam = async (e) => {
+  const toggleJoinTeam = async () => {
     setPassToggle(true);
   };
   // Get the pinput Password and save it in the State
@@ -94,64 +95,69 @@ function TeamDetails() {
 
   return (
     <div className="team-details-container">
-     
-      <div className="image-team">
-      <img src={teamDetails.picture} alt="shield" />
+      <h1>{teamDetails.name}</h1>
+      <div className="team-info-details">
+        <div className="team-info-shield">
+          <img src={teamDetails.picture} alt="shield" />
         </div>
+
         <div className="data-team">
-          <h1>{teamDetails.name}</h1>
-          <h2>Players:</h2>
-          {teamDetails.members.map((eachMember) => {
-            return (
-              <div className="team-member" key={eachMember._id}>
-                <h2>{teamDetails.nameTag} - {eachMember.username}</h2>
-              </div>
-            );
-          })}
-      
-        {isLoggedIn &&
-          (filteredUser[0]?._id === user?.user?.id ? (
-            <Button
-              type="submit"
-              variant="outline-secondary"
-              id="button-addon3"
-              onClick={toggleJoinTeam}
-            >
-              Join Team
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              variant="outline-secondary"
-              id="button-addon3"
-              onClick={handleRemoveMember}
-            >
-              Remove from Team
-            </Button>
-          ))}
+        
+            {teamDetails.members.map((eachMember) => {
+              return (
+               
+                  <h4 key={eachMember._id}>- {eachMember.username}</h4>
+               
+              );
+            })}
+     
 
-        {passToggle && (
-          <InputGroup className="mb-3">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              aria-label="Recipient's username"
-              aria-describedby="basic-addon2"
-              value={passwordInput}
-              onChange={handlePasswordChange}
-            />
-            <Button
-              type="submit"
-              variant="outline-secondary"
-              id="button-addon3"
-              onClick={handlAcceptTeam}
-            >
-              Accept
-            </Button>
-          </InputGroup>
-        )}
+          {isLoggedIn &&
+            (filteredUser[0]?._id === user?.user?.id ? (
+              <Button
+                type="submit"
+                variant="outline-secondary"
+                id="button-addon3"
+                onClick={toggleJoinTeam}
+              >
+                Join Team
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                variant="outline-secondary"
+                id="button-addon3"
+                onClick={handleRemoveMember}
+              >
+                Remove from Team
+              </Button>
+            ))}
 
-        {errorMessage !== "" && <p className="error-message">{errorMessage}</p>}
+          {passToggle && (
+            <InputGroup className="mb-3">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                value={passwordInput}
+                onChange={handlePasswordChange}
+              />
+              <Button
+                type="submit"
+                variant="outline-secondary"
+                id="button-addon3"
+                onClick={handlAcceptTeam}
+              >
+                Accept
+              </Button>
+            </InputGroup>
+          )}
+
+          {errorMessage !== "" && (
+            <p className="error-message">{errorMessage}</p>
+          )}
+        </div>
       </div>
     </div>
   );

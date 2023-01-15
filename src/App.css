@@ -71,7 +71,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .nav-bar {
-    z-index: 999;
+        z-index: 999;
   }
   .nav-bar .full-nav {
     flex-direction: column;
@@ -432,7 +432,8 @@ body {
   
 }
 .home {
-  /* height: 40vh; */
+  
+  height: 100vh;
   width: 100%;
   height: 100%;
   background-color: #bec0ca;
@@ -442,7 +443,6 @@ body {
   color: white;
   display: flex;
 
-  flex-direction: column;
 }
 .home-paraph {
   position:absolute;
@@ -451,7 +451,10 @@ body {
   margin-left: 2%;
   margin-top: 2%;
   border-radius: 5%;
-  background-color: #52546277;
+  background-color:#52546277;
+  
+  margin-top: 400px;
+  margin-left: 200px;
   border: 2px solid rgb(0, 34, 128);
   width: 240px;
   height: 200px;
@@ -477,17 +480,7 @@ body {
 }
 #title-access span {
   text-decoration: underline;
-  color: rgb(163, 19, 19);
-}
-.home-title {
-  width: 70%;
-  margin: auto;
-  background-color: #52546277;
-  padding: 40px 0px 20px 0px;
-}
-.home-title h1 {
-  font-weight: bold;
-  font-family: "Courier New", Courier, monospace;
+  color:rgb(163, 19, 19);
 }
 
 .home-image-tourney img {
@@ -592,19 +585,21 @@ body {
   }
 }
 @media screen and (max-width: 768px) {
- 
-  .home {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
+ .home {
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+ }
   .home-braket-pic {
     margin-top: 100px;
     width: 100%;
   }
   .home-paraph {
-    margin: 80px 0px 40px 0px;
+    margin: 200px 0px 100px 0px;
+
+   
   }
   .home-image-tourney img {
     width: 100%;
@@ -1518,63 +1513,71 @@ body {
 .team-details-container {
   height: 100vh;
   background-color: #bec0ca;
-  /* background-size:cover; */
   display: flex;
-  flex-wrap: wrap;
-}
-.team-details-container div {
-  width: 50%;
-  display: flex;
-}
-.team-details-container img {
-  width: 600px;
-}
-.image-team {
-  padding-right: 40px;
-
-  display: flex;
-
+  justify-content: center;
   align-items: center;
-  justify-content: flex-end;
+  flex-direction: column;
 }
+.team-details-container h1 {
+  border-radius: 5%;
+  padding: 10px;
+  color: rgb(163, 19, 19);
+  margin-top: -140px;
+  margin-bottom: 60px;
+  box-shadow: rgba(126, 47, 35, 0.12) 0px 2px 4px 0px,
+    rgba(105, 34, 31, 0.32) 0px 2px 16px 0px;
+}
+
+.team-info-details {
+  display: flex;
+  border: 2px solid #000d56;
+  width: 60%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.team-info-shield {
+  width: 35%;
+}
+.team-info-shield img {
+  width: 100%;
+}
+
 .data-team {
+  background-color: #000d56;
+  width: 50%;
+
   padding-left: 40px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
 }
-.data-team h1 {
-  font-size: 6rem;
-}
-.data-team h2 {
-  font-size: 4rem;
-}
-@media screen and (max-width: 1024px) {
-  .team-details-container {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-  }
-  .team-details-container div {
-    width: 100%;
-    justify-content: center;
-  }
-  .image-team {
-    padding: 10px 0px 0px 0px;
-    width: 90%;
-  }
-  .data-team {
-    padding: 10px 0px 0px 0px;
 
+.data-team h4 {
+  position: relative;
+  margin: 20px;
+  right: 40px;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .team-info-details {
+    width: 100%;
+    height: 30%;
+  }
+
+  .data-team {
+    width: 70%;
+  }
+
+  .team-info-shield {
+    width: 35%;
     display: flex;
     align-items: center;
+   
   }
-  .data-team h1 {
-    font-size: 3rem;
-  }
-  .data-team h2 {
-    font-size: 2rem;
+
+  .team-info-shield img {
+    width: 100%;
   }
 }
 
