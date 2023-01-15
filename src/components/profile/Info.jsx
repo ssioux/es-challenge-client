@@ -1,6 +1,5 @@
-
 // React Hooks
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 
 import { AuthContext } from "../../context/auth.context.js";
@@ -10,11 +9,10 @@ import CreateTourneyForm from "./CreateTourneyForm";
 import CreateTeamForm from "./CreateTeamForm";
 import TeamsUserIncluded from "./TeamsUserIncluded";
 import CreateGameForm from "./CreateGameForm";
+import { HashLink } from "react-router-hash-link";
+
 // Axios Services
 import { findTeamCreatorService } from "../../services/team.services";
-
-
-
 
 function Info() {
   const navigate = useNavigate();
@@ -60,7 +58,7 @@ function Info() {
       navigate("/error");
     }
   };
-// Loading is finished
+  // Loading is finished
   if (isFetching === true) {
     return <h3>...Loading</h3>;
   }
@@ -118,9 +116,7 @@ function Info() {
 
   return (
     <div className="info-container">
-      
       <section className="info-user">
-
         <div className="box-user">
           <div className="image-user">
             <img src={picture} alt="imag-user" />
@@ -134,7 +130,9 @@ function Info() {
         <div className="box-buttons">
           <div className="button-group">
             <div>
-              <button onClick={handleEditUser}>Edit User</button>
+              <HashLink smooth to="#profile-components">
+                <button onClick={handleEditUser}>Edit User</button>
+              </HashLink>
             </div>
             <div>
               {btnCreateTeam ? (
@@ -144,34 +142,44 @@ function Info() {
               )}
             </div>
             <div>
-              <button onClick={handleCreateGame}>Create Game</button>
+              <HashLink smooth to="#profile-components">
+                <button onClick={handleCreateGame}>Create Game</button>
+              </HashLink>
             </div>
           </div>
           <div className="button-group">
             <div>
-              <button onClick={handleCreateTourney}>Create Tourney</button>
+              <HashLink smooth to="#profile-components">
+                <button onClick={handleCreateTourney}>Create Tourney</button>
+              </HashLink>
             </div>
             <div>
-              {btnCreateTeam ? (
-                <button disabled> - </button>
-              ) : (
-                <button onClick={handleYourTeam}>Own Team</button>
-              )}
+              <HashLink smooth to="#profile-components">
+                {btnCreateTeam ? (
+                  <button disabled> - </button>
+                ) : (
+                  <button onClick={handleYourTeam}>Own Team</button>
+                )}
+              </HashLink>
             </div>
             <div>
-              <button onClick={handleteamsYouAreIncluded}>Your Teams</button>
+              <HashLink smooth to="#profile-components">
+                <button onClick={handleteamsYouAreIncluded}>Your Teams</button>
+              </HashLink>
             </div>
           </div>
         </div>
       </section>
 
       <section id="profile-components-image">
-        <img src="../../../images/profile-eschallenge.jpg" alt="profile-image" />
-
-       </section>
+        <img
+          src="../../../images/profile-eschallenge.jpg"
+          alt="profile-image"
+        />
+      </section>
 
       <section id="profile-components">
-         {/* Create Team Component */}
+        {/* Create Team Component */}
         {createTeam && (
           <CreateTeamForm
             setCreateTeam={setCreateTeam}
@@ -184,28 +192,32 @@ function Info() {
         {yourTeam && (
           <div className="your-team">
             <div id="own-team-box">
-            <img src={ownTeam?.picture} alt="team-pic" />
-            <h2> <b> {ownTeam?.name}</b></h2>
+              <img src={ownTeam?.picture} alt="team-pic" />
+              <h2>
+                {" "}
+                <b> {ownTeam?.name}</b>
+              </h2>
             </div>
             <h4>
               Members:{" "}
               {ownTeam?.members.map((eachMem) => {
                 return (
-                  <p key={eachMem._id}> <i>
-                    {eachMem.username}</i></p>
-                  
+                  <p key={eachMem._id}>
+                    {" "}
+                    <i>{eachMem.username}</i>
+                  </p>
                 );
               })}
             </h4>
           </div>
         )}
-         {/* Edit User Component */}
+        {/* Edit User Component */}
         {editUser && <InfoEdit id={_id} updateUser={getData} />}
-         {/* Create Tourney Component */}
+        {/* Create Tourney Component */}
         {createTourney && <CreateTourneyForm />}
-         {/* Team Current User Included Component */}
+        {/* Team Current User Included Component */}
         {teamsYouAreIncluded && <TeamsUserIncluded />}
-         {/* Create Game Component */}
+        {/* Create Game Component */}
         {createGame && <CreateGameForm />}
       </section>
     </div>

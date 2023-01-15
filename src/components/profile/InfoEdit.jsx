@@ -6,6 +6,8 @@ import { detailsUserService, updateUserService } from '../../services/profile.se
 import Form from "react-bootstrap/Form"
 import Button from 'react-bootstrap/Button';
 import { uploadPictureService } from '../../services/upload.services';
+import { HashLink } from 'react-router-hash-link';
+
 
 function InfoEdit(props) {
    const navigate = useNavigate()

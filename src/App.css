@@ -1771,6 +1771,7 @@ h4 {
     left: 120px;
     top: 830px;
     position: absolute;
+    margin: auto;
     display: flex;
     width: 65%;
   }
