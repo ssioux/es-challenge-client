@@ -23,6 +23,7 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticateUser();
+    setOpen(true)
     navigate("/home");
   };
 
@@ -50,12 +51,12 @@ function NavBar() {
             </div>
 
             <div className="links">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={burgerIsReady && (()=> setOpen(true))}>Home</Link>
 
-            <Link to="/tourneys">Tourneys</Link>
-            <Link to="/teams">Teams</Link>
-            <Link to="/about">About</Link>
-            <Link to="/profile">Profile</Link>
+            <Link to="/tourneys" onClick={burgerIsReady && (()=> setOpen(true))}>Tourneys</Link>
+            <Link to="/teams" onClick={burgerIsReady && (()=> setOpen(true))}>Teams</Link>
+            <Link to="/about" onClick={burgerIsReady && (()=> setOpen(true))}>About</Link>
+            <Link to="/profile" onClick={burgerIsReady && (()=> setOpen(true))}>Profile</Link>
           </div>
 
           <div id="auth">
@@ -73,15 +74,15 @@ function NavBar() {
           </div>
 
             <div className="links">
-              <Link to="/">Home</Link>
-              <Link to="/tourneys">Tourneys</Link>
-              <Link to="/teams">Teams</Link>
-              <Link to="/about">About</Link>
+              <Link to="/" onClick={burgerIsReady && (()=> setOpen(true))}>Home</Link>
+              <Link to="/tourneys" onClick={burgerIsReady && (()=> setOpen(true))}>Tourneys</Link>
+              <Link to="/teams" onClick={burgerIsReady && (()=> setOpen(true))}>Teams</Link>
+              <Link to="/about" onClick={burgerIsReady && (()=> setOpen(true))}>About</Link>
             </div>
 
             <div className="auth">
-              <Link to="/signup">Signup</Link>
-              <Link to="/login">login</Link>
+              <Link to="/signup" onClick={burgerIsReady && (()=> setOpen(true))}>Signup</Link>
+              <Link to="/login" onClick={burgerIsReady && (()=> setOpen(true))}>login</Link>
             </div>
           </div>
         )
