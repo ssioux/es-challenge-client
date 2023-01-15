@@ -1,14 +1,13 @@
+// React Hooks
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+// Axios Services
 import { listTeamsService } from "../../services/team.services";
-import ListGroup from "react-bootstrap/ListGroup";
+// Bootstrap Components
 import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-// import CardGroup from 'react-bootstrap/CardGroup';
 
 function TeamList() {
   const navigate = useNavigate();
@@ -54,22 +53,26 @@ function TeamList() {
   }
 
   return (
-    <div>
+    <div className="general-container"> 
       {/* <CardGroup> */}
-      <div className="search-team">
-        <h5>Find your team and sign up</h5>
-        <InputGroup className="mb-3">
-          <Form.Control
-            placeholder="search"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            value={searchInput}
-            onChange={handleSearchChange}
-          />
-          <Button variant="outline-secondary" id="button-addon2">
-            Search
-          </Button>
-        </InputGroup>
+      
+        <div className="tourney-header">
+          <div className="tourney-header-div1">
+            <h2>Teams</h2>
+            <InputGroup className="mb-3" style={{ marginTop: "10px", width: "39%" }}>
+              <Form.Control
+                placeholder="search"
+                aria-label="Recipient's username"
+                aria-describedby="basic-addon2"
+                value={searchInput}
+                onChange={handleSearchChange}
+              />
+              <Button variant="outline-secondary" id="button-addon2">
+                Search
+              </Button>
+            </InputGroup>
+          </div>
+       
       </div>
       <div className="teams-container">
         {teamListSearch.map((eachTeam) => {

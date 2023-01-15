@@ -15,7 +15,6 @@ import CardGroup from "react-bootstrap/CardGroup";
 import { Button, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-
 function TourneyList() {
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -32,10 +31,8 @@ function TourneyList() {
     try {
       const response = await listTourneysService();
 
-
-
       setList(response.data);
-      setTourneyListSearch(response.data)
+      setTourneyListSearch(response.data);
 
       setIsFetching(false);
     } catch (error) {
@@ -54,34 +51,35 @@ function TourneyList() {
   const handleSearchChange = (event) => {
     setSearchInput(event.target.value);
     filterTourneys(event.target.value);
-  }
-  
+  };
+
   if (isFetching === true) {
     return <h3>Loading . . .</h3>;
   }
 
   return (
     <div className="general-container">
-    <div className="tourney-header">
-      <div className="tourney-header-div1">
-        <h2>Tournaments</h2>
-        <InputGroup className="mb-3" style={{ marginTop: "10px", width: "39%"}}>
-          <Form.Control
-            placeholder="search"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            value={searchInput}
-            onChange={handleSearchChange}
-            
-          />
-          <Button variant="outline-secondary" id="button-addon2">
-            Search 
-          </Button>
-        </InputGroup>
+      <div className="tourney-header">
+        <div className="tourney-header-div1">
+          <h2>Tournaments</h2>
+          <InputGroup
+            className="mb-3"
+            style={{ marginTop: "10px", width: "39%" }}
+          >
+            <Form.Control
+              placeholder="search"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              value={searchInput}
+              onChange={handleSearchChange}
+            />
+            <Button variant="outline-secondary" id="button-addon2">
+              Search
+            </Button>
+          </InputGroup>
+        </div>
       </div>
-   
-    </div>
-     
+
       <div className="card-container">
         {tourneyListSearch.map((eachTourney) => {
           return (
@@ -107,7 +105,6 @@ function TourneyList() {
                 </div>
               </div>
             </Link>
-
           );
         })}
       </div>
