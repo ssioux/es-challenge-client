@@ -291,10 +291,12 @@ body {
 }
 
 #create-game-container {
+  border:2px solid yellow;
   display: flex;
   width: 100vw;
   height: 100vh;
   justify-content: center;
+  align-items: center;
 }
 
 /* -------------  General Form --------------*/
@@ -1630,6 +1632,7 @@ body {
 /***************************** PROFILE ****************************/
 /*___________________________ Data User Box______________________*/
 .info-container {
+  border:2px solid red;
   background-color: #bec0ca;
   height: 100vh;
   width: 100%;
@@ -1639,9 +1642,10 @@ body {
 }
 
 .info-user {
+  border:2px solid green;
   width: 35%;
   height: 100%;
-  padding: 0px 100px;
+  /* padding: 0px 100px; */
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   margin: 0 auto;
@@ -1658,18 +1662,27 @@ h4 {
   font-weight: bold;
 }
 .box-user {
+  border:2px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 
   width: 100%;
+  height: 60%;
 }
 .image-user {
-  width: 50%;
+  height: 80%;
+border:2px solid pink;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+ 
 }
 .image-user img {
-  width: 100%;
+  height: 100%;
   border-radius: 5%;
   border: 1px solid #000d56;
 }
@@ -1691,10 +1704,11 @@ h4 {
 .box-buttons {
   display: flex;
   width: 100%;
+  height: 40%;
 }
 .button-group {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
 }
@@ -1703,7 +1717,7 @@ h4 {
   padding: 10px;
 }
 /* ________________________ Components Box__________________*/
-#profile-components-image {
+/* #profile-components-image {
   display: flex;
   width: 65%;
   height: 100vh;
@@ -1712,13 +1726,18 @@ h4 {
   opacity: 0.5;
   width: 100%;
   height: 100%;
-}
+} */
 
 #profile-components {
-  left: 500px;
-  position: absolute;
+  background-image:url("../public/images/profile-eschallenge-opacity.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border:2px solid red;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 65%;
+  height: 100%;
 }
 
 .your-team {
@@ -1753,34 +1772,33 @@ h4 {
   margin: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .info-container {
+    padding-top:40px;
+    width: 100%;
     background-color: #bec0ca;
-    height: 100%;
+    height: auto;
 
     display: flex;
     flex-direction: column;
   }
   .info-user {
-    margin-top: 100px;
+    margin-top: 20px;
     width: 100%;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     box-shadow: none;
   }
   #profile-components {
-    left: 120px;
-    top: 830px;
-    position: absolute;
-    margin: auto;
     display: flex;
-    width: 65%;
+    width: 100%;
   }
-  #profile-components-image {
-    width: 100vw;
-    height: 100vh;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  .image-user img {
+    width: 50%;
+ 
+  
+   
   }
+
 }
 
 /* ********************  Team Included Component  *********** */

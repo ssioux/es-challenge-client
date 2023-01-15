@@ -172,10 +172,10 @@ function Info() {
       </section>
 
       <section id="profile-components-image">
-        <img
+        {/* <img
           src="../../../images/profile-eschallenge.jpg"
           alt="profile-image"
-        />
+        /> */}
       </section>
 
       <section id="profile-components">
