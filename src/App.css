@@ -1316,6 +1316,7 @@ body {
 /*___________________________________________________________________________*/
 
 .teams-container {
+  margin-top: 20px;
   padding-top: 40px;
   background-color: #bec0ca;
   display: flex;
