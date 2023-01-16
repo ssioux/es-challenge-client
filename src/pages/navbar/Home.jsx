@@ -19,7 +19,7 @@ function Home() {
 
       </div> */}
 
-      <div className="home-paraph">
+      {/* <div className="home-paraph">
         <p id="title-access">
           {" "}
           <span>Login Access </span>
@@ -32,10 +32,10 @@ function Home() {
           {" "}
           <span>Password:</span> Banana99!
         </p>
-      </div>
+      </div> */}
 
       <div className="home-title">
-        <div>
+        <div className="home-title-text">
           <h1>Wellcome to esChallenge</h1>
           <h4>Join us and create your favourite game's tourney</h4>
         </div>
