@@ -209,6 +209,7 @@ function Info() {
                 );
               })}
             </h4>
+            <button className="general-btn-blue">Delete Team</button>
           </div>
         )}
         {/* Edit User Component */}
