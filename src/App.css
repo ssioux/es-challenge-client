@@ -267,14 +267,21 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 #create-team-container {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   justify-content: center;
+  align-items: center;
+  
+}
+.create-team-container{
+ 
+  width:30%
+
 }
 
 .create-team-container form {
   padding-top: 80px;
-  max-width: 340px;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -301,12 +308,22 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   color: white;
   border-radius: 5px;
 }
+@media screen and (max-width:1024px) {
+  .create-team-container{
+  
+    width:100%;
+   
+  
+  }
+  
+}
 /* -------------  id Form Rest Forms--------------*/
 #user-edit-container {
   display: flex;
   width: 100vw;
   height: 100vh;
   justify-content: center;
+  align-items: center;
 }
 
 #create-tourney-container {
@@ -314,6 +331,7 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   width: 100vw;
   height: 100vh;
   justify-content: center;
+  align-items: center;
 }
 
 #create-game-container {
@@ -328,9 +346,12 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 /* -------------  General Form --------------*/
 
 .input-container {
-  position: relative;
+ 
+  position:relative;
   display: flex;
   flex-direction: column;
+ 
+
 }
 
 .input-container:focus-within label {
@@ -343,6 +364,7 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .input-container label {
+  
   position: absolute;
   pointer-events: none;
   transform: translate(0, 23px) scale(1);
@@ -665,16 +687,20 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 /*****************************     ABOUT PAGE     ****************************/
 /*___________________________________________________________________________*/
-#about-container {
+.about-container {
+  background-color: #bec0ca;
   display: flex;
+  justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 76vh;
 }
 
 .about-subcontainer {
-  width: 50%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 
-  background-color: #bec0ca;
 }
 .about-subcontainer img {
   margin-top: 50px;
@@ -698,12 +724,23 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   margin: 40px;
 }
 
-@media screen and (max-width: 768px) {
-  #about-container {
+@media screen and (max-width: 1024px) {
+  .about-container {
+    
     display: flex;
     flex-direction: column;
+    height: auto;
   }
   .about-subcontainer {
+    width: 98%;
+    margin:auto;
+  }
+  .about-subcontainer img{
+    width: 100%;
+
+  }
+  #about-description{
+    margin: 0px;
     width: 100%;
   }
 }
@@ -2000,5 +2037,8 @@ height: 100%;
  }
  .footer-contact{
   align-items: center;
+ }
+ .footer-developers {
+ width: 100%;
  }
 }

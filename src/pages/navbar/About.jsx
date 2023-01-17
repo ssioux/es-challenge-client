@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div id="about-container">
+    <div className="about-container">
       <div className="about-subcontainer">
         <img src="../../../images/es-challenge-Logo.png" alt="challenge-logo" />
       </div>

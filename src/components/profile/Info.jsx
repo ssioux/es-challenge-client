@@ -148,7 +148,10 @@ function Info() {
             </div>
             <div>
               {btnCreateTeam ? (
+              <HashLink smooth to="#profile-components">
                 <button onClick={createTeamForm}>Create Team</button>
+              </HashLink>
+
               ) : (
                 <button disabled>-</button>
               )}
