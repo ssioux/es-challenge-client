@@ -68,7 +68,7 @@ function TeamDetails() {
     const pass = { password: passwordInput };
     try {
       await addMemberTeamService(teamId, pass);
-      //if the member is added read again the Data and erase the errorMessage and the password previusly added
+      //if the member is added the data is readed again and erase the errorMessage and the password previusly added
       getData();
       setErrorMessage("");
       setPasswordInput("");
@@ -111,7 +111,11 @@ function TeamDetails() {
               );
             })}
      
+        
+        </div>
 
+      </div>
+      <div>
           {isLoggedIn &&
             (filteredUser[0]?._id === user?.user?.id ? (
               <Button
@@ -157,8 +161,7 @@ function TeamDetails() {
           {errorMessage !== "" && (
             <p className="error-message">{errorMessage}</p>
           )}
-        </div>
-      </div>
+          </div>
     </div>
   );
 }
