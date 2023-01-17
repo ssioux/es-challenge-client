@@ -1891,11 +1891,17 @@ height: 100%;
 }
 
 .team-included-container {
-  max-width: 340px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+ 
+  width: 30%;
+  height: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.team-included-container div{
+width: 100%;
+
 }
 .team-included-container h3 {
   display: flex;
@@ -1912,12 +1918,23 @@ height: 100%;
   color: white;
   text-decoration: none;
 }
+@media screen and (max-width:1024px) {
+  .team-included-container {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    }
+    .team-included-container div{
+      width: 70%;
+      
+      }
+}
 
 /* __________ __________________TEAM CARD_________*/
 .team-included-card {
   display: flex;
   background-color: #000d56;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 80%;
 
   border: 1px solid #000d56;
@@ -1932,6 +1949,7 @@ height: 100%;
   transition: all 0.3s ease-out;
 }
 .team-flag {
+  background-color: white;
   width: 100%;
   border-top-left-radius: 6%;
   border-bottom-left-radius: 6%;
