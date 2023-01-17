@@ -56,8 +56,10 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 .full-nav {
   display: flex;
+  
   justify-content: space-around;
   background-color: #000d56;
+  top: 0; /* required */  
 }
 
 .full-nav img {
@@ -108,6 +110,7 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   }
   .nav-bar .full-nav-burger {
     position: fixed;
+    top:0;
     width: 100%;
     height: 55px;
     background-color: #000d56;
