@@ -16,17 +16,17 @@ function Instructions() {
         <div className="instructions-card-text">
           <h3>Create your Team</h3>
           <ul>
-            <li>First of all, create your team to can access to tourney.</li>
+            <li>First of all, create your team to join any tournament.</li>
             <li>
               Write a password and don't forget it, because your team members
-              must write it to can join them to your team.
+              must write it to join the team.
             </li>
           </ul>
         </div>
       </div>
       <div className="instructions-card">
         <div className="instructions-card-text">
-          <h3>Search your friends teams and join</h3>
+          <h3>Search and join the teams of your friends</h3>
           <ul>
             <li>Select the team which you want to register.</li>
             <li>Introduce the password and be ready for the tourney.</li>
