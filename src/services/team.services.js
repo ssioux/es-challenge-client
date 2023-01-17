@@ -33,6 +33,10 @@ const findTeamUserService = () => {
     return service.get("/team/find-team-user")
 }
 
+const creatorTeamDeleteService = () => {
+    return service.post("/team/own-team/delete")
+}
+
 
 export{
     listTeamsService,
@@ -43,5 +47,6 @@ export{
     findTeamCreatorService,
     addMemberTeamService,
     findTeamUserService,
-    removeMemberTeamService
+    removeMemberTeamService,
+    creatorTeamDeleteService
 }

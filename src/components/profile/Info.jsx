@@ -12,7 +12,7 @@ import CreateGameForm from "./CreateGameForm";
 import { HashLink } from "react-router-hash-link";
 
 // Axios Services
-import { findTeamCreatorService } from "../../services/team.services";
+import { creatorTeamDeleteService, findTeamCreatorService } from "../../services/team.services";
 
 function Info() {
   const navigate = useNavigate();
@@ -114,6 +114,18 @@ function Info() {
     setCreateGame(true);
   };
 
+  const handleDeleteOwnTeam = async() => {
+    
+    try {
+     await creatorTeamDeleteService()
+     setYourTeam(false);
+     getData()
+     
+    } catch (error) {
+      navigate("/error")
+    }
+  }
+
   return (
     <div className="info-container">
       <section className="info-user">
@@ -209,7 +221,7 @@ function Info() {
                 );
               })}
             </h4>
-            <button className="general-btn-blue">Delete Team</button>
+            <button className="general-btn-blue" onClick={handleDeleteOwnTeam}>Delete Team</button>
           </div>
         )}
         {/* Edit User Component */}
