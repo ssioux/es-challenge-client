@@ -33,6 +33,7 @@ function Info() {
   const [createTourney, setCreateTourney] = useState(false);
   const [teamsYouAreIncluded, setTeamsYouAreIncluded] = useState(false);
   const [createGame, setCreateGame] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
 
   // Search the team created for the current user
   useEffect(() => {
@@ -122,7 +123,9 @@ function Info() {
      getData()
      
     } catch (error) {
-      navigate("/error")
+      if( error.response.status === 401){
+        setErrorMessage(error.response.data.errorMessage)
+      }
     }
   }
 
@@ -225,6 +228,9 @@ function Info() {
               })}
             </h4>
             <button className="general-btn-blue" onClick={handleDeleteOwnTeam}>Delete Team</button>
+            {errorMessage !== "" && (
+              <p style={{color:"red"}}>{errorMessage}</p>
+            )}
           </div>
         )}
         {/* Edit User Component */}
