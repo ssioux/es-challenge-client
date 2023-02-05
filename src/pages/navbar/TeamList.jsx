@@ -78,7 +78,7 @@ function TeamList() {
       <div className="teams-container">
         {teamListSearch.map((eachTeam) => {
           return (
-            <Link to={`/team/${eachTeam._id}/details`}>
+            <Link to={`/team/${eachTeam._id}/details`} key={eachTeam._id}>
               <div className="card-team" key={eachTeam._id}>
                 <div className="div-img">
                   <Card.Img variant="top" src={eachTeam.picture} />

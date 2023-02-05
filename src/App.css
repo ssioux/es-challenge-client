@@ -747,8 +747,8 @@ rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 /*****************************     TEAMS PAGE     ****************************/
 /*___________________________________________________________________________*/
 
-#teams-container {
-  height: 100vh;
+.teams-container {
+  min-height:100vh;
   background-color: #bec0ca;
 }
 
@@ -1171,7 +1171,7 @@ body {
   /* background-image: url("../public/images/tourneyList-bg.png"); */
   background-color: #bec0ca;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .general-container a {
