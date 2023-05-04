@@ -75,11 +75,13 @@ function CreateTourneyForm(props) {
             <label htmlFor="Game">Choose your Game</label>
 
             <select onChange={handleGameChange}>
-              {listGames.map((opt) => (
-                <option key={opt._id} value={opt._id}>
-                  {opt.name}
-                </option>
-              ))}
+              {listGames.map((opt) => {
+                return (
+                  <option key={opt._id} value={opt._id}>
+                    {opt.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
 

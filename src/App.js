@@ -3,7 +3,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import IsPrivate from "./components/IsPrivate";
-import {useState} from "react"
+
 // pages
 import Error from "./pages/error/Error";
 import Home from "./pages/navbar/Home";
@@ -26,13 +26,12 @@ import TourneyList from "./pages/navbar/TourneyList";
 import TourneyMain from "./components/Tourney/TourneyMain.jsx";
 import About from "./pages/navbar/About";
 import Footer from "./components/Footer";
-import Instructions from "./components/Instructions";
 
 
 
 
 function App() {
-  const [isOpen, setOpen] = useState(false)
+
   return (
     <div className="App"> 
     
