@@ -26,7 +26,6 @@ function TourneyListTeams(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const [ownTeam, setOwnTeam] = useState(null);
- 
 
   useEffect(() => {
     getData();
@@ -45,12 +44,8 @@ function TourneyListTeams(props) {
       const response = await detailsTourneyService(tourneyId);
 
       const tourneyDetails = response.data;
-      console.log("🚀 ~ file: TourneyListTeams.jsx:48 ~ getData ~ tourneyDetails", tourneyDetails)
-      
 
       setDetails(tourneyDetails);
-
-
 
       setIsFetching(false);
     } catch (error) {
@@ -116,12 +111,11 @@ function TourneyListTeams(props) {
       <div className="tourney-list-teams-header">
         <div className="game-tourney-list">
           <div className="game-img">
-          <img src={details.game.picture} alt="gamePicture" />
+            <img src={details.game.picture} alt="gamePicture" />
           </div>
           <div className="game-name">
-             <h3>{details.game.name}</h3>
+            <h3>{details.game.name}</h3>
           </div>
-         
         </div>
         <div className="tourney-list-tourney-name">
           <h1>{details.name}</h1>
@@ -130,62 +124,62 @@ function TourneyListTeams(props) {
           <div className="tourney-team-list-options-text">
             <h3>OPTIONS:</h3>
           </div>
-          <div className="tourney-team-list-options-buttons" >
-
-          {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
-          {(details.quarterA.length === 0 && details.teams.length === 8) && (user?.user.role === "admin" || user?.user._id === details?.creator) ? (
-            <div className="options-buttons">
-              <button
-                id="button-addon3"
-                variant="outline-secondary"
-                onClick={handleStartSort}
-              >
-                Start
-              </button>
-            </div>
-          ):(
-            <div className="options-buttons">
-              <button
-                disabled = {true}
-                id="button-addon3"
-                variant="outline-secondary"
-                onClick={handleStartSort}
-              >
-                Start
-              </button>
-            </div> 
-          )}
-          {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
-          {isLoggedIn === true &&
-            details.teams?.filter((each) => each._id === ownTeam?._id)
-              .length === 0 ?(
-                <div className="options-buttons">
-
-              <button
-                disabled={false}
-                variant="outline-secondary"
-                id="button-addon3"
-                onClick={handleAddTeamToTourney}
-              >
-                Register Team
-              </button>
-              </div>
-            ):(
+          <div className="tourney-team-list-options-buttons">
+            {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
+            {details.quarterA.length === 0 &&
+            details.teams.length === 8 &&
+            (user?.user.role === "admin" ||
+              user?.user._id === details?.creator) ? (
               <div className="options-buttons">
-
-              <button
-                disabled={true}
-                variant="outline-secondary"
-                id="button-addon3"
-                onClick={handleAddTeamToTourney}
-              >
-                Register Team
-              </button>
+                <button
+                  id="button-addon3"
+                  variant="outline-secondary"
+                  onClick={handleStartSort}
+                >
+                  Start
+                </button>
+              </div>
+            ) : (
+              <div className="options-buttons">
+                <button
+                  disabled={true}
+                  id="button-addon3"
+                  variant="outline-secondary"
+                  onClick={handleStartSort}
+                >
+                  Start
+                </button>
               </div>
             )}
-          {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
+            {/* REGISTER TEAM BUTTON => Register your team in the tourney. Non register users don´t see the button  */}
+            {isLoggedIn === true &&
+            details.teams?.filter((each) => each._id === ownTeam?._id)
+              .length === 0 ? (
+              <div className="options-buttons">
+                <button
+                  disabled={false}
+                  variant="outline-secondary"
+                  id="button-addon3"
+                  onClick={handleAddTeamToTourney}
+                >
+                  Register Team
+                </button>
+              </div>
+            ) : (
+              <div className="options-buttons">
+                <button
+                  disabled={true}
+                  variant="outline-secondary"
+                  id="button-addon3"
+                  onClick={handleAddTeamToTourney}
+                >
+                  Register Team
+                </button>
+              </div>
+            )}
+            {/* REMOVE TEAM BUTTON => Remove your team from the tourney. User hasn´t team registered in the tourney, he can´t see the button */}
 
-          {isLoggedIn === true &&
+            {isLoggedIn === true &&
             findOwnTeamTourney[0]?._id === ownTeam?._id ? (
               <div className="options-buttons">
                 <button
@@ -196,7 +190,7 @@ function TourneyListTeams(props) {
                   Remove Team
                 </button>
               </div>
-            ):(
+            ) : (
               <div className="options-buttons">
                 <button
                   disabled={true}
@@ -220,7 +214,7 @@ function TourneyListTeams(props) {
           return (
             <div className="team-card" key={eachTeam._id}>
               <Link to={`/team/${eachTeam._id}/details`}>
-                <div className="image-card" >
+                <div className="image-card">
                   <img src={eachTeam.picture} alt="shield" />
                 </div>
                 <div className="name-team">
