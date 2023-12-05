@@ -126,7 +126,7 @@ function TourneyListTeams(props) {
           <div className="tourney-team-list-options-buttons">
             {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
             {details.quarterA.length === 0 &&
-            details.teams.length === 7 &&
+            details.teams.length === 8 &&
             (user?.user.role === "admin" ||
               user?.user._id === details?.creator) ? (
               <div className="options-buttons">
