@@ -3,10 +3,9 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 // Bootstrap components
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+
 import Spinner from "react-bootstrap/Spinner";
-import { ListGroup } from "react-bootstrap";
+
 // Axios Services for API Rest
 import {
   addTeamToTourneyService,
@@ -127,7 +126,7 @@ function TourneyListTeams(props) {
           <div className="tourney-team-list-options-buttons">
             {/* START BUTTON => Iniciates the short of the teams only by the Admin, when tourney is active disapear */}
             {details.quarterA.length === 0 &&
-            details.teams.length === 8 &&
+            details.teams.length === 7 &&
             (user?.user.role === "admin" ||
               user?.user._id === details?.creator) ? (
               <div className="options-buttons">

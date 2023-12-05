@@ -1,21 +1,14 @@
 // React Hooks
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 // Data RestApi
 import { listTourneysService } from "../../services/tourney.services.js";
 
-
-
-import { AuthContext } from "../../context/auth.context";
-
 // bootstrap
-
 import { Button, InputGroup } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 function TourneyList() {
-  const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   // create state to store the data
   const [list, setList] = useState([]);
@@ -63,11 +56,10 @@ function TourneyList() {
           <h2>Tournaments</h2>
           <InputGroup
             className="mb-3"
-            style={{ marginTop: "10px", width: "50%"}}
+            style={{ marginTop: "10px", width: "50%" }}
           >
             <Form.Control
-            className="input-search-list"
-            
+              className="input-search-list"
               placeholder="search"
               aria-label="Recipient's username"
               aria-describedby="basic-addon2"
@@ -87,7 +79,7 @@ function TourneyList() {
             <Link key={eachTourney._id} to={`/list/${eachTourney._id}/details`}>
               <div className="tourney-card">
                 <div className="tourney-card-image">
-                  <img src={eachTourney.game.picture} alt="Card image" />
+                  <img src={eachTourney.game.picture} alt="Card imag" />
                 </div>
 
                 <div className="tourney-card-content">

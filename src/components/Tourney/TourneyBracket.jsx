@@ -15,7 +15,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 function TourneyBracket(props) {
 
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
 
   const navigate = useNavigate();

@@ -24,7 +24,7 @@ function Info() {
   const [ownTeam, setOwnTeam] = useState();
 
   const { user } = useContext(AuthContext);
-  const { username, email, _id, picture } = user.user;
+  const { username, _id, picture } = user.user;
 
   // States to components
   const [createTeam, setCreateTeam] = useState(false);
