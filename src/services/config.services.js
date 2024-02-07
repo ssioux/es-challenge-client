@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: "https://worried-loincloth-seal.cyclic.app/api"
-    
+    baseURL: process.env.REACT_APP_SERVER
 });
 
 // Find Token and includes in.
